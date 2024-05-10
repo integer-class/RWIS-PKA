@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\UserModel;
+use App\Models\User; 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,11 +21,11 @@ class AuthController extends Controller
         if ($user) {
             //jika user nya memiliki level admin
             if ($user->role == '1') {
-                return redirect()->intended('RW');
+                return redirect()->intended('rw');
             }
             //jika user nya memiliki level manager 
             else if ($user->role == '2') {
-                return redirect()->intended('RT');
+                return redirect()->intended('rt');
             }
             else if ($user->role == '3') {
                 return redirect()->intended('warga');
@@ -34,12 +36,6 @@ class AuthController extends Controller
 
     public function proses_login(Request $request)
     {
-        // $nik = $request->nik;
-        // $password = $request->password;
-
-
-        // echo $nik;
-        // echo $password;
 
         //kita buat validasi pada saat tombol login di klik
         //validasi nya username dan password wajib diisi
@@ -58,11 +54,11 @@ class AuthController extends Controller
             //cek lagi jika level user admin maka arahkan ke halaman admin
             if ($user->role == '1') {
                 //dd($user->level_id);
-                return redirect()->intended('RW');
+                return redirect()->intended('rw');
             } 
             //tapi jika level user nya user biasa maka arahkan ke halaman user
             else if ($user->role == '2') {
-                return redirect()->intended('RT');
+                return redirect()->intended('rt');
             }
             else if ($user->role =='3'){
                 return redirect()->intended('warga');
