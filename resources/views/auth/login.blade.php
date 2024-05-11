@@ -62,7 +62,7 @@
             </div>
             <div class="card">
                 <div class="header">
-                    <p class="lead">Login to your account</p>
+                    <p class="lead">Login</p>
                 </div>
                 <div class="body">
                     <form action="{{route('proses_login')}}" method="post" class="form-auth-small " >
