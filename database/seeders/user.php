@@ -19,7 +19,6 @@ class user extends Seeder
             'nik' => '472751886',
             'role' => '1',
             'password' =>  Hash::make('123'),
-
         ]);
 
 

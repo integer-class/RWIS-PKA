@@ -16,9 +16,12 @@ class citizenModel extends Model
     public $timestamps = false;
     protected $primaryKey = 'nik';
     protected $fillable = [
+        'nik',
         'no_kk',
         'nama',
         'alamat',
+        'domisili',
+        'tanggal_lahir',
         'golongan_darah',
         'jenis_kelamin',
         'pekerjaan',
@@ -27,10 +30,7 @@ class citizenModel extends Model
         
     ];
 
-    public function no_KK(): Belongsto 
-    {
-        return $this->belongsTo(KKmodel::class);
-    }
+   
       // Implement methods from AuthenticatableContract
  
  

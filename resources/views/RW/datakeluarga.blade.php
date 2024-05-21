@@ -4,8 +4,8 @@
 
 <div class="body">
     <ul class="nav nav-tabs3 white">
-        <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Home-new2">Data Warga</a></li>
-        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Profile-new2">Tambah Warga</a></li>
+        <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Home-new2">Data Keluarga</a></li>
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Profile-new2">Tambah KK</a></li>
        
 
     </ul>
@@ -60,14 +60,7 @@
                                                     
                                                     
                                                     <p>
-                                                      nama           :  {{$penduduk->nama}}<br>
-                                                      alamat         :  {{$penduduk->alamat}}<br>
-                                                      rt             :  {{$penduduk->rt}}<br>
-                                                      agama          :  {{$penduduk->agama}}<br>
-                                                      golongan darah :  {{$penduduk->golongan_darah}}<br>
-                                                      jenis kelamin  :  {{$penduduk->jenis_kelamin	}}<br>
-                                                      pekerjaan      :  {{$penduduk->pekerjaan}}<br>
-                                                      no_kk          :  {{$penduduk->no_kk }}<br>
+                                                        ini diisi nanti
                                                     </p>
                                                     
                                                 </div>
@@ -107,89 +100,50 @@
             </div>
         </div>
 
-        {{-- TAB Tambah warga --}}
+        {{-- TAB Tambah KK --}}
         <div class="tab-pane" id="Profile-new2">
-        <form method="post" action="{{route('prosesTambahWarga')}}">
+        <form method="post" action="{{route('prosesTambah')}}">
             @csrf
             <div class="card">
                 <div class="header">
-                    <h2>Data diri</h2>
+                    <h2>Pastikan data sesuai dengan Kartu Keluarga</h2>
                 </div>
                 <div class="body">
                     <div class="row clearfix">
                         {{-- kiri atas --}}
                         <div class="col-lg-4 col-md-12">
                             <div class="form-group">
-                                <label for="">NIK:</label>
-                                <input name="nik" type="text" class="form-control" placeholder="NIK" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="">KK:</label>
-                                <input name="no_kk" type="text" class="form-control" placeholder="Nomor KK" required>
+                                <input name="no_kk" type="text" class="form-control" placeholder="Nomor Kartu Keluarga (KK)" required>
                             </div>
                             <div class="form-group">
-                                <label for="">Jenis Kelamin</label>
-                                <select name="jenis_kelamin" class="custom-select" id="inputGroupSelect01" required>
-                                    <option>Pilih Jenis Kelamin</option>
-                                    <option value="L">Laki-Laki</option>
-                                    <option value="P">Perempuan</option>
-                                </select>
+                                <label for="">Kecamatan:</label>
+                                <input name="kecamatan" type="text" class="form-control" placeholder="Nama Kecamatan" required>
                             </div>
-                            <div class="form-group  ">
-                                <label>Tanggal Lahir</label>
+                            <div class="form-group">
+                                <label>Kelurahan</label>
                                 <div class="input-group">
-                                    <input name="tanggal_lahir" type="date"  class="form-control"  placeholder="Pilih tanggal" required>
+                                    <input name="kelurahan" type="date"  class="form-control"  placeholder="Nama Kelurahan" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="">Pekerjaan :</label>
-                                <input name="pekerjaan" type="text" class="form-control" placeholder="Pekerjaan" required>
+                                <label for="">rt</label>
+                                <input name="rt" type="text" class="form-control" placeholder="nomor RT" required>
                             </div>
                         </div>
                         {{-- Kanan atas --}}
                         <div class="col-lg-4 col-md-12">
                             <div class="form-group">
-                                <label for="">Nama :</label>
-                                <input name="nama" type="text" class="form-control" placeholder="Nama" required>
+                                <label for="">rw</label>
+                                <input name="rw" type="text" class="form-control" placeholder=" nomor RW" required>
                             </div>
                             <div class="form-group">
-                                <label for="">agama</label>
-                                <select name="agama" class="custom-select" id="inputGroupSelect01" required>
-                                    <option>Pilih agama</option>
-                                    <option value="islam">islam</option>
-                                    <option value="katolik">katolik</option>
-                                    <option value="kristen">kristen</option>
-                                    <option value="budha">budha</option>
-                                    <option value="hindu">hindu</option>
-                                    <option value="konghucu">konghucu</option>
-                                </select>
+                                <label for="">Kepala Keluarga</label>
+                                <input name="kepala_keluarga" type="text" class="form-control" placeholder="Nama Kepala Keluarga" required>
                             </div>
                             <div class="form-group">
-                                <label for="">Golongan Darah</label>
-                                <select name="golongan_darah" class="custom-select" id="inputGroupSelect01" required>
-                                    <option>Pilih golongan darah</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="Ab">AB</option>
-                                    <option value="O">O</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">status</label>
-                                <select name="status" class="custom-select" id="inputGroupSelect01" required>
-                                    <option >Pilih Status Perkawinan</option>
-                                    <option value="Belum Kawin">Belum Kawin</option>
-                                    <option value="Kawin">Kawin</option>    
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">RT</label>
-                                <select name="rt" class="custom-select" id="inputGroupSelect01" required>
-                                    <option >Pilih rt (domisili) </option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
+                                <label for="">Provinsi</label>
+                                <input name="provinsi" type="text" class="form-control" placeholder="Nama povinsi" required>
                             </div>
                         </div>       
                               
@@ -198,12 +152,8 @@
                             <hr>
                             <h6>*Pastikan alamat  sesuai</h6>
                             <div class="form-group c_form_group">
-                                <label>Domisili</label>
-                                <input name="domisili" type="text" class="form-control" placeholder="alamat tempat tinggal sekarang" required>
-                            </div>
-                            <div class="form-group c_form_group">
-                                <label>Alamat asli</label>
-                                <input name="alamat_asli" type="text" class="form-control" placeholder="alamat asli sesuai dengan (KTP)" required>
+                                <label>Alamat</label>
+                                <input name="alamat" type="text" class="form-control" placeholder="alamat lengkap" required>
                             </div>
                         </div>
                     </div>

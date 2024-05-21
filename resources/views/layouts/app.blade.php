@@ -66,18 +66,23 @@
 </div>
 
 <!-- Javascript -->
-<script src="{{ asset('assets/bundles/libscripts.bundle.js')}}"></script>    
-<script src="{{ asset('assets/bundles/vendorscripts.bundle.js')}}"></script>
+<script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>    
+<script src="{{asset('assets/bundles/vendorscripts.bundle.js')}}"></script>
 
 <!-- Vedor js file and create bundle with grunt  --> 
-<script src="{{ asset('assets/bundles/flotscripts.bundle.js')}}"></script><!-- flot charts Plugin Js -->
-<script src="{{ asset('assets/bundles/c3.bundle.js')}}"></script>
-<script src="{{ asset('assets/bundles/apexcharts.bundle.js')}}"></script>
-<script src="{{ asset('assets/bundles/jvectormap.bundle.js')}}"></script>
-<script src="{{ asset('assets/vendor/toastr/toastr.js')}}"></script>
+
+<script src="assets/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script><!-- Bootstrap Colorpicker Js --> 
+<script src="assets/vendor/jquery-inputmask/jquery.inputmask.bundle.js"></script><!-- Input Mask Plugin Js --> 
+<script src="assets/vendor/jquery.maskedinput/jquery.maskedinput.min.js"></script>
+<script src="assets/vendor/multi-select/js/jquery.multi-select.js"></script><!-- Multi Select Plugin Js -->
+<script src="assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+<script src="{{asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js"></script><!-- Bootstrap Tags Input Plugin Js --> 
+<script src="assets/vendor/nouislider/nouislider.js"></script><!-- noUISlider Plugin Js -->
+
 
 <!-- Project core js file minify with grunt --> 
-<script src="{{ asset('assets/bundles/mainscripts.bundle.js')}}"></script>
-<script src="../js/index.js"></script>
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="../js/pages/forms/advanced-form-elements.js"></script>
 </body>
 </html>

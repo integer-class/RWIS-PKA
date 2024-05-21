@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
 
 
-        $this->call(kartu_keluarga::class);
+       
         $this->call(citizen::class);
         $this->call(user::class);
 

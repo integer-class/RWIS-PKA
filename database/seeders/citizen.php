@@ -17,13 +17,15 @@ class citizen extends Seeder
         \App\Models\citizenModel::factory()->create([
             'nik' => '472751886',
             'agama' => 'islam',
-            'nama' => 'aulia',
+            'nama' => 'teo',
             'rt' => '1',
             'jenis_kelamin' => 'L',
             'alamat' => 'mbokor',
+            'domisili' => 'mbokor etan',
             'golongan_darah' => 'A',
             'pekerjaan' => 'petani',
             'no_kk' => '472751886',
+            'tanggal_lahir' => "2012-12-12",
         ]);
 
 

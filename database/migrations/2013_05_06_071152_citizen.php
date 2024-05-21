@@ -13,17 +13,18 @@ return new class extends Migration
         Schema::create('citizen', function (Blueprint $table) {
             $table->id('nik');
             $table->String('nama');
+            $table->foreign('no_kk')->references('no_kk')->on('kartukeluarga');
             $table->string('alamat');
+            $table->string('domisili');
             $table->string('rt');
             $table->string('agama');
             $table->enum('golongan_darah', ['A', 'B', 'AB', 'O']);
             $table->enum('jenis_kelamin', ["L", "P"]);
             $table->string('pekerjaan');
-            $table->unsignedBigInteger('no_kk'); // Adding the no_kk column
+            $table->date('tanggal_lahir');
             $table->rememberToken(); 
             $table->timestamps();
 
-            $table->foreign('no_kk')->references('no_kk')->on('kartu_keluarga');
         });
     }
 

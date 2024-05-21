@@ -20,10 +20,16 @@
         </div>  
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu animation-li-delay">
-                
 
                 <li><a href="app-inbox.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a></li>
-                <li><a href=" {{ url('/data_warga') }}"><i class="fa fa-clipboard"></i> <span>Data Warga</span></a></li>
+                <li>
+                    <a href="#uiElements" class="has-arrow"><i class="fa fa-clipboard"></i><span>Data Warga</span></a>
+                    <ul>
+                        <li><a href="{{ url('/data_warga') }}">Data Warga</a></li>
+                        <li><a href="ui-bootstrap.html">Data Keluarga</a></li>
+                    </ul>
+                </li>
+                
                 <li><a href="app-calendar.html"><i class="fa fa-money"></i> <span>Keuangan</span></a></li>
                 <li><a href="app-todo.html"><i class="fa fa-th-list"></i> <span>Kegiatan</span></a></li>
                 <li><a href="app-filemanager.html"><i class="fa fa-folder"></i> <span>UMKM</span></a></li>
@@ -33,3 +39,4 @@
         </nav>     
     </div>
 </div>
+

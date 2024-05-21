@@ -33,7 +33,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:1']], function () {
         Route::resource('rw', RwController::class);
         Route::get('/data_warga', [RwController::class, 'DataWarga'])->name('data_warga');
-
+        Route::post('/prosesTambahWarga', [RwController::class, 'TambahDataWarga'])->name('prosesTambahWarga');
+        Route::get('/data_keluarga', [RwController::class, 'Datakeluarga'])->name('data_keluarga');
+        Route::post('/prosesTambahKk', [RwController::class, 'TambahDataKK'])->name('prosesTambahKK');
 
 
     });
@@ -46,3 +48,4 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('warga', WargaController::class);
     });
 });
+

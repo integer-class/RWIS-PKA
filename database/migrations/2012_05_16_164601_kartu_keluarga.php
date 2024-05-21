@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kartu_keluarga', function (Blueprint $table) {
+        Schema::create('kartukeluarga', function (Blueprint $table) {
             $table->id('no_kk');
-            $table->String('alamat');
-            $table->string('rt');
-            $table->string('rw');
+            $table->string('kelurahan');
             $table->string('kecamatan');
             $table->string('kabupaten');
-            $table->rememberToken();
-            $table->timestamps();
-            
+            $table->string('provinsi');
+            $table->string('rt');
+            $table->string('rw');
+            $table->string('kepala_keluarga');
+
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('Kartu_keluarga');
+        Schema::dropIfExists('citizen');
     }
 };
