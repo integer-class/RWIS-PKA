@@ -26,7 +26,7 @@
                     <a href="#uiElements" class="has-arrow"><i class="fa fa-clipboard"></i><span>Data Warga</span></a>
                     <ul>
                         <li><a href="{{ url('/data_warga') }}">Data Warga</a></li>
-                        <li><a href="ui-bootstrap.html">Data Keluarga</a></li>
+                        <li><a href="{{ url('/data_keluarga') }}">Data Keluarga</a></li>
                     </ul>
                 </li>
                 

@@ -31,36 +31,36 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>NIK</th>
-                                        <th>NAMA</th>
+                                        <th>Nomor KK</th>
+                                        <th>Kepala Keluarga</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($warga as $penduduk)
+                                    @foreach ($kartukeluarga as $keluarga)
                                     <tr>
-                                        <td >{{$penduduk->nik}}</td>
-                                        <td> {{$penduduk->nama}} </td>
+                                        <td >{{$keluarga->no_kk}}</td>
+                                        <td> {{$keluarga->kepala_keluarga}} </td>
                                         <td> 
 
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalCenter{{$penduduk->nik}}">Detail</button>
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalCenter{{$keluarga->nik}}">Detail</button>
                                             <button class="btn btn-danger" >Edit</button>
                                             
                                         </td>                                        
                                     </tr>  
-                                    <div class="modal fade" id="exampleModalCenter{{$penduduk->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModalCenter{{$keluarga->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle"> data detail dari {{$penduduk->nama}} </h5>
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle"> data detail dari {{$keluarga->nama}} </h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     
                                                     
                                                     <p>
-                                                        ini diisi nanti
+                                                        ini diisi nanti (detail)
                                                     </p>
                                                     
                                                 </div>
@@ -81,28 +81,10 @@
             </div>
         </div>
         
-        {{-- Detail Modals ini basically template boi--}}
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Cras mattis consectetur orbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary theme-bg gradient">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         {{-- TAB Tambah KK --}}
         <div class="tab-pane" id="Profile-new2">
-        <form method="post" action="{{route('prosesTambah')}}">
+        <form method="post" action="{{route('prosesTambahWarga')}}">
             @csrf
             <div class="card">
                 <div class="header">
@@ -113,7 +95,7 @@
                         {{-- kiri atas --}}
                         <div class="col-lg-4 col-md-12">
                             <div class="form-group">
-                                <label for="">KK:</label>
+                                <label for="">Nomor KK:</label>
                                 <input name="no_kk" type="text" class="form-control" placeholder="Nomor Kartu Keluarga (KK)" required>
                             </div>
                             <div class="form-group">

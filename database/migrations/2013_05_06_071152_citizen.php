@@ -13,6 +13,7 @@ return new class extends Migration
         Schema::create('citizen', function (Blueprint $table) {
             $table->id('nik');
             $table->String('nama');
+            $table->unsignedBigInteger('no_kk');
             $table->foreign('no_kk')->references('no_kk')->on('kartukeluarga');
             $table->string('alamat');
             $table->string('domisili');

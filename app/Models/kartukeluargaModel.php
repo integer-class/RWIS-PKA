@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class kartukeluargaModel extends Model
 {
     use HasFactory;
-    protected $table = "kepalakeluarga";
+    protected $table = "kartukeluarga";
     public $timestamps = false;
     protected $primaryKey = 'no_kk';
     protected $fillable = [
@@ -26,9 +26,3 @@ class kartukeluargaModel extends Model
         
     ];
 }
-$table->string('kecamatan');
-$table->string('kabupaten');
-$table->string('provinsi');
-$table->string('rt');
-$table->string('rw');
-$table->string('kepala_keluarga');

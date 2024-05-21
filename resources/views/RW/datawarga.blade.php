@@ -45,7 +45,8 @@
                                         <td> 
 
                                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalCenter{{$penduduk->nik}}">Detail</button>
-                                            <button class="btn btn-danger" >Edit</button>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit{{$penduduk->nik}}">Edit</button>
+
                                             
                                         </td>                                        
                                     </tr>  
@@ -77,8 +78,123 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                      
-                                    @endforeach                                                                       
+                                    </div>  
+                                    
+                                    {{-- modal edit --}}
+                                    <div class="modal fade" id="edit{{$penduduk->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle"> data detail dari {{$penduduk->nama}} </h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form method="post" action="{{route('prosesEditWarga')}}">
+                                                        @csrf
+                                                        <div class="row clearfix">
+                                                            {{-- kiri atas --}}
+                                                            <div class="col-lg-6 col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="">NIK:</label>
+                                                                    <input name="nik" type="text" value="{{$penduduk->nik}}" class="form-control" placeholder="NIK" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">KK:</label>
+                                                                    <input name="no_kk" type="text"  value="{{$penduduk->no_kk}}" class="form-control" placeholder="Nomor KK" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Jenis Kelamin</label>
+                                                                    <select  name="jenis_kelamin" class="custom-select" id="inputGroupSelect01" required>
+                                                            <option>Pilih Jenis Kelamin</option>
+                                                            <option value="L" {{$penduduk->jenis_kelamin == 'L' ? 'selected' : ''}}>Laki-Laki</option>
+                                                            <option value="P" {{$penduduk->jenis_kelamin == 'P' ? 'selected' : ''}}>Perempuan</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group  ">
+                                                                    <label>Tanggal Lahir</label>
+                                                                    <div class="input-group">
+                                                                        <input value="{{$penduduk->tanggal_lahir}}" name="tanggal_lahir" type="date"  class="form-control"  placeholder="Pilih tanggal" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Pekerjaan :</label>
+                                                                    <input value="{{$penduduk->pekerjaan}}"  name="pekerjaan" type="text" class="form-control" placeholder="Pekerjaan" required>
+                                                                </div>
+                                                            </div>
+                                                            {{-- Kanan atas --}}
+                                                            <div class="col-lg-6 col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="">Nama :</label>
+                                                                    <input name="nama" value="{{$penduduk->nama}}" type="text" class="form-control" placeholder="Nama" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">agama</label>
+                                                                    <select name="agama" class="custom-select" id="inputGroupSelect01" required>
+                                                                        <option>Pilih agama</option>
+                                                                        <option value="islam" {{$penduduk->agama == 'islam' ? 'selected' : ''}}>Islam</option>
+                                                                        <option value="katolik" {{$penduduk->agama == 'katolik' ? 'selected' : ''}}>Katolik</option>
+                                                                        <option value="kristen" {{$penduduk->agama == 'kristen' ? 'selected' : ''}}>Kristen</option>
+                                                                        <option value="budha" {{$penduduk->agama == 'budha' ? 'selected' : ''}}>Budha</option>
+                                                                        <option value="hindu" {{$penduduk->agama == 'hindu' ? 'selected' : ''}}>Hindu</option>
+                                                                        <option value="konghucu" {{$penduduk->agama == 'konghucu' ? 'selected' : ''}}>Konghucu</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Golongan Darah</label>
+                                                                    <select name="golongan_darah" class="custom-select" id="inputGroupSelect01" required>
+                                                                        <option>Pilih Golongan Darah</option>
+                                                                        <option value="A" {{$penduduk->golongan_darah == 'A' ? 'selected' : ''}}>A</option>
+                                                                        <option value="B" {{$penduduk->golongan_darah == 'B' ? 'selected' : ''}}>B</option>
+                                                                        <option value="AB" {{$penduduk->golongan_darah == 'AB' ? 'selected' : ''}}>AB</option>
+                                                                        <option value="O" {{$penduduk->golongan_darah == 'O' ? 'selected' : ''}}>O</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">status</label>
+                                                                    <select name="status" class="custom-select" id="inputGroupSelect01" required>
+                                                                        <option >Pilih Status Perkawinan</option>
+                                                                        <option value="Belum Kawin" {{$penduduk->status == 'Belum Kawin' ? 'selected' : ''}}>Belum Kawin</option>
+                                                                        <option value="Kawin" {{$penduduk->status == 'Kawin' ? 'selected' : ''}}>Kawin</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">RT</label>
+                                                                    <select name="rt" class="custom-select" id="inputGroupSelect01" required>
+                                                                        <option >Pilih rt (domisili) </option>
+                                                                        <option value="1" {{$penduduk->rt == '1' ? 'selected' : ''}}>1</option>
+                                                                        <option value="2" {{$penduduk->rt == '2' ? 'selected' : ''}}>2</option>
+                                                                        <option value="3" {{$penduduk->rt == '3' ? 'selected' : ''}}>3</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>       
+                                                                  
+                                                            {{-- Bawah --}}
+                                                            <div class="col-lg-12 col-md-12">
+                                                                <hr>
+                                                                <h6>*Pastikan alamat  sesuai</h6>
+                                                                <div class="form-group c_form_group">
+                                                                    <label>Domisili</label> 
+                                                                    <input name="domisili" type="text" value="{{ $penduduk->domisili }}" class="form-control" placeholder="alamat tempat tinggal sekarang" required>
+                                                                </div>
+                                                                <div class="form-group c_form_group">
+                                                                    <label>Alamat asli</label>
+                                                                    <input name="alamat_asli" type="text"  value="{{ $penduduk->alamat }}" class="form-control" placeholder="alamat asli sesuai dengan (KTP)" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary theme-bg gradient">Save changes</button>
+                                                </div>
+
+                                            </form>
+<
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    @endforeach                                                                                               
                                    
                                 </tbody>
                             </table>
@@ -118,7 +234,7 @@
                 <div class="body">
                     <div class="row clearfix">
                         {{-- kiri atas --}}
-                        <div class="col-lg-4 col-md-12">
+                        <div class="col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label for="">NIK:</label>
                                 <input name="nik" type="text" class="form-control" placeholder="NIK" required>
@@ -147,7 +263,7 @@
                             </div>
                         </div>
                         {{-- Kanan atas --}}
-                        <div class="col-lg-4 col-md-12">
+                        <div class="col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label for="">Nama :</label>
                                 <input name="nama" type="text" class="form-control" placeholder="Nama" required>
