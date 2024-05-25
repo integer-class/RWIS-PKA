@@ -45,10 +45,11 @@
                                         <td> 
 
                                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalCenter{{$keluarga->nik}}">Detail</button>
-                                            <button class="btn btn-danger" >Edit</button>
+                                            <button type="button" class="btn btn-danger"data-toggle="modal" data-target="#edit{{$keluarga->nik}}" >Edit</button>
                                             
                                         </td>                                        
                                     </tr>  
+                                    {{-- Detail --}}
                                     <div class="modal fade" id="exampleModalCenter{{$keluarga->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -70,7 +71,80 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                      
+                                    </div>       
+                                    
+                                    {{-- EDIT --}}
+                                    <div class="modal fade" id="edit{{$keluarga->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle"> data detail dari {{$keluarga->nama}} </h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form method="post" action="{{route('prosesEditKK')}}">
+                                                        @csrf
+                                                        <div class="row clearfix">
+                                                            {{-- kiri atas --}}
+                                                            <div class="col-lg-6 col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="">Nomor KK:</label>
+                                                                    <input name="no_kk" type="text" value="{{$keluarga->no_kk}}" class="form-control" placeholder="Nomor Kartu Keluarga (KK)" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Kecamatan:</label>
+                                                                    <input name="kecamatan" value="{{$keluarga->kecamatan}}" type="text" class="form-control" placeholder="Nama Kecamatan" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Kelurahan</label>
+                                                                    <div class="input-group">
+                                                                        <input name="kelurahan" value="{{$keluarga->kelurahan}}" type="date"  class="form-control"  placeholder="Nama Kelurahan" required>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Provinsi</label>
+                                                                    <input name="provinsi" type="text" value="{{$keluarga->provinsi}}" class="form-control" placeholder="Nama povinsi" required>
+                                                                </div>
+                                                            </div>
+                                                            {{-- Kanan atas --}}
+                                                            <div class="col-lg-6 col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="">RW</label>
+                                                                    <input name="rw" type="text" value="{{$keluarga->rw}}" class="form-control" placeholder=" nomor RW" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">RT</label>
+                                                                    <input name="rt" type="text" value="{{$keluarga->rt}}" class="form-control" placeholder="nomor RT" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Kepala Keluarga</label>
+                                                                    <input name="kepala_keluarga" value="{{$keluarga->kepala_keluarga}}" type="text" class="form-control" placeholder="Nama Kepala Keluarga" required>
+                                                                </div>
+                                                            </div>       
+                                                                  
+                                                            {{-- Bawah --}}
+                                                            <div class="col-lg-12 col-md-12">
+                                                                <hr>
+                                                                <h6>*Pastikan alamat  sesuai</h6>
+                                                                <div class="form-group c_form_group">
+                                                                    <label>Alamat</label>
+                                                                    <input name="alamat" value="{{$keluarga->alamat}}" type="text" class="form-control" placeholder="alamat lengkap" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                                                                      
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary theme-bg gradient">Save changes</button>
+                                                </div>
+
+                                            </form>
+
+                                            </div>
+                                        </div>
+                                    </div> 
                                     @endforeach                                                                       
                                    
                                 </tbody>
@@ -105,27 +179,27 @@
                             <div class="form-group">
                                 <label>Kelurahan</label>
                                 <div class="input-group">
-                                    <input name="kelurahan" type="date"  class="form-control"  placeholder="Nama Kelurahan" required>
+                                    <input name="kelurahan" type="text"  class="form-control"  placeholder="Nama Kelurahan" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="">rt</label>
-                                <input name="rt" type="text" class="form-control" placeholder="nomor RT" required>
+                                <label for="">Provinsi</label>
+                                <input name="provinsi" type="text" class="form-control" placeholder="Nama povinsi" required>
                             </div>
                         </div>
                         {{-- Kanan atas --}}
                         <div class="col-lg-4 col-md-12">
                             <div class="form-group">
-                                <label for="">rw</label>
+                                <label for="">RW</label>
                                 <input name="rw" type="text" class="form-control" placeholder=" nomor RW" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">RT</label>
+                                <input name="rt" type="text" class="form-control" placeholder="nomor RT" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Kepala Keluarga</label>
                                 <input name="kepala_keluarga" type="text" class="form-control" placeholder="Nama Kepala Keluarga" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Provinsi</label>
-                                <input name="provinsi" type="text" class="form-control" placeholder="Nama povinsi" required>
                             </div>
                         </div>       
                               

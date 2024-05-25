@@ -69,6 +69,7 @@
                                                       jenis kelamin  :  {{$penduduk->jenis_kelamin	}}<br>
                                                       pekerjaan      :  {{$penduduk->pekerjaan}}<br>
                                                       no_kk          :  {{$penduduk->no_kk }}<br>
+                                                      tanggal lahir  :  {{$penduduk->tanggal_lahir}}<br>
                                                     </p>
                                                     
                                                 </div>
@@ -80,7 +81,7 @@
                                         </div>
                                     </div>  
                                     
-                                    {{-- modal edit --}}
+                                    {{-- Edit --}}
                                     <div class="modal fade" id="edit{{$penduduk->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
@@ -106,9 +107,9 @@
                                                                 <div class="form-group">
                                                                     <label for="">Jenis Kelamin</label>
                                                                     <select  name="jenis_kelamin" class="custom-select" id="inputGroupSelect01" required>
-                                                            <option>Pilih Jenis Kelamin</option>
-                                                            <option value="L" {{$penduduk->jenis_kelamin == 'L' ? 'selected' : ''}}>Laki-Laki</option>
-                                                            <option value="P" {{$penduduk->jenis_kelamin == 'P' ? 'selected' : ''}}>Perempuan</option>
+                                                                    <option>Pilih Jenis Kelamin</option>
+                                                                    <option value="L" {{$penduduk->jenis_kelamin == 'L' ? 'selected' : ''}}>Laki-Laki</option>
+                                                                    <option value="P" {{$penduduk->jenis_kelamin == 'P' ? 'selected' : ''}}>Perempuan</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group  ">
@@ -120,6 +121,14 @@
                                                                 <div class="form-group">
                                                                     <label for="">Pekerjaan :</label>
                                                                     <input value="{{$penduduk->pekerjaan}}"  name="pekerjaan" type="text" class="form-control" placeholder="Pekerjaan" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Status Kependudukan :</label>
+                                                                    <select name="status_kependudukan" class="custom-select" id="inputGroupSelect01" required>
+                                                                        <option>Pilih Status Kependudukan</option>
+                                                                        <option value="Warga Tetap" {{$penduduk->status_kependudukan == 'Warga Tetap' ? 'selected' : ''}}>Warga Tetap</option>
+                                                                        <option value="Warga Kontrak" {{$penduduk->status_kependudukan == 'Warga Kontrak' ? 'selected' : ''}}>Warga Kontrak</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                             {{-- Kanan atas --}}
@@ -190,7 +199,7 @@
                                                 </div>
 
                                             </form>
-<
+
                                             </div>
                                         </div>
                                     </div>  
@@ -260,6 +269,14 @@
                             <div class="form-group">
                                 <label for="">Pekerjaan :</label>
                                 <input name="pekerjaan" type="text" class="form-control" placeholder="Pekerjaan" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Status Kependudukan :</label>
+                                <select name="status_kependudukan" class="custom-select" id="inputGroupSelect01" required>
+                                    <option>Pilih Status Kependudukan</option>
+                                    <option value="Warga Tetap">Warga Tetap</option>
+                                    <option value="Warga Kontrak">Warga Kontrak</option>
+                                </select>
                             </div>
                         </div>
                         {{-- Kanan atas --}}

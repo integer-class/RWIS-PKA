@@ -27,6 +27,7 @@ class UserModel extends Model implements AuthenticatableContract
     {
         return $this->belongsTo(citizenModel::class, 'Role', 'role');
     }
+    
       // Implement methods from AuthenticatableContract
  
  

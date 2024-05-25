@@ -29,8 +29,9 @@
                         <li><a href="{{ url('/data_keluarga') }}">Data Keluarga</a></li>
                     </ul>
                 </li>
-                
-                <li><a href="app-calendar.html"><i class="fa fa-money"></i> <span>Keuangan</span></a></li>
+               
+                <li><a href="{{url('/data_keuangan')}}"><i class="fa fa-money"></i> <span>Keuangan</span></a></li>
+               
                 <li><a href="app-todo.html"><i class="fa fa-th-list"></i> <span>Kegiatan</span></a></li>
                 <li><a href="app-filemanager.html"><i class="fa fa-folder"></i> <span>UMKM</span></a></li>
                 <li><a href="app-contacts.html"><i class="fa fa-address-book"></i> <span>Bansos</span></a></li>                    

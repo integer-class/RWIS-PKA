@@ -19,6 +19,7 @@ class citizenModel extends Model
         'nik',
         'no_kk',
         'nama',
+        'status_kependudukan',
         'alamat',
         'domisili',
         'tanggal_lahir',

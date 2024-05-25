@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\citizenModel;
 use App\Models\kartukeluargaModel;
+use App\Models\keuanganModel;
 use App\Models\UserModel;
 use Illuminate\Support\facades\Hash;
 
@@ -116,6 +117,10 @@ class RwController extends Controller
         
     }
 
+    public function DataKeuangan(){
+        $data_keuangan = keuanganModel::all();
+        return view('rw.datakeuangan',compact('data_keuangan'));
+    }
     /**
      * Store a newly created resource in storage.
      */

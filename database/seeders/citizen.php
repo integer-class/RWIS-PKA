@@ -18,6 +18,7 @@ class citizen extends Seeder
             'nik' => '472751886',
             'agama' => 'islam',
             'nama' => 'teo',
+            'status_kependudukan' => 'Warga Kontrak',
             'rt' => '1',
             'jenis_kelamin' => 'L',
             'alamat' => 'mbokor',

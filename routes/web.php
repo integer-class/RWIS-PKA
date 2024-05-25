@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/prosesEditWarga', [RwController::class, 'EditDataWarga'])->name('prosesEditWarga');
         Route::get('/data_keluarga', [RwController::class, 'Datakeluarga'])->name('data_keluarga');
         Route::post('/prosesTambahKk', [RwController::class, 'TambahDataKK'])->name('prosesTambahKK');
+        Route::post('/prosesEditKk', [RwController::class, 'EditDataKK'])->name('prosesEditKK');
+        Route::get('/data_keuangan',[RWController::class,'DataKeuangan'])->name('data_keuangan');
 
 
 

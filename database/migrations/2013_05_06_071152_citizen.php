@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('no_kk');
             $table->foreign('no_kk')->references('no_kk')->on('kartukeluarga');
             $table->string('alamat');
+            $table->string('status_kependudukan');
             $table->string('domisili');
             $table->string('rt');
             $table->string('agama');
