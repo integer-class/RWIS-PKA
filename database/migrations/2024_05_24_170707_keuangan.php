@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('keuangan', function (Blueprint $table) {
-            $table->id(); // Adds an auto-incrementing id column
+            $table->id('id'); // Adds an auto-incrementing id column
             $table->date('tanggal');
             $table->string('jenis_iuran'); // You can adjust the length as needed
             $table->string('jenis_data');  // You can adjust the length as needed

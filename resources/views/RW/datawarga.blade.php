@@ -58,19 +58,44 @@
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
                                                 <div class="modal-body">
+
+                                                    <div class="Row">
+                                                        <div class="col-md-6">
+                                                            <p>NIK</p>
+                                                            <p>No.KK</p>
+                                                            <p>Nama</p>
+                                                            <p>Alamat</p>
+                                                            <p>RT</p>
+                                                            <p>Agama</p>
+                                                            <p>Golongan Darah</p>
+                                                            <p>Jenis Kelamin</p>
+                                                            <p>Pekerjaan</p>
+                                                            <p>Tanggal Lahir</p>
+                                                            <p>status</p>
+                                                            <p>Kependudukan</p>
+
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>:{{$penduduk->nik}}</p>
+                                                            <p>:{{$penduduk->no_kk}}</p>
+                                                            <p>:{{$penduduk->nama}}</p>
+                                                            <p>:{{$penduduk->alamat}}</p>
+                                                            <p>:{{$penduduk->rt}}</p>
+                                                            <p>:{{$penduduk->agama}}</p>
+                                                            <p>:{{$penduduk->golongan_darah}}</p>
+                                                            <p>:{{$penduduk->jenis_kelamin}}</p>
+                                                            <p>:{{$penduduk->pekerjaan}}</p>
+                                                            <p>:{{$penduduk->tanggal_lahir}}</p>
+                                                            <p>:{{$penduduk->status}}</p>
+                                                            <p>:{{$penduduk->status_kependudukan}}</p>
+
+
+
+                                                            
+
+                                                        </div>
+                                                    </div>
                                                     
-                                                    
-                                                    <p>
-                                                      nama           :  {{$penduduk->nama}}<br>
-                                                      alamat         :  {{$penduduk->alamat}}<br>
-                                                      rt             :  {{$penduduk->rt}}<br>
-                                                      agama          :  {{$penduduk->agama}}<br>
-                                                      golongan darah :  {{$penduduk->golongan_darah}}<br>
-                                                      jenis kelamin  :  {{$penduduk->jenis_kelamin	}}<br>
-                                                      pekerjaan      :  {{$penduduk->pekerjaan}}<br>
-                                                      no_kk          :  {{$penduduk->no_kk }}<br>
-                                                      tanggal lahir  :  {{$penduduk->tanggal_lahir}}<br>
-                                                    </p>
                                                     
                                                 </div>
                                                 <div class="modal-footer">

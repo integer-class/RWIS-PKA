@@ -99,7 +99,7 @@
                                                                 <div class="form-group">
                                                                     <label>Kelurahan</label>
                                                                     <div class="input-group">
-                                                                        <input name="kelurahan" value="{{$keluarga->kelurahan}}" type="date"  class="form-control"  placeholder="Nama Kelurahan" required>
+                                                                        <input name="kelurahan" value="{{$keluarga->kelurahan}}" type="text"  class="form-control"  placeholder="Nama Kelurahan" required>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">

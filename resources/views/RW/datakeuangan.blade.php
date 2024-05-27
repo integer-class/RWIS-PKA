@@ -15,7 +15,7 @@
                             <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
                             <div class="ml-4">
                                 <span>Iuran sampah</span>
-                                <h2 class="mb-0 font-weight-medium">$7,805,109</h2>
+                                <h2 class="mb-0 font-weight-medium">{{$iuranSampah}}</h2>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                             <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
                             <div class="ml-4">
                                 <span>Iuran Listrik</span>
-                                <h2 class="mb-0 font-weight-medium">$7,805,109</h2>
+                                <h2 class="mb-0 font-weight-medium">{{$iuranListrik}}</h2>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                             <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
                             <div class="ml-4">
                                 <span>Iuran PHB</span>
-                                <h2 class="mb-0 font-weight-medium">$7,805,109</h2>
+                                <h2 class="mb-0 font-weight-medium">{{$iuranPHB}}</h2>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                             <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
                             <div class="ml-4">
                                 <span>Iuran Kematian</span>
-                                <h2 class="mb-0 font-weight-medium">$7,805,109</h2>
+                                <h2 class="mb-0 font-weight-medium">{{$iuranKematian}}</h2>
                             </div>
                         </div>
                     </div>
@@ -87,10 +87,71 @@
                             <td>{{$keuangan->jumlah}}</td>
                             <td>{{$keuangan->jenis_iuran}}</td>
                             <td> 
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="">Detail</button>
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#EditKeuangan{{$keuangan->id}}">Edit</button>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="">Hapus</button>
                             </td>                                        
                         </tr>  
+                        {{-- EDIT --}}
+                        <div class="modal fade" id="EditKeuangan{{$keuangan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Edit Data </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="{{ route('prosesEditKeuangan') }}">
+                                            @csrf
+                                            <div class="card">
+                                                <div class="body">
+                                                    <div class="row clearfix">
+                                                        {{-- kiri atas --}}
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="">Nama:</label>
+                                                                <input name="nama" value="{{$keuangan->nama}}" type="text" class="form-control" placeholder="(Nama Lengkap)" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Kategori :</label>
+                                                                <select name="kategori" class="custom-select" id="inputGroupSelect01" required>
+                                                                    <option value="pemasukan" {{$keuangan->jenis_data == 'pemasukan' ? 'selected' : ''}}>Pemasukan</option>
+                                                                    <option value="pengeluaran" {{$keuangan->jenis_data == 'pengeluaran' ? 'selected' : ''}}>Pengeluaran</option>    
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Keterangan :</label>
+                                                                <select name="keterangan" class="custom-select" id="inputGroupSelect01" required>
+                                                                    <option>Pilih Jenis Iuran</option>
+                                                                    <option value="iuran PHB" {{$keuangan->jenis_iuran == 'iuran PHB' ? 'selected' : ''}}>iuran PHB</option>
+                                                                    <option value="iuran Kematian" {{$keuangan->jenis_iuran == 'iuran Kematian' ? 'selected' : ''}}>iuran Kematian</option>
+                                                                    <option value="iuran Listrik" {{$keuangan->jenis_iuran == 'iuran Listrik' ? 'selected' : ''}}>iuran Listrik</option>
+                                                                    <option value="iuran Sampah" {{$keuangan->jenis_iuran == 'iuran Sampah' ? 'selected' : ''}}>iuran Sampah</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Tanggal :</label>
+                                                                <input name="tanggal" value="{{$keuangan->tanggal}}" type="date" class="form-control" placeholder="tanggal" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Nominal :</label>
+                                                                <input name="jumlah" value="{{$keuangan->jumlah}}" type="integer" class="form-control" placeholder="(Jumlah Iuran)" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                </div>
+                                            </div>   
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-primary theme-bg gradient">Simpan</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
                         @endforeach
                     </tbody>
                 </table>
@@ -104,55 +165,47 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Keuangan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 {{-- method diisi ya ganteng nanti --}}
-                <form method="post" action="">
+                <form method="post" action="{{route('prosesTambahKeuangan')}}">
                     @csrf
                     <div class="card">
                         <div class="body">
                             <div class="row clearfix">
                                 {{-- kiri atas --}}
-                                <div class="col-lg-6 col-md-12">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="">NIK:</label>
-                                        <input name="nik" type="text" class="form-control" placeholder="NIK" required>
+                                        <label for="">Nama:</label>
+                                        <input name="nama" type="text" class="form-control" placeholder="(Nama Lengkap)" required>
                                     </div>
-                            
                                     <div class="form-group">
-                                        <label for="">Status Kependudukan :</label>
-                                        <select name="status_kependudukan" class="custom-select" id="inputGroupSelect01" required>
-                                            <option>Pilih Status Kependudukan</option>
-                                            <option value="Warga Tetap">Warga Tetap</option>
-                                            <option value="Warga Kontrak">Warga Kontrak</option>
+                                        <label for="">Kategori :</label>
+                                        <select name="kategori" class="custom-select" id="inputGroupSelect01" required>
+                                            <option >Pilih Kategori</option>
+                                            <option value="pemasukan">Pemasukan</option>
+                                            <option value="pengeluaran">Pengeluaran</option>    
                                         </select>
                                     </div>
-                                </div>
-                                {{-- Kanan atas --}}
-                                <div class="col-lg-6 col-md-12">
                                     <div class="form-group">
-                                        <label for="">Nama :</label>
-                                        <input name="nama" type="text" class="form-control" placeholder="Nama" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">status</label>
-                                        <select name="status" class="custom-select" id="inputGroupSelect01" required>
-                                            <option >Pilih Status Perkawinan</option>
-                                            <option value="Belum Kawin">Belum Kawin</option>
-                                            <option value="Kawin">Kawin</option>    
+                                        <label for="">Keterangan :</label>
+                                        <select name="keterangan" class="custom-select" id="inputGroupSelect01" required>
+                                            <option>Pilih Jenis Iuran</option>
+                                            <option value="iuran PHB">iuran PHB</option>
+                                            <option value="iuran Kematian">iuran Kematian</option>
+                                            <option value="iuran Listrik">iuran Listrik</option>
+                                            <option value="iuran Sampah">iuran Sampah</option>
                                         </select>
                                     </div>
-                                </div>       
-                                      
-                                {{-- Bawah --}}
-                                <div class="col-lg-12 col-md-12">
-                                    <hr>
-                                    <h6>*Pastikan alamat  sesuai</h6>
-                                    <div class="form-group c_form_group">
-                                        <label>Domisili</label>
-                                        <input name="domisili" type="text" class="form-control" placeholder="alamat tempat tinggal sekarang" required>
+                                    <div class="form-group">
+                                        <label for="">Tanggal :</label>
+                                        <input name="tanggal" type="date" class="form-control" placeholder="tanggal" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Nominal :</label>
+                                        <input name="jumlah" type="integer" class="form-control" placeholder="(Jumlah Iuran)" required>
                                     </div>
                                 </div>
                             </div>
@@ -160,12 +213,12 @@
                             
                         </div>
                     </div>   
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary theme-bg gradient">Save changes</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary theme-bg gradient">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

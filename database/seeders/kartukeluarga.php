@@ -18,11 +18,11 @@ class kartukeluarga extends Seeder
             'no_kk' => '472751886',
             'kepala_keluarga' => 'teo',
             'rt' => '1',
-            'rw' => 'A',
-            'kelurahan' => 'L',
+            'rw' => '1',
+            'kelurahan' => 'mbokor',
             'kecamatan' => 'mbokor',
-            'kabupaten' => 'mbokor etan',
-            'provinsi' => 'petani',
+            'kabupaten' => 'malang',
+            'provinsi' => 'jawa timur',
         ]);
 
         

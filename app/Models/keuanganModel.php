@@ -10,6 +10,7 @@ class keuanganModel extends Model
     use HasFactory;
     protected $table = "keuangan";
     public $timestamps = false;
+    protected $primaryKey = 'id';
     protected $fillable = [
         'tanggal',
         'jenis_iuran',

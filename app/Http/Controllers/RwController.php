@@ -38,6 +38,7 @@ class RwController extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
             'tanggal_lahir' => $request->tanggal_lahir,
             'pekerjaan' => $request->pekerjaan,
+            'status_kependudukan' => $request->status_kependudukan,
             'nama' => $request->nama,
             'agama' => $request->agama,
             'golongan_darah' => $request->golongan_darah,
@@ -74,6 +75,7 @@ class RwController extends Controller
             'pekerjaan' => $request->pekerjaan,
             'nama' => $request->nama,
             'agama' => $request->agama,
+            'status_kependudukan' => $request->status_kependudukan,
             'golongan_darah' => $request->golongan_darah,
             'status' => $request->status,
             'rt' => $request->rt,
@@ -83,8 +85,6 @@ class RwController extends Controller
 
         // Redirect back with a success message
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
-
-       
 
         
     }
@@ -113,14 +113,65 @@ class RwController extends Controller
         
         //Redirect ke halaman sukses atau halaman lain yang Anda inginkan
          return redirect('/datakeluarga');
-
-        
     }
 
     public function DataKeuangan(){
         $data_keuangan = keuanganModel::all();
-        return view('rw.datakeuangan',compact('data_keuangan'));
+        //Total iuran PHB
+        $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
+        $total_pengeluaranPHB = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran PHB')->sum('jumlah');
+        $iuranPHB = 'Rp ' . number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
+
+        //Total iuran kematian
+        $total_pemasukanKematian = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran kematian')->sum('jumlah');
+        $total_pengeluaranKematian = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran kematian')->sum('jumlah');
+        $iuranKematian = 'Rp ' . number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
+
+        //Total iuran Listrik
+        $total_pemasukanListrik = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
+        $total_pengeluaranListrik = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
+        $iuranListrik = 'Rp ' . number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
+
+        //Total iuran Sampah
+        $total_pemasukanSampah = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
+        $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
+        $iuranSampah = 'Rp ' . number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
+
+        return view('rw.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian'));
     }
+    public function TambahDataKeuangan(Request $request)
+    {
+        keuanganModel::create([
+            'tanggal' => $request->tanggal,
+            'jenis_data' => $request->kategori,
+            'jenis_iuran'=>$request->keterangan,
+            'nama' => $request->nama,
+            'jumlah' => $request->jumlah,
+            
+        ]);
+        // Simpan data ke dalam database menggunakan model
+        
+        //Redirect ke halaman sukses atau halaman lain yang Anda inginkan
+         return redirect('data_keuangan');
+    }
+    
+    public function EditDataKeuangan(Request $request)
+    {
+    $keuangan = keuanganModel::where('id', $request->id)->firstOrFail();
+
+    // Update the citizen's data
+    $keuangan->update([
+        'tanggal'=> $request->tanggal,
+        'jenis_data'=>$request->kategori,
+        'nama'=>$request->nama,
+        'jumlah'=>$request->jumlah,
+    ]);
+
+    // Redirect back with a success message
+    return redirect()->back()->with('success', 'Data berhasil diperbarui');
+}
+
+
     /**
      * Store a newly created resource in storage.
      */

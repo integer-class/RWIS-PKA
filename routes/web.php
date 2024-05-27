@@ -38,7 +38,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/data_keluarga', [RwController::class, 'Datakeluarga'])->name('data_keluarga');
         Route::post('/prosesTambahKk', [RwController::class, 'TambahDataKK'])->name('prosesTambahKK');
         Route::post('/prosesEditKk', [RwController::class, 'EditDataKK'])->name('prosesEditKK');
-        Route::get('/data_keuangan',[RWController::class,'DataKeuangan'])->name('data_keuangan');
+        Route::get('/data_keuangan',[RwController::class,'DataKeuangan'])->name('data_keuangan');
+        Route::post('/prosesTambahKeuangan',[RwController::class,'TambahDataKeuangan'])->name('prosesTambahKeuangan');
+
+        Route::post('/proseseditkeuangan', [RwController::class, 'EditDataKeuangan'])->name('prosesEditKeuangan');
 
 
 
