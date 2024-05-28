@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\citizenModel;
 use App\Models\kartukeluargaModel;
+use App\Models\kegiatanModel;
 use App\Models\keuanganModel;
 use App\Models\UserModel;
 use Illuminate\Support\facades\Hash;
@@ -115,8 +116,33 @@ class RwController extends Controller
          return redirect('/datakeluarga');
     }
 
-    public function DataKeuangan(){
-        $data_keuangan = keuanganModel::all();
+    public function DataKeuangan(Request $request){
+        //FIltering with query condition
+        $query = keuanganModel::query();
+
+        // if ($request->filled('start_date') && $request->filled('end_date') && $request->filled('keterangan')){
+        //     $query->where('tanggal', '>=', $request->start_date)
+        //     ->where('tanggal', '<=', $request->end_date)
+        //     ->where('jenis_iuran', $request->keterangan);
+
+        //     $data_keuangan = $query->get();
+        // }else( $data_keuangan = keuanganModel::all());
+
+        if ($request->filled('start_date') || $request->filled('end_date') || $request->filled('keterangan')){
+            if ($request->filled('start_date')) {
+                $query->where('tanggal', '>=', $request->start_date);
+            }
+        
+            if ($request->filled('end_date')) {
+                $query->where('tanggal', '<=', $request->end_date);
+            }
+        
+            if ($request->filled('keterangan')) {
+                $query->where('jenis_iuran', $request->keterangan);
+            };
+        }
+        $data_keuangan = $query->orderby('tanggal','desc')->get();
+
         //Total iuran PHB
         $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
         $total_pengeluaranPHB = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran PHB')->sum('jumlah');
@@ -139,6 +165,7 @@ class RwController extends Controller
 
         return view('rw.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian'));
     }
+
     public function TambahDataKeuangan(Request $request)
     {
         keuanganModel::create([
@@ -149,9 +176,6 @@ class RwController extends Controller
             'jumlah' => $request->jumlah,
             
         ]);
-        // Simpan data ke dalam database menggunakan model
-        
-        //Redirect ke halaman sukses atau halaman lain yang Anda inginkan
          return redirect('data_keuangan');
     }
     
@@ -159,18 +183,24 @@ class RwController extends Controller
     {
     $keuangan = keuanganModel::where('id', $request->id)->firstOrFail();
 
-    // Update the citizen's data
+    // Update the financial's data
     $keuangan->update([
         'tanggal'=> $request->tanggal,
         'jenis_data'=>$request->kategori,
+        'jenis_iuran' =>$request->keterangan,
         'nama'=>$request->nama,
         'jumlah'=>$request->jumlah,
     ]);
 
     // Redirect back with a success message
-    return redirect()->back()->with('success', 'Data berhasil diperbarui');
-}
+    return redirect('data_keuangan')->with('success', 'Data berhasil diperbarui');
+    }
 
+
+    public function DataKegiatan(){
+        $kegiatan = kegiatanModel::all();
+        return view('rw.datakegiatan',compact('kegiatan'));
+    }
 
     /**
      * Store a newly created resource in storage.

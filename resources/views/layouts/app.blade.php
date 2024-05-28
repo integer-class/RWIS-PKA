@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/toastr.min.css')}}">
 <link rel="stylesheet" href="{{ asset('assets/vendor/jvectormap/jquery-jvectormap-2.0.3.min.css')}}"/>
 
+<link rel="stylesheet" href="{{ asset('assets/vendor/dropify/css/dropify.min.css')}}">
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/mooli.min.css')}}">
 
@@ -82,7 +83,20 @@
 
 
 <!-- Project core js file minify with grunt --> 
-<script src="assets/bundles/mainscripts.bundle.js"></script>
-<script src="../js/pages/forms/advanced-form-elements.js"></script>
+<script src="{{asset('assets/bundles/mainscripts.bundle.js')}}"></script>
+<script src="{{asset('js/pages/forms/advanced-form-elements.js')}}"></script>
+
+<!-- Javascript -->
+<script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>    
+<script src="{{asset('assets/bundles/vendorscripts.bundle.js')}}"></script>
+
+<!-- Vedor js file and create bundle with grunt  --> 
+<script src="{{asset('assets/vendor/dropify/js/dropify.js')}}"></script>
+
+
+<!-- Project core js file minify with grunt --> 
+<script src="{{asset('assets/bundles/mainscripts.bundle.js')}}"></script>
+<script src="{{asset('js/pages/forms/dropify.js')}}"></script>
+
 </body>
 </html>

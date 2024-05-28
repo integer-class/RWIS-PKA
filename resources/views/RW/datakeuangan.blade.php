@@ -59,9 +59,41 @@
     {{-- Tabel Keuangan --}}
     <div class="card">
         <div class="header">
-            
             <h2>Laporan keuangan RW 01</h2>
             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Tambahkeuangan">Tambah Data Keuangan</button>
+            <br><br>
+            {{-- <h2>Filter Laporan Keuangan RW 01</h2> --}} 
+            <form method="GET" action="{{ route('data_keuangan') }}">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="start_date">Tanggal Mulai</label>
+                            <input type="date" name="start_date" class="form-control" value="{{ request('start_date') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="end_date">Tanggal Akhir</label>
+                            <input type="date" name="end_date" class="form-control" value="{{ request('end_date') }}">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="keterangan">Keterangan</label>
+                            <select name="keterangan" class="form-control">
+                                <option value="">Pilih Jenis Iuran</option>
+                                <option value="iuran PHB" {{ request('keterangan') == 'iuran PHB' ? 'selected' : '' }}>iuran PHB</option>
+                                <option value="iuran Kematian" {{ request('keterangan') == 'iuran Kematian' ? 'selected' : '' }}>iuran Kematian</option>
+                                <option value="iuran Listrik" {{ request('keterangan') == 'iuran Listrik' ? 'selected' : '' }}>iuran Listrik</option>
+                                <option value="iuran Sampah" {{ request('keterangan') == 'iuran Sampah' ? 'selected' : '' }}>iuran Sampah</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                </div>
+            </form>
                                             
 
         </div>
@@ -70,6 +102,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
+                            <th>No</th>
                             <th>Tanggal</th>
                             <th>Kategori</th>
                             <th>Nama</th>
@@ -81,6 +114,7 @@
                     <tbody>
                         @foreach($data_keuangan as $keuangan)
                         <tr>
+                            <td>{{$loop->iteration}}</td>
                             <td>{{$keuangan->tanggal}}</td>
                             <td>{{$keuangan->jenis_data}} </td>
                             <td>{{$keuangan->nama}}</td>
@@ -102,6 +136,7 @@
                                     <div class="modal-body">
                                         <form method="post" action="{{ route('prosesEditKeuangan') }}">
                                             @csrf
+                                            <input type="hidden" name="id" value="{{$keuangan->id}}">
                                             <div class="card">
                                                 <div class="body">
                                                     <div class="row clearfix">
@@ -136,6 +171,7 @@
                                                                 <label for="">Nominal :</label>
                                                                 <input name="jumlah" value="{{$keuangan->jumlah}}" type="integer" class="form-control" placeholder="(Jumlah Iuran)" required>
                                                             </div>
+                    
                                                         </div>
                                                     </div>
                                                     

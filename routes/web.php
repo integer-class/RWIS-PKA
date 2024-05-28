@@ -40,9 +40,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/prosesEditKk', [RwController::class, 'EditDataKK'])->name('prosesEditKK');
         Route::get('/data_keuangan',[RwController::class,'DataKeuangan'])->name('data_keuangan');
         Route::post('/prosesTambahKeuangan',[RwController::class,'TambahDataKeuangan'])->name('prosesTambahKeuangan');
-
-        Route::post('/proseseditkeuangan', [RwController::class, 'EditDataKeuangan'])->name('prosesEditKeuangan');
-
+        Route::post('/prosesEditKeuangan', [RwController::class, 'EditDataKeuangan'])->name('prosesEditKeuangan');
+        Route::get('/data_kegiatan',[RwController::class,'DataKegiatan'])->name('data_kegiatan');
 
 
     });
