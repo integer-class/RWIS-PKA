@@ -120,14 +120,6 @@ class RwController extends Controller
         //FIltering with query condition
         $query = keuanganModel::query();
 
-        // if ($request->filled('start_date') && $request->filled('end_date') && $request->filled('keterangan')){
-        //     $query->where('tanggal', '>=', $request->start_date)
-        //     ->where('tanggal', '<=', $request->end_date)
-        //     ->where('jenis_iuran', $request->keterangan);
-
-        //     $data_keuangan = $query->get();
-        // }else( $data_keuangan = keuanganModel::all());
-
         if ($request->filled('start_date') || $request->filled('end_date') || $request->filled('keterangan')){
             if ($request->filled('start_date')) {
                 $query->where('tanggal', '>=', $request->start_date);
@@ -146,22 +138,22 @@ class RwController extends Controller
         //Total iuran PHB
         $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
         $total_pengeluaranPHB = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran PHB')->sum('jumlah');
-        $iuranPHB = 'Rp ' . number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
+        $iuranPHB = 'Rp' . number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
 
         //Total iuran kematian
         $total_pemasukanKematian = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran kematian')->sum('jumlah');
         $total_pengeluaranKematian = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran kematian')->sum('jumlah');
-        $iuranKematian = 'Rp ' . number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
+        $iuranKematian = 'Rp' . number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
 
         //Total iuran Listrik
         $total_pemasukanListrik = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
         $total_pengeluaranListrik = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
-        $iuranListrik = 'Rp ' . number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
+        $iuranListrik = 'Rp' . number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
 
         //Total iuran Sampah
         $total_pemasukanSampah = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
         $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
-        $iuranSampah = 'Rp ' . number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
+        $iuranSampah = 'Rp' . number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
 
         return view('rw.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian'));
     }
@@ -200,6 +192,35 @@ class RwController extends Controller
     public function DataKegiatan(){
         $kegiatan = kegiatanModel::all();
         return view('rw.datakegiatan',compact('kegiatan'));
+    }
+
+
+    public function TambahKegiatan(Request $request)
+    {
+        // Validate the incoming request
+    $request->validate([
+        'nama_kegiatan' => 'required|string|max:255',
+        'tanggal' => 'required|date',
+        'deskripsi' => 'required|string',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    // Handle the file upload
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images/kegiatan'), $imageName);
+    } else {
+        $imageName = 'default.png'; // Or handle the case when no image is uploaded
+    }
+
+        kegiatanModel::create([
+            'nama_kegiatan' => $request->nama_kegiatan,
+            'tanggal'=> $request->tanggal,
+            'deskripsi'=> $request->deskripsi,
+            'gambar'=> $imageName,
+        ]);
+        return redirect('data_kegiatan');
     }
 
     /**

@@ -59,7 +59,7 @@
     {{-- Tabel Keuangan --}}
     <div class="card">
         <div class="header">
-            <h2>Laporan keuangan RW 01</h2>
+            <h2>Laporan keuangan RW 01</h2><br>
             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Tambahkeuangan">Tambah Data Keuangan</button>
             <br><br>
             {{-- <h2>Filter Laporan Keuangan RW 01</h2> --}} 

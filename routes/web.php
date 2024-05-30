@@ -42,6 +42,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/prosesTambahKeuangan',[RwController::class,'TambahDataKeuangan'])->name('prosesTambahKeuangan');
         Route::post('/prosesEditKeuangan', [RwController::class, 'EditDataKeuangan'])->name('prosesEditKeuangan');
         Route::get('/data_kegiatan',[RwController::class,'DataKegiatan'])->name('data_kegiatan');
+        Route::post('/prosesTambahKegiatan', [RwController::class, 'TambahKegiatan'])->name('prosesTambahKegiatan');
+
 
 
     });
