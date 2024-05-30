@@ -28,7 +28,20 @@ class citizen extends Seeder
             'no_kk' => '472751886',
             'tanggal_lahir' => "2012-12-12",
         ]);
-
+        \App\Models\citizenModel::factory()->create([
+            'nik' => '47101071',
+            'agama' => 'Kristen',
+            'nama' => 'Nanda',
+            'status_kependudukan' => 'Warga Tetap',
+            'rt' => '3',
+            'jenis_kelamin' => 'L',
+            'alamat' => 'mbokor',
+            'domisili' => 'mbokor tengah',
+            'golongan_darah' => 'B',
+            'pekerjaan' => 'Mahasiswa',
+            'no_kk' => '472751886',
+            'tanggal_lahir' => "2004-01-18",
+        ]);
 
     }
 }

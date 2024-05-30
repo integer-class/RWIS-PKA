@@ -52,6 +52,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['cek_login:3']], function () {
         Route::resource('warga', WargaController::class);
+        Route::get('/data_warga', [WargaController::class, 'datawarga'])->name('data_warga');//datawarga untuk view warga
+        Route::get('/warga/datawarga', [WargaController::class, 'datawarga']);//datawarga untuk view warga
+        Route::get('/data_keluarga', [WargaController::class, 'data_keluarga'])->name('data_keluarga');//data keluarga untuk view warga 
+        // Route::get('/warga/datakeluarga', [WargaController::class, 'datakeluarga']);
+        //Route::get('/warga/datakeuangan', [WargaController::class, 'datakeuangan']);//datakeuanganuntuk view warga
+        Route::get('/data_keuangan',[WargaController::class,'data_keuangan'])->name('data_keuangan');
+       
+
     });
 });
 
