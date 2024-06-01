@@ -25,15 +25,15 @@
                 <li>
                     <a href="#uiElements" class="has-arrow"><i class="fa fa-clipboard"></i><span>Data Warga</span></a>
                     <ul>
-                        <li><a href="{{ url('/data_warga') }}">Data Warga</a></li>
-                        <li><a href="{{ url('/data_keluarga') }}">Data Keluarga</a></li>
+                        <li><a href="{{ url('data_warga') }}">Data Warga</a></li>
+                        <li><a href="{{ url('data_keluarga') }}">Data Keluarga</a></li>
                     </ul>
                 </li>
                
-                <li><a href="{{url('/data_keuangan')}}"><i class="fa fa-money"></i> <span>Keuangan</span></a></li>
+                <li><a href="{{url('data_keuangan')}}"><i class="fa fa-money"></i> <span>Keuangan</span></a></li>
                
-                <li><a href="{{url('/data_kegiatan')}}"><i class="fa fa-th-list"></i> <span>Kegiatan</span></a></li>
-                <li><a href="app-filemanager.html"><i class="fa fa-folder"></i> <span>UMKM</span></a></li>
+                <li><a href="{{url('data_kegiatan')}}"><i class="fa fa-th-list"></i> <span>Kegiatan</span></a></li>
+                <li><a href="{{url('data_umkm')}}"><i class="fa fa-folder"></i> <span>UMKM</span></a></li>
                 <li><a href="app-contacts.html"><i class="fa fa-address-book"></i> <span>Bansos</span></a></li>                    
                 <li><a href="app-scrumboard.html"><i class="fa fa-tasks"></i> <span>Template Surat</span></a></li>
             </ul>

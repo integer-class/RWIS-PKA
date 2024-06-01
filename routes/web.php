@@ -31,6 +31,7 @@ Route::post('proses_register', [AuthController::class, 'proses_register'])->name
 Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['cek_login:1']], function () {
+        
         Route::resource('rw', RwController::class);
         Route::get('/data_warga', [RwController::class, 'DataWarga'])->name('data_warga');
         Route::post('/prosesTambahWarga', [RwController::class, 'TambahDataWarga'])->name('prosesTambahWarga');
@@ -43,8 +44,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/prosesEditKeuangan', [RwController::class, 'EditDataKeuangan'])->name('prosesEditKeuangan');
         Route::get('/data_kegiatan',[RwController::class,'DataKegiatan'])->name('data_kegiatan');
         Route::post('/prosesTambahKegiatan', [RwController::class, 'TambahKegiatan'])->name('prosesTambahKegiatan');
-
-
+        Route::post('/prosesEditKegiatan', [RwController::class, 'EditDatakegiatan'])->name('prosesEditkegiatan');
+        Route::post('/prosesHapuskegiatan', [RwController::class, 'HapusKegiatan'])->name('prosesHapuskegiatan');
+        Route::get('/data_umkm',[RwController::class,'DataUmkm'])->name('data_umkm');
+        Route::post('/prosesTambahUmkm', [RwController::class, 'TambahUmkm'])->name('prosesTambahumkm');
+        Route::post('/prosesEditUmkm', [RwController::class, 'EditDataUmkm'])->name('prosesEditumkm');
+        Route::post('/prosesHapusUmkm', [RwController::class, 'HapusUmkm'])->name('prosesHapusumkm');
 
     });
 
@@ -53,13 +58,13 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['middleware' => ['cek_login:3']], function () {
-        Route::resource('warga', WargaController::class);
-        Route::get('/data_warga', [WargaController::class, 'datawarga'])->name('data_warga');//datawarga untuk view warga
-        Route::get('/warga/datawarga', [WargaController::class, 'datawarga']);//datawarga untuk view warga
-        Route::get('/data_keluarga', [WargaController::class, 'data_keluarga'])->name('data_keluarga');//data keluarga untuk view warga 
-        // Route::get('/warga/datakeluarga', [WargaController::class, 'datakeluarga']);
-        //Route::get('/warga/datakeuangan', [WargaController::class, 'datakeuangan']);//datakeuanganuntuk view warga
-        Route::get('/data_keuangan',[WargaController::class,'data_keuangan'])->name('data_keuangan');
+        // Route::resource('warga', WargaController::class);
+        // // Route::get('/data_warga', [WargaController::class, 'datawarga'])->name('data_warga');//datawarga untuk view warga
+        // Route::get('/warga/datawarga', [WargaController::class, 'datawarga']);//datawarga untuk view warga
+        // Route::get('/data_keluarga', [WargaController::class, 'data_keluarga'])->name('data_keluarga');//data keluarga untuk view warga 
+        // // Route::get('/warga/datakeluarga', [WargaController::class, 'datakeluarga']);
+        // //Route::get('/warga/datakeuangan', [WargaController::class, 'datakeuangan']);//datakeuanganuntuk view warga
+        // Route::get('/data_keuangan',[WargaController::class,'data_keuangan'])->name('data_keuangan');
        
 
     });

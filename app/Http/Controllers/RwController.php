@@ -7,6 +7,8 @@ use App\Models\citizenModel;
 use App\Models\kartukeluargaModel;
 use App\Models\kegiatanModel;
 use App\Models\keuanganModel;
+use App\Models\umkkmModel;
+use App\Models\umkmModel;
 use App\Models\UserModel;
 use Illuminate\Support\facades\Hash;
 
@@ -223,43 +225,140 @@ class RwController extends Controller
         return redirect('data_kegiatan');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function EditDatakegiatan(Request $request)
     {
-        //
+        $kegiatan = kegiatanModel::where('id', $request->id)->firstOrFail();
+        
+        
+        //Check if a new image is uploaded
+    if ($request->hasFile('image')) {
+        // Get the uploaded image file
+        $image = $request->file('image');
+        // Generate a unique filename for the uploaded image
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        // Move the uploaded image to the desired directory
+        $image->move(public_path('images/kegiatan'), $imageName);
+        
+        // Update the kegiatan's data including the new image filename
+        $kegiatan->update([
+            'nama_kegiatan' => $request->nama_kegiatan,
+            'tanggal' => $request->tanggal,
+            'deskripsi' => $request->deskripsi,
+            'gambar' => $imageName,
+        ]);
+        
+    } else {
+        // If no new image is uploaded, retain the existing image filename
+        $kegiatan->update([
+            'nama_kegiatan' => $request->nama_kegiatan,
+            'tanggal' => $request->tanggal,
+            'deskripsi' => $request->deskripsi,
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+
+        // Redirect back with a success message
+         return redirect('data_kegiatan')->with('success', 'Data berhasil diperbarui');
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+    public function HapusKegiatan(Request $request){
+        $kegiatan = kegiatanModel::where('id', $request->id)->firstOrFail();
+
+        if ($kegiatan->gambar && file_exists(public_path('images/kegiatan/' . $kegiatan->gambar))) {
+            unlink(public_path('images/kegiatan/' . $kegiatan->gambar));
+        }
+
+        $kegiatan ->delete();
+
+        return redirect()->back()->with('success', 'Kegiatan berhasil dihapus.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function DataUmkm(){
+        $umkm = umkmModel::all();
+        return view('rw.dataumkm',compact('umkm'));
+    }
+    
+    public function TambahUmkm(Request $request)
     {
-        //
+        // Validate the incoming request
+    $request->validate([
+        'nama_umkm' => 'required|string|max:255',
+        'nama_pemilik' => 'required|string|max:255',
+        'alamat' => 'required|string|max:255',
+        'no_telp' => 'required|string',
+        'deskripsi' => 'required|string',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    // Handle the file upload
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images/umkm'), $imageName);
+    } else {
+        $imageName = 'default.png'; // Or handle the case when no image is uploaded
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+        umkmModel::create([
+            'nama_umkm' => $request->nama_umkm,
+            'nama_pemilik'=> $request->nama_pemilik,
+            'no_telpon'=> $request->no_telp,
+            'alamat' => $request->alamat,
+            'deskripsi'=> $request->deskripsi,
+            'gambar'=> $imageName,
+        ]);
+        return redirect('data_umkm');
+    }
+
+    public function EditDataumkm(Request $request)
     {
-        //
+        $umkm = umkmModel::where('id', $request->id)->firstOrFail();
+        
+        
+        //Check if a new image is uploaded
+    if ($request->hasFile('image')) {
+        // Get the uploaded image file
+        $image = $request->file('image');
+        // Generate a unique filename for the uploaded image
+        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        // Move the uploaded image to the desired directory
+        $image->move(public_path('images/umkm'), $imageName);
+        
+        // Update the kegiatan's data including the new image filename
+        $umkm->update([
+            'nama_umkm' => $request->nama_umkm,
+            'nama_pemilik' => $request->nama_pemilik,
+            'no_telpon' => $request->no_telp,
+            'deskripsi' => $request->deskripsi,
+            'gambar' => $imageName,
+        ]);
+        
+    } else {
+        // If no new image is uploaded, retain the existing image filename
+        $umkm->update([
+            'nama_umkm' => $request->nama_umkm,
+            'nama_pemilik' => $request->nama_pemilik,
+            'no_telpon' => $request->no_telp,
+            'deskripsi' => $request->deskripsi,
+        ]);
+    }
+
+
+        // Redirect back with a success message
+         return redirect('data_umkm')->with('success', 'Data berhasil diperbarui');
+        
+    }
+
+    public function HapusUmkm(Request $request){
+        $umkm = umkmModel::where('id', $request->id)->firstOrFail();
+
+        if ($umkm->gambar && file_exists(public_path('images/umkm/' . $umkm->gambar))) {
+            unlink(public_path('images/umkm/' . $umkm->gambar));
+        }
+
+        $umkm ->delete();
+
+        return redirect()->back()->with('success', 'Kegiatan berhasil dihapus.');
     }
 }

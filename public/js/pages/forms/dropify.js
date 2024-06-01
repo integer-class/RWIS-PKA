@@ -1,5 +1,6 @@
 $(function() {
     $('.dropify').dropify();
+    
 
     var drEvent = $('#dropify-event').dropify();
     drEvent.on('dropify.beforeClear', function(event, element) {
