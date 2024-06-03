@@ -83,7 +83,6 @@
 
 
 <!-- Project core js file minify with grunt --> 
-<script src="{{asset('assets/bundles/mainscripts.bundle.js')}}"></script>
 <script src="{{asset('js/pages/forms/advanced-form-elements.js')}}"></script>
 
 <!-- Javascript -->

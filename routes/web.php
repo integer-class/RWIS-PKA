@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:1']], function () {
         
         Route::resource('rw', RwController::class);
+        Route::get('/dashboard',[RwController::class,'index'])->name('dashboard');
         Route::get('/data_warga', [RwController::class, 'DataWarga'])->name('data_warga');
         Route::post('/prosesTambahWarga', [RwController::class, 'TambahDataWarga'])->name('prosesTambahWarga');
         Route::post('/prosesEditWarga', [RwController::class, 'EditDataWarga'])->name('prosesEditWarga');
@@ -50,6 +51,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/prosesTambahUmkm', [RwController::class, 'TambahUmkm'])->name('prosesTambahumkm');
         Route::post('/prosesEditUmkm', [RwController::class, 'EditDataUmkm'])->name('prosesEditumkm');
         Route::post('/prosesHapusUmkm', [RwController::class, 'HapusUmkm'])->name('prosesHapusumkm');
+        Route::get('/templatesurat',[RwController::class,'templatesurat'])->name('templatesurat');
+        Route::post('/prosesTambahSurat', [RwController::class, 'TambahSurat'])->name('prosesTambahsurat');
+        Route::post('/prosesHapusSurat', [RwController::class, 'HapusSurat'])->name('prosesHapussurat');
+        Route::get('/downloadsurat/{id}', [RwController::class, 'DownloadSurat'])->name('downloadsurat');
 
     });
 

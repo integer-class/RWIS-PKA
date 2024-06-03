@@ -7,6 +7,7 @@ use App\Models\citizenModel;
 use App\Models\kartukeluargaModel;
 use App\Models\kegiatanModel;
 use App\Models\keuanganModel;
+use App\Models\templatesuratModel;
 use App\Models\umkkmModel;
 use App\Models\umkmModel;
 use App\Models\UserModel;
@@ -140,22 +141,22 @@ class RwController extends Controller
         //Total iuran PHB
         $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
         $total_pengeluaranPHB = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran PHB')->sum('jumlah');
-        $iuranPHB = 'Rp' . number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
+        $iuranPHB = number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
 
         //Total iuran kematian
         $total_pemasukanKematian = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran kematian')->sum('jumlah');
         $total_pengeluaranKematian = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran kematian')->sum('jumlah');
-        $iuranKematian = 'Rp' . number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
+        $iuranKematian = number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
 
         //Total iuran Listrik
         $total_pemasukanListrik = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
         $total_pengeluaranListrik = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
-        $iuranListrik = 'Rp' . number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
+        $iuranListrik = number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
 
         //Total iuran Sampah
         $total_pemasukanSampah = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
         $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
-        $iuranSampah = 'Rp' . number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
+        $iuranSampah =number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
 
         return view('rw.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian'));
     }
@@ -360,5 +361,72 @@ class RwController extends Controller
         $umkm ->delete();
 
         return redirect()->back()->with('success', 'Kegiatan berhasil dihapus.');
+    }
+
+    public function templatesurat(){
+        $templatesurat = templatesuratModel::all();
+        return view('rw.templatesurat',compact('templatesurat'));
+    }
+
+    public function TambahSurat(Request $request)
+    {
+        // Validate the incoming request
+    $request->validate([
+        'nama_file' => 'required|string|max:255',
+        'tanggal' => 'required|date',
+        'surat' => 'required|file|mimes:docx,pdf|max:2048'
+        
+    ]);
+
+    // Handle the file upload
+    if ($request->hasFile('surat')) {
+        $surat = $request->file('surat');
+        $namaSurat = time() . '_' . uniqid() . '.' . $surat->getClientOriginalExtension();
+        $surat->move(public_path('images/surat'), $namaSurat);
+    } else {
+        $namaSurat = 'default.docx'; // Or handle the case when no image is uploaded
+    }
+
+        templatesuratModel::create([
+            'nama_surat' => $request->nama_surat,
+            'tanggal'=> $request->tanggal,
+            'surat' => $namaSurat,
+            
+        ]);
+        return redirect('templatesurat');
+    }
+
+    public function HapusSurat(Request $request){
+        $templatesurat = templatesuratModel::where('id', $request->id)->firstOrFail();
+
+        if ($templatesurat->surat && file_exists(public_path('images/surat/' . $templatesurat->surat))) {
+            unlink(public_path('images/surat/' . $templatesurat->surat));
+        }
+
+        $templatesurat ->delete();
+
+        return redirect()->back()->with('success', 'surat berhasil dihapus.');
+    }
+    
+    public function DownloadSurat($id)
+    {
+        // Retrieve the specific surat record by ID
+        $surat = templatesuratModel::find($id);
+    
+        if (!$surat) {
+            // Handle the case where the surat is not found
+            return redirect()->back()->with('error', 'Surat not found.');
+        }
+    
+        // Assuming the file path is stored in a 'surat' attribute
+        $filePath = public_path('images/surat/' . $surat->surat);
+    
+        if (!file_exists($filePath)) {
+            // Handle the case where the file does not exist
+            return redirect()->back()->with('error', 'File not found.');
+        }
+    
+        // Return the file as a response for download
+        return response()->download($filePath, $surat->nama_surat . '.' . pathinfo($filePath, PATHINFO_EXTENSION));
     }
 }

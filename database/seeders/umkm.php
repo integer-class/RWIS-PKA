@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class kartukeluarga extends Seeder
+class umkm extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +18,8 @@ class kartukeluarga extends Seeder
             'nama_pemilik' => 'Virza',
             'nama_umkm' => 'Susu Sapi Asli',
             'deskripsi'=> 'Susu sapi asli dari peternak lokal',
-            'no_telp'=> '081217498866',
+            'no_telpon'=> '081217498866',
+            'alamat' =>'Jalan Mbokor',
             'gambar'=>'default.png',
         ]);
 

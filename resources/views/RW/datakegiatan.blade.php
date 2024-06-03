@@ -77,7 +77,7 @@
                                                                 <input type="hidden" name="id" value="{{$data_kegiatan->id}}">
                                                                 <div class="form-group">
                                                                     <label for="">Nama Kegiatan :</label>
-                                                                    <input name="nama_kegiatan" value="{{$data_kegiatan->nama_kegiatan}}" type="text"  class="form-control" placeholder="" required>
+                                                                    <input name="nama_ke    giatan" value="{{$data_kegiatan->nama_kegiatan}}" type="text"  class="form-control" placeholder="" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="">Tanggal :</label>

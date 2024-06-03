@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
         $this->call(citizen::class);
         $this->call(user::class);
         $this->call(keuangan::class);
-
+        $this->call(umkm::class);
+        $this->call(templatesurat::class);
+        $this->call(kegiatan::class);
        
     }
 }
