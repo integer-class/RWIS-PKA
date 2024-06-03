@@ -24,7 +24,16 @@ class kartukeluarga extends Seeder
             'kabupaten' => 'malang',
             'provinsi' => 'jawa timur',
         ]);
-
+        \App\Models\kartukeluargaModel::factory()->create([
+            'no_kk' => '472233445',
+            'kepala_keluarga' => 'Arsyinta',
+            'rt' => '3',
+            'rw' => '3',
+            'kelurahan' => 'mbokor',
+            'kecamatan' => 'mbokor',
+            'kabupaten' => 'malang',
+            'provinsi' => 'jawa timur',
+        ]);
         
     }
 }
