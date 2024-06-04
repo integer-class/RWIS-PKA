@@ -361,4 +361,71 @@ class RtController extends Controller
 
         return redirect()->back()->with('success', 'Kegiatan berhasil dihapus.');
     }
+
+    public function templatesurat(){
+        $templatesurat = templatesuratModel::all();
+        return view('rt.templatesurat',compact('templatesurat'));
+    }
+
+    public function TambahSurat(Request $request)
+    {
+        // Validate the incoming request
+    $request->validate([
+        'nama_file' => 'required|string|max:255',
+        'tanggal' => 'required|date',
+        'surat' => 'required|file|mimes:docx,pdf|max:2048'
+        
+    ]);
+
+    // Handle the file upload
+    if ($request->hasFile('surat')) {
+        $surat = $request->file('surat');
+        $namaSurat = time() . '_' . uniqid() . '.' . $surat->getClientOriginalExtension();
+        $surat->move(public_path('images/surat'), $namaSurat);
+    } else {
+        $namaSurat = 'default.docx'; // Or handle the case when no image is uploaded
+    }
+
+        templatesuratModel::create([
+            'nama_surat' => $request->nama_surat,
+            'tanggal'=> $request->tanggal,
+            'surat' => $namaSurat,
+            
+        ]);
+        return redirect('templatesurat');
+    }
+
+    public function HapusSurat(Request $request){
+        $templatesurat = templatesuratModel::where('id', $request->id)->firstOrFail();
+
+        if ($templatesurat->surat && file_exists(public_path('images/surat/' . $templatesurat->surat))) {
+            unlink(public_path('images/surat/' . $templatesurat->surat));
+        }
+
+        $templatesurat ->delete();
+
+        return redirect()->back()->with('success', 'surat berhasil dihapus.');
+    }
+    
+    public function DownloadSurat($id)
+    {
+        // Retrieve the specific surat record by ID
+        $surat = templatesuratModel::find($id);
+    
+        if (!$surat) {
+            // Handle the case where the surat is not found
+            return redirect()->back()->with('error', 'Surat not found.');
+        }
+    
+        // Assuming the file path is stored in a 'surat' attribute
+        $filePath = public_path('images/surat/' . $surat->surat);
+    
+        if (!file_exists($filePath)) {
+            // Handle the case where the file does not exist
+            return redirect()->back()->with('error', 'File not found.');
+        }
+    
+        // Return the file as a response for download
+        return response()->download($filePath, $surat->nama_surat . '.' . pathinfo($filePath, PATHINFO_EXTENSION));
+    }
 }
