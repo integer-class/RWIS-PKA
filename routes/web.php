@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['cek_login:2']], function () {
         Route::resource('rt', RtController::class);
+        Route::get('/rt_dashboard',[RtController::class,'index'])->name('rt_dashboard');
         Route::get('/rt_data_warga', [RtController::class, 'DataWarga'])->name('rt_data_warga');
         Route::post('/rt_prosesTambahWarga', [RtController::class, 'TambahDataWarga'])->name('rt_prosesTambahWarga');
         Route::post('/rt_prosesEditWarga', [RtController::class, 'EditDataWarga'])->name('rt_prosesEditWarga');
