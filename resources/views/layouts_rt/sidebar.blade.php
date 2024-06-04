@@ -1,7 +1,7 @@
 <div id="left-sidebar" class="sidebar">
     <a href="#" class="menu_toggle"><i class="fa fa-angle-left"></i></a>
     <div class="navbar-brand">
-        <a href="index.html"><img src="assets/images/RTRWLOGO.png" alt="Mooli Logo" class="img-fluid logo"><span>RTWebConnect</span></a>
+        <a href="{{url('rt_dashboard')}}"><img src="assets/images/RTRWLOGO.png" alt="Mooli Logo" class="img-fluid logo"><span>RTWebConnect</span></a>
         <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="fa fa-close"></i></button>
     </div>
     <div class="sidebar-scroll">
@@ -21,7 +21,7 @@
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu animation-li-delay">
 
-                <li><a href="app-inbox.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a></li>
+                <li><a href="{{url('rt_dashboard')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a></li>
                 <li>
                     <a href="#uiElements" class="has-arrow"><i class="fa fa-clipboard"></i><span>Data Warga</span></a>
                     <ul>

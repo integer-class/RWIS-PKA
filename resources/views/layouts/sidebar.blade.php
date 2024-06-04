@@ -1,7 +1,7 @@
 <div id="left-sidebar" class="sidebar">
     <a href="#" class="menu_toggle"><i class="fa fa-angle-left"></i></a>
     <div class="navbar-brand">
-        <a href="index.html"><img src="assets/images/RTRWLOGO.png" alt="Mooli Logo" class="img-fluid logo"><span>RTWebConnect</span></a>
+        <a href="{{url('dashboard')}}"><img src="assets/images/RTRWLOGO.png" alt="Mooli Logo" class="img-fluid logo"><span>RTWebConnect</span></a>
         <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="fa fa-close"></i></button>
     </div>
     <div class="sidebar-scroll">
