@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts_rt.app')
 @section ('content')
  {{-- <link rel="stylesheet" href="{{ asset('public/assets/css/mooli.min.css')}}"> --}}
 
@@ -377,10 +377,9 @@
     </div>
 </div>
 
-
-
-@endsection
-
 <!-- Javascript -->
 <script src="assets/bundles/libscripts.bundle.js"></script>    
 <script src="assets/bundles/vendorscripts.bundle.js"></script>
+
+@endsection
+

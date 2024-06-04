@@ -35,5 +35,16 @@ class kartukeluarga extends Seeder
             'provinsi' => 'jawa timur',
         ]);
         
+        \App\Models\kartukeluargaModel::factory()->create([
+            'no_kk' => '472751887',
+            'kepala_keluarga' => 'Budi',
+            'rt' => '2',
+            'rw' => '1',
+            'kelurahan' => 'mbokor',
+            'kecamatan' => 'mbokor',
+            'kabupaten' => 'malang',
+            'provinsi' => 'jawa timur',
+        ]);
+
     }
 }

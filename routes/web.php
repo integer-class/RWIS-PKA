@@ -59,24 +59,24 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['middleware' => ['cek_login:2']], function () {
-        Route::resource('rt', RwController::class);
-        Route::get('/rt_data_warga', [RwController::class, 'DataWarga'])->name('rt_data_warga');
-        Route::post('/rt_prosesTambahWarga', [RwController::class, 'TambahDataWarga'])->name('rt_prosesTambahWarga');
-        Route::post('/rt_prosesEditWarga', [RwController::class, 'EditDataWarga'])->name('rt_prosesEditWarga');
-        Route::get('/rt_data_keluarga', [RwController::class, 'Datakeluarga'])->name('rt_data_keluarga');
-        Route::post('/rt_prosesTambahKk', [RwController::class, 'TambahDataKK'])->name('rt_prosesTambahKK');
-        Route::post('/rt_prosesEditKk', [RwController::class, 'EditDataKK'])->name('rt_prosesEditKK');
-        Route::get('/rt_data_keuangan',[RwController::class,'DataKeuangan'])->name('rt_data_keuangan');
-        Route::post('/rt_prosesTambahKeuangan',[RwController::class,'TambahDataKeuangan'])->name('rt_prosesTambahKeuangan');
-        Route::post('/rt_prosesEditKeuangan', [RwController::class, 'EditDataKeuangan'])->name('rt_prosesEditKeuangan');
-        Route::get('/rt_data_kegiatan',[RwController::class,'DataKegiatan'])->name('rt_data_kegiatan');
-        Route::post('/rt_prosesTambahKegiatan', [RwController::class, 'TambahKegiatan'])->name('rt_prosesTambahKegiatan');
-        Route::post('/rt_prosesEditKegiatan', [RwController::class, 'EditDatakegiatan'])->name('rt_prosesEditkegiatan');
-        Route::post('/rt_prosesHapuskegiatan', [RwController::class, 'HapusKegiatan'])->name('rt_prosesHapuskegiatan');
-        Route::get('/rt_data_umkm',[RwController::class,'DataUmkm'])->name('rt_data_umkm');
-        Route::post('/rt_prosesTambahUmkm', [RwController::class, 'TambahUmkm'])->name('rt_prosesTambahumkm');
-        Route::post('/rt_prosesEditUmkm', [RwController::class, 'EditDataUmkm'])->name('rt_prosesEditumkm');
-        Route::post('/rt_prosesHapusUmkm', [RwController::class, 'HapusUmkm'])->name('rt_prosesHapusumkm');
+        Route::resource('rt', RtController::class);
+        Route::get('/rt_data_warga', [RtController::class, 'DataWarga'])->name('rt_data_warga');
+        Route::post('/rt_prosesTambahWarga', [RtController::class, 'TambahDataWarga'])->name('rt_prosesTambahWarga');
+        Route::post('/rt_prosesEditWarga', [RtController::class, 'EditDataWarga'])->name('rt_prosesEditWarga');
+        Route::get('/rt_data_keluarga', [RtController::class, 'Datakeluarga'])->name('rt_data_keluarga');
+        Route::post('/rt_prosesTambahKk', [RtController::class, 'TambahDataKK'])->name('rt_prosesTambahKK');
+        Route::post('/rt_prosesEditKk', [RtController::class, 'EditDataKK'])->name('rt_prosesEditKK');
+        Route::get('/rt_data_keuangan',[RtController::class,'DataKeuangan'])->name('rt_data_keuangan');
+        Route::post('/rt_prosesTambahKeuangan',[RtController::class,'TambahDataKeuangan'])->name('rt_prosesTambahKeuangan');
+        Route::post('/rt_prosesEditKeuangan', [RtController::class, 'EditDataKeuangan'])->name('rt_prosesEditKeuangan');
+        Route::get('/rt_data_kegiatan',[RtController::class,'DataKegiatan'])->name('rt_data_kegiatan');
+        Route::post('/rt_prosesTambahKegiatan', [RtController::class, 'TambahKegiatan'])->name('rt_prosesTambahKegiatan');
+        Route::post('/rt_prosesEditKegiatan', [RtController::class, 'EditDatakegiatan'])->name('rt_prosesEditkegiatan');
+        Route::post('/rt_prosesHapuskegiatan', [RtController::class, 'HapusKegiatan'])->name('rt_prosesHapuskegiatan');
+        Route::get('/rt_data_umkm',[RtController::class,'DataUmkm'])->name('rt_data_umkm');
+        Route::post('/rt_prosesTambahUmkm', [RtController::class, 'TambahUmkm'])->name('rt_prosesTambahumkm');
+        Route::post('/rt_prosesEditUmkm', [RtController::class, 'EditDataUmkm'])->name('rt_prosesEditumkm');
+        Route::post('/rt_prosesHapusUmkm', [RtController::class, 'HapusUmkm'])->name('rt_prosesHapusumkm');
     });
 
     Route::group(['middleware' => ['cek_login:3']], function () {

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts_rt.app')
 @section ('content')
  {{-- <link rel="stylesheet" href="{{ asset('public/assets/css/mooli.min.css')}}"> --}}
 

@@ -12,7 +12,7 @@ use App\Models\umkmModel;
 use App\Models\UserModel;
 use Illuminate\Support\facades\Hash;
 
-class RwController extends Controller
+class RtController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -115,7 +115,7 @@ class RwController extends Controller
         // Simpan data ke dalam database menggunakan model
         
         //Redirect ke halaman sukses atau halaman lain yang Anda inginkan
-         return redirect('/datakeluarga');
+         return redirect('/rt_datakeluarga');
     }
 
     public function DataKeuangan(Request $request){
