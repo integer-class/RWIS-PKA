@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('no_telpon');
             $table->string('gambar');
+            $table->string('persetujuan');
+            $table->string('nama_pengupload');
             $table->timestamps();
         });
     }

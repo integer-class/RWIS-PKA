@@ -6,7 +6,7 @@
     <div class="block-header">
         <div class="row clearfix">
             <div class="col-lg-4 col-md-12 col-sm-12">
-                <h1>Hi, Welcomeback!</h1>
+                <h1>Hi, Selamat Datang!</h1>
                 <span>JustDo Dashboard,</span>
             </div>
             <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
@@ -30,30 +30,7 @@
     <div class="row clearfix">
         <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light page_menu">
-                <a class="navbar-brand" href="#">M.</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars text-muted"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item vivify swoopInTop delay-150 active"><a class="nav-link" href="index.html">Analytics</a></li>
-                        <li class="nav-item vivify swoopInTop delay-250"><a class="nav-link" href="index2.html">Cryptocurrency</a></li>
-                        <li class="nav-item vivify swoopInTop delay-350"><a class="nav-link" href="index3.html">Campaign</a></li>
-                        <li class="nav-item dropdown vivify swoopInTop delay-450">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">More</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="index4.html">eCommerce Analytics</a>
-                                <a class="dropdown-item" href="index5.html">Sales Monitoring</a>
-                                <a class="dropdown-item" href="index6.html">Finance Performance</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="ml-auto">
-                        <a href="app-todo.html" class="btn btn-default">ToDo</a>
-                        <a href="setting.html" class="btn btn-default">Settings</a>
-                        <a href="javascript:void(0);" target="_blank" class="btn btn-dark">Buy this item</a>
-                    </div>
-                </div>
+                <a class="navbar-brand" href="#">Rekapitulasi Data Rw 01 Bokor</a>
             </nav>
         </div>
         <div class="col-12">
@@ -63,128 +40,32 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <div id="slider1" class="carousel vert slide" data-ride="carousel" data-interval="2700">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div>Total Income</div>
-                                                <div class="mt-3 h1">$13,025</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">3.78% <i class="fa fa-caret-down"></i></div>
-                                                    <span>This year</span>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div>Total Revenue</div>
-                                                <div class="mt-3 h1">$9,452</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">0.85% <i class="fa fa-caret-up"></i></div>
-                                                    <span>This year</span>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div>Total Expense</div>
-                                                <div class="mt-3 h1">$4,124</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">2.04% <i class="fa fa-caret-down"></i></div>
-                                                    <span>This year</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div>Iuran Kematian</div>
+                                    <div class="mt-3 h1">{{$iuranKematian}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <div id="slider2" class="carousel vert slide" data-ride="carousel" data-interval="2800">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div>Total User</div>
-                                                <div class="mt-3 h1">1,258</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">7% <i class="fa fa-caret-up"></i></div>
-                                                    <span>This month</span>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div>Sessions</div>
-                                                <div class="mt-3 h1">451</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">23.5% <i class="fa fa-caret-up"></i></div>
-                                                    <span>This month</span>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div>Bounce Rate</div>
-                                                <div class="mt-3 h1">36.80</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">5% <i class="fa fa-caret-up"></i></div>
-                                                    <span>This month</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                                    
+                                    <div>Iuran PHB</div>
+                                    <div class="mt-3 h1">{{$iuranPHB}}</div>                                   
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <div id="slider3" class="carousel vert slide" data-ride="carousel" data-interval="3000">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div>Bitcoin Wallet</div>
-                                                <div class="mt-3 h1">4.25762</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">5.23% <i class="fa fa-caret-up"></i></div>
-                                                    <span>This Week</span>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div>Ethereum Wallet</div>
-                                                <div class="mt-3 h1">3.15948</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">1.85% <i class="fa fa-caret-up"></i></div>
-                                                    <span>This Week</span>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div>NioWallet</div>
-                                                <div class="mt-3 h1">2.75342</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">1.25% <i class="fa fa-caret-down"></i></div>
-                                                    <span>This Week</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div>Iuran Sampah</div>
+                                    <div class="mt-3 h1">{{$iuranSampah}}</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <div id="slider4" class="carousel vert slide" data-ride="carousel" data-interval="2500">
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <div>Number of Meetings</div>
-                                                <div class="mt-3 h1">781</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">0.56% <i class="fa fa-caret-up"></i></div>
-                                                    <span>(30 days)</span>
-                                                </div>
-                                            </div>
-                                            <div class="carousel-item">
-                                                <div>Number of Clients</div>
-                                                <div class="mt-3 h1">10K</div>
-                                                <div class="d-flex">
-                                                    <div class="mr-3">0.56% <i class="fa fa-caret-up"></i></div>
-                                                    <span>(30 days)</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                                    
+                                    <div>Iuran Listrik</div>
+                                    <div class="mt-3 h1">{{$iuranListrik}}</div>                                   
                                 </div>
                             </div>
                         </div>

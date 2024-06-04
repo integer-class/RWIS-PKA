@@ -21,6 +21,8 @@ class umkm extends Seeder
             'no_telpon'=> '081217498866',
             'alamat' =>'Jalan Mbokor',
             'gambar'=>'default.png',
+            'persetujuan' => 'disetujui',
+            'nama_pengupload' => 'teo',
         ]);
 
         

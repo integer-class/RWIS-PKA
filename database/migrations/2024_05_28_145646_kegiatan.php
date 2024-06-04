@@ -17,6 +17,7 @@ return new class extends Migration
             $table->String('nama_kegiatan');
             $table->text('deskripsi');
             $table->String('gambar');
+            $table->string('persetujuan');
             $table->timestamps();
         });
     }

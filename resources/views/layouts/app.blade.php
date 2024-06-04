@@ -72,15 +72,21 @@
 
 <!-- Vedor js file and create bundle with grunt  --> 
 
-<script src="assets/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script><!-- Bootstrap Colorpicker Js --> 
-<script src="assets/vendor/jquery-inputmask/jquery.inputmask.bundle.js"></script><!-- Input Mask Plugin Js --> 
-<script src="assets/vendor/jquery.maskedinput/jquery.maskedinput.min.js"></script>
-<script src="assets/vendor/multi-select/js/jquery.multi-select.js"></script><!-- Multi Select Plugin Js -->
-<script src="assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js"></script>
+<script src="{{asset('assets/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.js')}}"></script><!-- Bootstrap Colorpicker Js --> 
+<script src="{{asset('assets/vendor/jquery-inputmask/jquery.inputmask.bundle.js')}}"></script><!-- Input Mask Plugin Js --> 
+<script src="{{asset('assets/vendor/jquery.maskedinput/jquery.maskedinput.min.js')}}"></script>
+<script src="{{asset('assets/vendor/multi-select/js/jquery.multi-select.js')}}"></script><!-- Multi Select Plugin Js -->
+<script src="{{asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.js')}}"></script>
 <script src="{{asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-<script src="assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js"></script><!-- Bootstrap Tags Input Plugin Js --> 
-<script src="assets/vendor/nouislider/nouislider.js"></script><!-- noUISlider Plugin Js -->
+<script src="{{asset('assets/vendor/bootstrap-tagsinput/bootstrap-tagsinput.js')}}"></script><!-- Bootstrap Tags Input Plugin Js --> 
+<script src="{{asset('assets/vendor/nouislider/nouislider.js')}}"></script><!-- noUISlider Plugin Js -->
 
+<!-- Vedor js file and create bundle with grunt  --> 
+<script src="{{asset('assets/bundles/flotscripts.bundle.js')}}"></script><!-- flot charts Plugin Js -->
+<script src="{{asset('assets/bundles/c3.bundle.js')}}"></script>
+<script src="{{asset('assets/bundles/apexcharts.bundle.js')}}"></script>
+<script src="{{asset('assets/bundles/jvectormap.bundle.js')}}"></script>
+<script src="{{asset('assets/vendor/toastr/toastr.js')}}"></script>
 
 <!-- Project core js file minify with grunt --> 
 <script src="{{asset('js/pages/forms/advanced-form-elements.js')}}"></script>
@@ -96,6 +102,21 @@
 <!-- Project core js file minify with grunt --> 
 <script src="{{asset('assets/bundles/mainscripts.bundle.js')}}"></script>
 <script src="{{asset('js/pages/forms/dropify.js')}}"></script>
+
+{{-- Aset data umkm --}}
+<!-- Vedor js file and create bundle with grunt  --> 
+
+<script src="{{asset('assets/bundles/datatablescripts.bundle.js')}}"></script>
+<script src="{{asset('assets/vendor/jquery-datatable/buttons/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/vendor/jquery-datatable/buttons/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/vendor/jquery-datatable/buttons/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('assets/vendor/jquery-datatable/buttons/buttons.html5.min.js')}}"></script>
+<script src="{{asset('assets/vendor/jquery-datatable/buttons/buttons.print.min.js')}}"></script>
+<script src="{{asset('assets/vendor/sweetalert/sweetalert.min.js')}}"></script><!-- SweetAlert Plugin Js --> 
+
+
+<!-- Project core js file minify with grunt --> 
+<script src="{{asset('js/pages/tables/jquery-datatable.js')}}"></script>
 
 </body>
 </html>

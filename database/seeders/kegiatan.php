@@ -19,6 +19,7 @@ class kegiatan extends Seeder
             'nama_kegiatan' => 'Kerja Bakti mingguan',
             'deskripsi' => 'kerja bakti mingguan setiap hari sabtu pukul tuju malam minggu',
             'gambar' => 'default.jpg',
+            'persetujuan' => 'belum disetujui',
         ]);
 
         

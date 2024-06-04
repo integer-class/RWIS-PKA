@@ -18,6 +18,8 @@ class umkmModel extends Model
         'deskripsi',
         'no_telpon',
         'gambar',
+        'persetujuan',
+        'nama_pengupload'
     ];
     
 }

@@ -3,10 +3,11 @@
 
       <div class="body">
         <ul class="nav nav-tabs3 white">
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tambah-umkm"><h1>DAFTAR UMKM</h1></a></li>
+            <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#DataUmkm">DATA UMKM</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#UmkmBaru">UMKM BARU</a></li>
         </ul>
-
-        
+        <div class="tab-content">
+            <div class="tab-pane show active" id="DataUmkm">
                 <div class="card">
                     <div class="col-lg-12">
                         <div class="card">
@@ -39,7 +40,7 @@
                                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Hapusumkm{{$data_umkm->id}}">Hapus</button>
                                                 </td>
                                             </tr>
-
+    
                                             {{-- DETAIL  --}}
                                             <div class="modal fade" id="Detailumkm{{$data_umkm->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -55,7 +56,7 @@
                                                                     <p class="card-text">{{$data_umkm->deskripsi}}</p>
                                                                     <p class="card-text"><small class="text-muted">Nomor telepon :{{$data_umkm->nomor_telp}}</small></p>
                                                                     <p class="card-text"><small class="text-muted">Lokasi :{{$data_umkm->alamat}}</small></p>
-
+    
                                                                 </div>
                                                             </div>   
                                                         </div>
@@ -140,15 +141,70 @@
                                             </div>
                                             @endforeach
                                         </tbody>
+                                        
+                                        <!-- Pagination Button -->
                                     </table>
+                                    <div class="text-center mt-3">
+                                        <a href="{{ $umkm->previousPageUrl() }}" class="btn btn-primary {{ $umkm->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                                        <a href="{{ $umkm->nextPageUrl() }}" class="btn btn-primary {{ $umkm->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
+             </div>
+             <div class="tab-pane" id="UmkmBaru">
+                <div class="card">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="header">
 
+                            </div>
+                            <div class="body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama umkm</th>
+                                                <th>Nama pemilik</th>
+                                                <th>Deskripsi</th>
+                                                <th>Pengupload</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($umkmBaru as $data_umkm)
+                                            <tr>
+                                                <td>{{$loop->iteration}}</td>
+                                                <td>{{$data_umkm->nama_umkm}}</td>
+                                                <td>{{$data_umkm->nama_pemilik}}</td>
+                                                <td>{{ Str::limit($data_umkm->deskripsi, 100)}}</td>
+                                                <td>{{$data_umkm->nama_pengupload}}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#SimpanUmkm{{$data_umkm->id}}">Approve</button>
+                                                    
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                        
+                                        <!-- Pagination Button -->
+                                    </table>
+                                    <div class="text-center mt-3">
+                                        <a href="{{ $umkmBaru->previousPageUrl() }}" class="btn btn-primary {{ $umkmBaru->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                                        <a href="{{ $umkmBaru->nextPageUrl() }}" class="btn btn-primary {{ $umkmBaru->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+      </div>
+            
 
     {{-- Tambah umkm --}}
     <div class="modal fade" id="tambahumkm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

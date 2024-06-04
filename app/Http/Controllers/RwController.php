@@ -8,10 +8,11 @@ use App\Models\kartukeluargaModel;
 use App\Models\kegiatanModel;
 use App\Models\keuanganModel;
 use App\Models\templatesuratModel;
-use App\Models\umkkmModel;
 use App\Models\umkmModel;
 use App\Models\UserModel;
 use Illuminate\Support\facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class RwController extends Controller
 {
@@ -19,8 +20,27 @@ class RwController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
+         //Total iuran PHB
+         $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
+         $total_pengeluaranPHB = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran PHB')->sum('jumlah');
+         $iuranPHB = number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
+ 
+         //Total iuran kematian
+         $total_pemasukanKematian = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran kematian')->sum('jumlah');
+         $total_pengeluaranKematian = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran kematian')->sum('jumlah');
+         $iuranKematian = number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
+ 
+         //Total iuran Listrik
+         $total_pemasukanListrik = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
+         $total_pengeluaranListrik = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
+         $iuranListrik = number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
+ 
+         //Total iuran Sampah
+         $total_pemasukanSampah = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
+         $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
+         $iuranSampah =number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
 
-        return view('rw.index');
+        return view('rw.index',compact('iuranSampah','iuranListrik','iuranKematian','iuranPHB'));
     }
 
     public function DataWarga(){
@@ -276,8 +296,9 @@ class RwController extends Controller
     }
 
     public function DataUmkm(){
-        $umkm = umkmModel::all();
-        return view('rw.dataumkm',compact('umkm'));
+        $umkm = umkmModel::where('persetujuan','disetujui')->paginate(10);
+        $umkmBaru = umkmModel::where('persetujuan','belum disetujui')->paginate(10);
+        return view('rw.dataumkm',compact('umkm','umkmBaru'));
     }
     
     public function TambahUmkm(Request $request)
@@ -292,6 +313,10 @@ class RwController extends Controller
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
+    $user = Auth::user();
+    $userData = citizenModel::where('nik',$user->nik)->FirstOrFail();
+    $namaUser = $userData->nama;
+    
     // Handle the file upload
     if ($request->hasFile('image')) {
         $image = $request->file('image');
@@ -308,6 +333,8 @@ class RwController extends Controller
             'alamat' => $request->alamat,
             'deskripsi'=> $request->deskripsi,
             'gambar'=> $imageName,
+            'persetujuan' => 'belum disetujui',
+            'nama_pengupload' => $namaUser,
         ]);
         return redirect('data_umkm');
     }

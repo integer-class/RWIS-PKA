@@ -16,6 +16,7 @@ class kegiatanModel extends Model
         'nama_kegiatan',
         'deskripsi',
         'gambar',
+        'persetujuan',
         
     ];
     
