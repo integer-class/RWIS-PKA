@@ -23,7 +23,7 @@ class RtController extends Controller
     }
 
     public function DataWarga(){
-        $warga = citizenModel::all();
+        $warga = citizenModel::paginate(10);
         return view('rt.datawarga',compact('warga'));
     }
     

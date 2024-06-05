@@ -83,7 +83,7 @@
                                                 </div>
                                                 <div class="modal-body">
 
-                                                    <form method="post" action="{{route('prosesEditKK')}}">
+                                                    <form method="post" action="{{route('rt_prosesEditKK')}}">
                                                         @csrf
                                                         <div class="row clearfix">
                                                             {{-- kiri atas --}}
@@ -158,7 +158,7 @@
 
         {{-- TAB Tambah KK --}}
         <div class="tab-pane" id="Profile-new2">
-        <form method="post" action="{{route('prosesTambahWarga')}}">
+        <form method="post" action="{{route('rt_prosesTambahWarga')}}">
             @csrf
             <div class="card">
                 <div class="header">

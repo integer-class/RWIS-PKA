@@ -63,7 +63,7 @@
             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Tambahkeuangan">Tambah Data Keuangan</button>
             <br><br>
             {{-- <h2>Filter Laporan Keuangan RW 01</h2> --}} 
-            <form method="GET" action="{{ route('data_keuangan') }}">
+            <form method="GET" action="{{ route('rt_data_keuangan') }}">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -134,7 +134,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="post" action="{{ route('prosesEditKeuangan') }}">
+                                        <form method="post" action="{{ route('rt_prosesEditKeuangan') }}">
                                             @csrf
                                             <input type="hidden" name="id" value="{{$keuangan->id}}">
                                             <div class="card">
@@ -206,7 +206,7 @@
             </div>
             <div class="modal-body">
                 {{-- method diisi ya ganteng nanti --}}
-                <form method="post" action="{{route('prosesTambahKeuangan')}}">
+                <form method="post" action="{{route('rt_prosesTambahKeuangan')}}">
                     @csrf
                     <div class="card">
                         <div class="body">

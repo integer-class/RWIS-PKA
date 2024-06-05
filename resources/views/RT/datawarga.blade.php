@@ -116,7 +116,7 @@
                                                 </div>
                                                 <div class="modal-body">
 
-                                                    <form method="post" action="{{route('prosesEditWarga')}}">
+                                                    <form method="post" action="{{route('rt_prosesEditWarga')}}">
                                                         @csrf
                                                         <div class="row clearfix">
                                                             {{-- kiri atas --}}
@@ -259,7 +259,7 @@
 
         {{-- TAB Tambah warga --}}
         <div class="tab-pane" id="Profile-new2">
-        <form method="post" action="{{route('prosesTambahWarga')}}">
+        <form method="post" action="{{route('rt_prosesTambahWarga')}}">
             @csrf
             <div class="card">
                 <div class="header">
@@ -373,7 +373,12 @@
 
         </div>
         
-        
+        <!-- Pagination Button -->
+        <div class="text-center mt-3">
+            <a href="{{ $warga->previousPageUrl() }}" class="btn btn-primary {{ $warga->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+            <a href="{{ $warga->nextPageUrl() }}" class="btn btn-primary {{ $warga->hasMorePages() ? '' : 'disabled' }}">Next</a>
+        </div>
+
     </div>
 </div>
 
