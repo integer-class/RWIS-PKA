@@ -72,8 +72,6 @@ class citizen extends Seeder
             'skorbansos' =>290,
         ]);
         
-
-        
     }
 }
 

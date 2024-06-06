@@ -6,6 +6,8 @@ use App\Models\citizenModel;
 use App\Models\kartukeluargaModel;
 use App\Models\kegiatanModel;
 use App\Models\keuanganModel;
+use App\Models\umkmModel;
+use Database\Seeders\umkm;
 use Illuminate\Http\Request;
 
 class WargaController extends Controller
@@ -77,7 +79,10 @@ class WargaController extends Controller
         return view('warga.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian'));
     }
    
-
+    public function DataUmkm(){
+        $umkm = umkmModel::all();
+        return view('rw.dataumkm',compact('umkm'));
+    }
   
 
 }   
