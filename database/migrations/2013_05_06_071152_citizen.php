@@ -21,9 +21,16 @@ return new class extends Migration
             $table->string('rt');
             $table->string('agama');
             $table->enum('golongan_darah', ['A', 'B', 'AB', 'O']);
-            $table->enum('jenis_kelamin', ["L", "P"]);
+            $table->enum('jenis_kelamin', ["laki-laki", "perempuan"]);
             $table->string('pekerjaan');
+            $table->integer('skorbansos');
+            
+            $table->string('status');
             $table->date('tanggal_lahir');
+            $table->string('pendidikan');
+            $table->integer('luas_rumah');
+            $table->String('gaji');
+
             $table->rememberToken(); 
             $table->timestamps();
 

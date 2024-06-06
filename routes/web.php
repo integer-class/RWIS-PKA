@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/prosesTambahSurat', [RwController::class, 'TambahSurat'])->name('prosesTambahsurat');
         Route::post('/prosesHapusSurat', [RwController::class, 'HapusSurat'])->name('prosesHapussurat');
         Route::get('/downloadsurat/{id}', [RwController::class, 'DownloadSurat'])->name('downloadsurat');
+        Route::get('/data_bansos',[RwController::class, 'DataBansos'])->name('data_bansos');
 
     });
 

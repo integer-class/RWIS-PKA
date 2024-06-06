@@ -34,7 +34,7 @@
                
                 <li><a href="{{url('data_kegiatan')}}"><i class="fa fa-th-list"></i> <span>Kegiatan</span></a></li>
                 <li><a href="{{url('data_umkm')}}"><i class="fa fa-folder"></i> <span>UMKM</span></a></li>
-                <li><a href="app-contacts.html"><i class="fa fa-address-book"></i> <span>Bansos</span></a></li>                    
+                <li><a href="{{url('data_bansos')}}"><i class="fa fa-address-book"></i> <span>Bansos</span></a></li>                    
                 <li><a href="{{url('templatesurat')}}"><i class="fa fa-tasks"></i> <span>Template Surat</span></a></li>
             </ul>
         </nav>     
