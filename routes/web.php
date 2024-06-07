@@ -34,27 +34,35 @@ Route::group(['middleware' => ['auth']], function () {
         
         Route::resource('rw', RwController::class);
         Route::get('/dashboard',[RwController::class,'index'])->name('dashboard');
+        
         Route::get('/data_warga', [RwController::class, 'DataWarga'])->name('data_warga');
         Route::post('/prosesTambahWarga', [RwController::class, 'TambahDataWarga'])->name('prosesTambahWarga');
         Route::post('/prosesEditWarga', [RwController::class, 'EditDataWarga'])->name('prosesEditWarga');
+        
         Route::get('/data_keluarga', [RwController::class, 'Datakeluarga'])->name('data_keluarga');
         Route::post('/prosesTambahKk', [RwController::class, 'TambahDataKK'])->name('prosesTambahKK');
         Route::post('/prosesEditKk', [RwController::class, 'EditDataKK'])->name('prosesEditKK');
+        
         Route::get('/data_keuangan',[RwController::class,'DataKeuangan'])->name('data_keuangan');
         Route::post('/prosesTambahKeuangan',[RwController::class,'TambahDataKeuangan'])->name('prosesTambahKeuangan');
         Route::post('/prosesEditKeuangan', [RwController::class, 'EditDataKeuangan'])->name('prosesEditKeuangan');
+        
         Route::get('/data_kegiatan',[RwController::class,'DataKegiatan'])->name('data_kegiatan');
         Route::post('/prosesTambahKegiatan', [RwController::class, 'TambahKegiatan'])->name('prosesTambahKegiatan');
         Route::post('/prosesEditKegiatan', [RwController::class, 'EditDatakegiatan'])->name('prosesEditkegiatan');
         Route::post('/prosesHapuskegiatan', [RwController::class, 'HapusKegiatan'])->name('prosesHapuskegiatan');
+        
         Route::get('/data_umkm',[RwController::class,'DataUmkm'])->name('data_umkm');
         Route::post('/prosesTambahUmkm', [RwController::class, 'TambahUmkm'])->name('prosesTambahumkm');
         Route::post('/prosesEditUmkm', [RwController::class, 'EditDataUmkm'])->name('prosesEditumkm');
         Route::post('/prosesHapusUmkm', [RwController::class, 'HapusUmkm'])->name('prosesHapusumkm');
+        Route::post('/prosesSimpanumkm',[RwController::class, 'SimpanUmkm'])->name('prosesSimpanumkm');
+        
         Route::get('/templatesurat',[RwController::class,'templatesurat'])->name('templatesurat');
         Route::post('/prosesTambahSurat', [RwController::class, 'TambahSurat'])->name('prosesTambahsurat');
         Route::post('/prosesHapusSurat', [RwController::class, 'HapusSurat'])->name('prosesHapussurat');
         Route::get('/downloadsurat/{id}', [RwController::class, 'DownloadSurat'])->name('downloadsurat');
+        
         Route::get('/data_bansos',[RwController::class, 'DataBansos'])->name('data_bansos');
 
     });

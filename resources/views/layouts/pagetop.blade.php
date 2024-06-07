@@ -1,7 +1,10 @@
 <nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-left">
-          
+            <div class="navbar-btn">
+                <a href="index.html"><img src="assets/images/icon.svg" alt="Mooli Logo" class="img-fluid logo"></a>
+                <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
+            </div>
         </div>
         <div class="navbar-right">
             <div id="navbar-menu">

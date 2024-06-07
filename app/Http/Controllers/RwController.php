@@ -302,29 +302,9 @@ class RwController extends Controller
                 $query->where('jenis_iuran', $request->keterangan);
             };
         }
-        $data_keuangan = $query->orderby('tanggal','desc')->get();
+        $data_keuangan = $query->orderby('tanggal','desc')->paginate(10);
 
-        //Total iuran PHB
-        $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
-        $total_pengeluaranPHB = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran PHB')->sum('jumlah');
-        $iuranPHB = number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
-
-        //Total iuran kematian
-        $total_pemasukanKematian = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran kematian')->sum('jumlah');
-        $total_pengeluaranKematian = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran kematian')->sum('jumlah');
-        $iuranKematian = number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
-
-        //Total iuran Listrik
-        $total_pemasukanListrik = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
-        $total_pengeluaranListrik = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
-        $iuranListrik = number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
-
-        //Total iuran Sampah
-        $total_pemasukanSampah = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
-        $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
-        $iuranSampah =number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
-
-        return view('rw.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian'));
+        return view('rw.datakeuangan',compact('data_keuangan'));
     }
 
     public function TambahDataKeuangan(Request $request)
@@ -523,7 +503,7 @@ class RwController extends Controller
          return redirect('data_umkm')->with('success', 'Data berhasil diperbarui');
         
     }
-
+    
     public function HapusUmkm(Request $request){
         $umkm = umkmModel::where('id', $request->id)->firstOrFail();
 
@@ -532,6 +512,16 @@ class RwController extends Controller
         }
 
         $umkm ->delete();
+
+        return redirect()->back()->with('success', 'Kegiatan berhasil dihapus.');
+    }
+    
+    public function SimpanUmkm(Request $request){
+        $umkm = umkmModel::where('id',$request->id)->firstorfail();
+
+        $umkm->update([
+            'persetujuan' => 'disetujui'
+        ]);
 
         return redirect()->back()->with('success', 'Kegiatan berhasil dihapus.');
     }

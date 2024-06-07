@@ -56,7 +56,6 @@
                                                                     <p class="card-text">{{$data_umkm->deskripsi}}</p>
                                                                     <p class="card-text"><small class="text-muted">Nomor telepon :{{$data_umkm->nomor_telp}}</small></p>
                                                                     <p class="card-text"><small class="text-muted">Lokasi :{{$data_umkm->alamat}}</small></p>
-    
                                                                 </div>
                                                             </div>   
                                                         </div>
@@ -169,9 +168,9 @@
                                                 <th>No</th>
                                                 <th>Nama umkm</th>
                                                 <th>Nama pemilik</th>
-                                                <th>Deskripsi</th>
                                                 <th>Pengupload</th>
-                                                <th>Status</th>
+                                                <th>Detail</th>
+                                                <th>Pilih Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -180,13 +179,70 @@
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$data_umkm->nama_umkm}}</td>
                                                 <td>{{$data_umkm->nama_pemilik}}</td>
-                                                <td>{{ Str::limit($data_umkm->deskripsi, 100)}}</td>
                                                 <td>{{$data_umkm->nama_pengupload}}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#SimpanUmkm{{$data_umkm->id}}">Approve</button>
-                                                    
+                                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#Detailumkm{{$data_umkm->id}}">Lihat</button>
+                                
+                                                </td>
+                                                <td>
+                                                        <form method="POST" action="{{route('prosesSimpanumkm')}}">
+                                                            @csrf
+                                                            <input name="id" type="hidden" value="{{$data_umkm->id}}">
+                                                            <button type="submit" class="btn btn-success btn-round" >Terima</button>
+                                                            <button type="button" class="btn btn-danger btn-round" data-toggle="modal" data-target="#Tolakumkm{{$data_umkm->id}}">Tolak</button>
+                                                        </form>
+                                                        
                                                 </td>
                                             </tr>
+                                            {{-- DETAIL  --}}
+                                            <div class="modal fade" id="Detailumkm{{$data_umkm->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalCenterTitle">Detail {{$data_umkm->nama_umkm}}</h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <input type="file" class="dropify" data-default-file="{{asset('images/umkm/'.$data_umkm->gambar)}}" disabled="disabled">    
+                                                                    <h5 class="card-title"><a href="#">{{$data_umkm->nama_umkm}}</a></h5>
+                                                                    <p class="card-text">{{$data_umkm->deskripsi}}</p>
+                                                                    <p class="card-text"><small class="text-muted">Nomor telepon :{{$data_umkm->nomor_telp}}</small></p>
+                                                                    <p class="card-text"><small class="text-muted">Lokasi :{{$data_umkm->alamat}}</small></p>
+    
+                                                                </div>
+                                                            </div>   
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- Tolak --}}
+                                            <div class="modal fade" id="Tolakumkm{{$data_umkm->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalCenterTitle">Hapus umkm</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        </div>
+                                                        <form method="POST" action="{{route('prosesHapusumkm')}}">
+                                                            @csrf
+                                                            <input type="hidden" name="id" value="{{$data_umkm->id}}" >
+                                                            <div class="modal-body">
+                                                                <div class="alert alert-warning" >
+                                                                    Apa anda yakin? Data yang ditolak tidak akan masuk daftar umkm. 
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             @endforeach
                                         </tbody>
                                         
