@@ -7,7 +7,7 @@
     <div class="card theme-bg gradient">
         
         <div class="card-body">
-            <h4>Total Keuangan RW 01</h4>
+            <h4>Total Keuangan RT 01</h4>
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="card-body">
@@ -59,10 +59,10 @@
     {{-- Tabel Keuangan --}}
     <div class="card">
         <div class="header">
-            <h2>Laporan keuangan RW 01</h2><br>
+            <h2>Laporan keuangan RT 01</h2><br>
             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Tambahkeuangan">Tambah Data Keuangan</button>
             <br><br>
-            {{-- <h2>Filter Laporan Keuangan RW 01</h2> --}} 
+            {{-- <h2>Filter Laporan Keuangan RT 01</h2> --}} 
             <form method="GET" action="{{ route('data_keuangan') }}">
                 <div class="row">
                     <div class="col-md-4">
