@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts_warga.app')
 @section('content')
 
 <div class="card">

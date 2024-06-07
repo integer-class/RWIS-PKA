@@ -91,19 +91,20 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/rt_prosesTambahSurat', [RwController::class, 'TambahSurat'])->name('rt_prosesTambahsurat');
         Route::post('/rt_prosesHapusSurat', [RwController::class, 'HapusSurat'])->name('rt_prosesHapussurat');
         Route::get('/rt_downloadsurat/{id}', [RwController::class, 'DownloadSurat'])->name('rt_downloadsurat');
-
+        
     });
 
     Route::group(['middleware' => ['cek_login:3']], function () {
-        // Route::resource('warga', WargaController::class);
-        // // Route::get('/data_warga', [WargaController::class, 'datawarga'])->name('data_warga');//datawarga untuk view warga
-        // Route::get('/warga/datawarga', [WargaController::class, 'datawarga']);//datawarga untuk view warga
-        // Route::get('/data_keluarga', [WargaController::class, 'data_keluarga'])->name('data_keluarga');//data keluarga untuk view warga 
-        // // Route::get('/warga/datakeluarga', [WargaController::class, 'datakeluarga']);
-        // //Route::get('/warga/datakeuangan', [WargaController::class, 'datakeuangan']);//datakeuanganuntuk view warga
-        // Route::get('/data_keuangan',[WargaController::class,'data_keuangan'])->name('data_keuangan');
-       
-
+        Route::resource('warga', WargaController::class);
+        Route::get('/warga_data_warga', [WargaController::class, 'datawarga'])->name('warga_data_warga');//datawarga untuk view warga
+        Route::get('/warga_data_keluarga', [WargaController::class, 'data_keluarga'])->name('data_keluarga');//data keluarga untuk view warga 
+        Route::get('/warga_data_keuangan',[WargaController::class,'warga_data_keuangan'])->name('warga_data_keuangan');
+        Route::get('/warga_data_kegiatan',[WargaController::class,'DataKegiatan'])->name('warga_data_kegiatan');
+        Route::get('/warga_data_umkm',[WargaController::class,'DataUmkm'])->name('Warga_data_umkm');
+        Route::get('/umkm/{id}', [WargaController::class, 'detailUMKM'])->name('warga_detail_umkm');
+        Route::get('/warga_templatesurat',[WargaController::class,'templatesurat'])->name('warga_templatesurat');
+        Route::get('/warga_dashboard',[WargaController::class,'index'])->name('warga_dashboard');
+        Route::get('/warga_data_bansos',[WargaController::class, 'DataBansos'])->name('warga_data_bansos');
     });
 });
 
