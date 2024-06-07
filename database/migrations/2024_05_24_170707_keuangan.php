@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('jenis_data');  // You can adjust the length as needed
             $table->unsignedInteger('jumlah');  // Assuming 'jumlah' is a numeric value
             $table->string('nama');        // You can adjust the length as needed
+            $table->string('rt');
             $table->timestamps();
         });
     }
@@ -29,3 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('keuangan');
     }
 };
+

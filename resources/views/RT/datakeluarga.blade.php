@@ -19,7 +19,7 @@
                         {{-- search bar --}}
                         <form>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Mail" aria-label="Search Mail" aria-describedby="search-mail">
+                                <input type="text" class="form-control" placeholder="Cari Data Keluarga" aria-label="Cari Data Keluarga" aria-describedby="search-mail">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="search-mail"><i class="icon-magnifier"></i></span>
                                 </div>

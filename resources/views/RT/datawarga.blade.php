@@ -19,7 +19,7 @@
                         {{-- search bar --}}
                         <form>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Mail" aria-label="Search Mail" aria-describedby="search-mail">
+                                <input type="text" class="form-control" placeholder="Cari Data Warga" aria-label="Cari Data Warga" aria-describedby="search-mail">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="search-mail"><i class="icon-magnifier"></i></span>
                                 </div>
@@ -50,6 +50,7 @@
                                             
                                         </td>                                        
                                     </tr>  
+                                    {{-- detail --}}
                                     <div class="modal fade" id="exampleModalCenter{{$penduduk->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
