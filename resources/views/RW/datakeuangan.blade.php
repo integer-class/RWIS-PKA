@@ -3,65 +3,12 @@
  {{-- <link rel="stylesheet" href="{{ asset('public/assets/css/mooli.min.css')}}"> --}}
 
  {{-- TOTAL KEUANGAN ATAS --}}
- <div class="col-12">
-    <div class="card theme-bg gradient">
-        
-        <div class="card-body">
-            <h4>Total Keuangan RW 01</h4>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
-                            <div class="ml-4">
-                                <span>Iuran sampah</span>
-                                <h2 class="mb-0 font-weight-medium">{{$iuranSampah}}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
-                            <div class="ml-4">
-                                <span>Iuran Listrik</span>
-                                <h2 class="mb-0 font-weight-medium">{{$iuranListrik}}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
-                            <div class="ml-4">
-                                <span>Iuran PHB</span>
-                                <h2 class="mb-0 font-weight-medium">{{$iuranPHB}}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="icon-in-bg bg-indigo text-white rounded-circle"><i class="fa fa-briefcase"></i></div>
-                            <div class="ml-4">
-                                <span>Iuran Kematian</span>
-                                <h2 class="mb-0 font-weight-medium">{{$iuranKematian}}</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>         
-        </div>
-    </div>
+ <div class="row-clearfix">
     {{-- Tabel Keuangan --}}
     <div class="card">
         <div class="header">
-            <h2>Laporan keuangan RW 01</h2><br>
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Tambahkeuangan">Tambah Data Keuangan</button>
-            <br><br>
+            <h2>Laporan Data Keuangan</h2>
+            <br>
             {{-- <h2>Filter Laporan Keuangan RW 01</h2> --}} 
             <form method="GET" action="{{ route('data_keuangan') }}">
                 <div class="row">
@@ -91,12 +38,14 @@
                     </div>
                     <div class="col-md-4 ">
                         <button type="submit" class="btn btn-primary">Filter</button>
+                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Tambahkeuangan">Tambah Data Keuangan</button>
                     </div>
                 </div>
-            </form>
-                                            
-
+            </form>                        
         </div>
+    </div>
+    {{-- Tabel keuangan --}}
+    <div class="card">
         <div class="body">
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -191,11 +140,16 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="text-center mt-3">
+                    <a href="{{ $data_keuangan->previousPageUrl() }}" class="btn btn-primary {{ $data_keuangan->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                    <a href="{{ $data_keuangan->nextPageUrl() }}" class="btn btn-primary {{ $data_keuangan->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                </div>
             </div>
         </div>
-    </div>
+     </div>
+   </div>
 </div>
-</div>
+
 {{-- Modals Tambah data Keuangan --}}
 <div class="modal fade" id="Tambahkeuangan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

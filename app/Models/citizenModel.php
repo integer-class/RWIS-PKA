@@ -17,21 +17,27 @@ class citizenModel extends Model
     protected $primaryKey = 'nik';
     protected $fillable = [
         'nik',
-        'no_kk',
         'nama',
-        'status_kependudukan',
+        'no_kk',
         'alamat',
+        'status_kependudukan',
         'domisili',
-        'tanggal_lahir',
+        'rt',
+        'agama',
         'golongan_darah',
         'jenis_kelamin',
         'pekerjaan',
-        'rt',
-        'agama',
+        'skorbansos',
+
+        'status',
+        'tanggal_lahir',
+        'pendidikan',
+        'luas_rumah',
+        'gaji'
         
     ];
 
-   
+
       // Implement methods from AuthenticatableContract
  
  

@@ -21,12 +21,12 @@ class user extends Seeder
             'password' =>  Hash::make('123'),
         ]);
         \App\Models\UserModel::factory()->create([
-            'nik' => '47101071',
+            'nik' => '12341234',
             'role' => '3',
             'password' =>  Hash::make('123'),
         ]);
         \App\Models\UserModel::factory()->create([
-            'nik' => '472233445',
+            'nik' => '123456789',
             'role' => '2',
             'password' =>  Hash::make('123'),
         ]);

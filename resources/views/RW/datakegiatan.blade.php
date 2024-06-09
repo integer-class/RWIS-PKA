@@ -181,15 +181,5 @@
     </div> 
 <!-- Javascript -->
 
-<script src="assets/bundles/libscripts.bundle.js"></script>    
-<script src="assets/bundles/vendorscripts.bundle.js"></script>
-
-<!-- Vedor js file and create bundle with grunt  --> 
-<script src="assets/vendor/dropify/js/dropify.js"></script>
-
-
-<!-- Project core js file minify with grunt --> 
-<script src="assets/bundles/mainscripts.bundle.js"></script>
-<script src="../js/pages/forms/dropify.js"></script>
 
 @endsection

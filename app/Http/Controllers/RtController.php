@@ -162,22 +162,22 @@ class RtController extends Controller
         //Total iuran PHB
         $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
         $total_pengeluaranPHB = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran PHB')->sum('jumlah');
-        $iuranPHB = 'Rp' . number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
+        $iuranPHB =  number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
 
         //Total iuran kematian
         $total_pemasukanKematian = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran kematian')->sum('jumlah');
         $total_pengeluaranKematian = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran kematian')->sum('jumlah');
-        $iuranKematian = 'Rp' . number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
+        $iuranKematian = number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
 
         //Total iuran Listrik
         $total_pemasukanListrik = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
         $total_pengeluaranListrik = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
-        $iuranListrik = 'Rp' . number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
+        $iuranListrik = number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
 
         //Total iuran Sampah
         $total_pemasukanSampah = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
         $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
-        $iuranSampah = 'Rp' . number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
+        $iuranSampah = number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
 
         return view('rt.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian', 'rt'));
     }

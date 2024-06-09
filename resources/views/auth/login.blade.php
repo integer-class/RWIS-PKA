@@ -18,7 +18,13 @@
 
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/mooli.min.css')}}">t
-
+ <style>
+        .auth-main {
+            background-image: url('{{asset('images/backgroundlogin.jpg')}}'); /* Ganti dengan path gambar Anda */
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -56,7 +62,7 @@
     </div>
 
     <div class="auth-main">
-        <div class="auth_div vivify fadeIn">
+        <div class="auth_div vivify fadeIn" >
             <div class="auth_brand">
                 <a class="navbar-brand" href="#"><img src="assets/images/RTRWLOGO.png" width="100" class="d-inline-block align-top mr-2" alt=""></a>                                                
             </div>
@@ -83,16 +89,7 @@
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-dark btn-lg btn-block">LOGIN</button>
-                        {{-- <div class="form-group clearfix">
-                            <label class="fancy-checkbox element-left">
-                                <input type="checkbox">
-                                <span>Remember me</span>
-                            </label>								
-                        </div> --}}
-                        {{-- <div class="bottom">
-                            <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Forgot password?</a></span>
-                            <span>Don't have an account? <a href="page-register.html">Register</a></span>
-                        </div> --}}
+                        
                     </form>
                 </div>
             </div>

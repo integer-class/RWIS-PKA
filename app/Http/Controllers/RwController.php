@@ -48,28 +48,110 @@ class RwController extends Controller
         return view('rw.datawarga',compact('warga'));
     }
     
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function TambahDataWarga(Request $request)
     {
+        
+        $request->validate([
+            'nik' => 'required',
+            'nama' => 'required',
+            'no_kk' => 'required',
+            'alamat' => 'required',
+            'status_kependudukan' => 'required',
+            'domisili' => 'required',
+            'rt' => 'required',
+            'agama' => 'required',
+            'golongan_darah' => 'required',
+            'jenis_kelamin' => 'required',
+            'pekerjaan' => 'required',
+            'status' => 'required',
+            'tanggal_lahir' => 'required',
+            'pendidikan' => 'required',
+            'luas_rumah' => 'required',
+            'gaji' => 'required',
+            
+        ]);
+        //fungsi hitung bansos
+        
+        //skor pendidikan
+        if($request->pendidikan == 'SMA'){
+            $skorPendidikan = 1;
+        }else if($request->pendidikan == 'SMP'){
+            $skorPendidikan = 2;
+        }else if($request->pendidikan == 'SD'){
+            $skorPendidikan = 3;
+        }else if($request->pendidikan == 'Tidak Sekolah'){
+            $skorPendidikan = 4;
+        };
+        //skor status
+        if($request->status == 'janda/duda'){
+            $skorStatus = 1;
+        }else if($request->status == 'miskin'){
+            $skorStatus = 2;
+        }else if($request->status == 'sakit parah'){
+            $skorStatus = 3;
+        }else if($request->status == 'sebatang kara'){
+            $skorStatus = 4;
+        }
+        //skor gaji
+        if($request->gaji == '>1.000.000'){
+            $skorGaji = 1;
+        }else if($request->gaji == '600.000-1.000.000'){
+            $skorGaji = 2;
+        }else if($request->gaji == '400.000-600.000'){
+            $skorGaji = 3;
+        }else if($request->gaji == '0-400.000'){
+            $skorGaji = 4;
+        }
+        //skor umur
+        $usia = date_diff(date_create($request->tanggal_lahir), date_create('today'))->y;
+        if($usia < 20){
+            $skorUmur = 1;
+        }else if($usia >= 20 && $usia < 40){
+            $skorUmur = 2;
+        }else if($usia >= 40 && $usia < 60){
+            $skorUmur = 3;
+        }else if($usia >= 60 ){
+            $skorUmur = 4;
+        }
+        //skor luasrumah
+        $rumah = $request->luas_rumah;
+        if($rumah > 120){
+            $skorRumah = 1;
+        }else if($rumah >= 90 && $rumah < 120){
+            $skorRumah = 2;
+        }else if($rumah >= 70 && $rumah < 90){
+            $skorRumah = 3;
+        }else if($rumah < 70 ){
+            $skorRumah = 4;
+        }
+        //skor Bansos
+        $skorBansos = (($skorRumah * 15)+($skorUmur*25)+($skorGaji*30)+($skorStatus*20)+($skorPendidikan*10));
 
-        // Simpan data ke dalam database menggunakan model
+
         citizenModel::create([
             'nik' => $request->nik,
-            'no_kk' => $request->no_kk,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'pekerjaan' => $request->pekerjaan,
-            'status_kependudukan' => $request->status_kependudukan,
             'nama' => $request->nama,
+            'no_kk' => $request->no_kk,
+            'alamat' => $request->alamat,
+            'status_kependudukan' => $request->status_kependudukan,
+            'domisili' => $request->domisili,
+            'rt' => $request->rt,
             'agama' => $request->agama,
             'golongan_darah' => $request->golongan_darah,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'pekerjaan' => $request->pekerjaan,
             'status' => $request->status,
-            'rt' => $request->rt,
-            'domisili' => $request->domisili,
-            'alamat' => $request->alamat_asli,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'pendidikan' => $request->pendidikan,
+            'luas_rumah' => $request->luas_rumah,
+            'gaji' => $request->gaji,
+            'skorbansos' => $skorBansos,
+            
+            
         ]);
 
         $user=UserModel::create([
@@ -81,7 +163,7 @@ class RwController extends Controller
     
 
         //Redirect ke halaman sukses atau halaman lain yang Anda inginkan
-         return redirect('/datawarga');
+         return redirect()->back()->with('succes','Data berhasil diperbarui');
 
         
     }
@@ -89,22 +171,86 @@ class RwController extends Controller
     public function EditDataWarga(Request $request)
     {
 
+        //fungsi hitung bansos
+        
+        //skor pendidikan
+        if($request->pendidikan == 'SMA'){
+            $skorPendidikan = 1;
+        }else if($request->pendidikan == 'SMP'){
+            $skorPendidikan = 2;
+        }else if($request->pendidikan == 'SD'){
+            $skorPendidikan = 3;
+        }else if($request->pendidikan == 'Tidak Sekolah'){
+            $skorPendidikan = 4;
+        };
+        //skor status
+        if($request->status == 'janda/duda'){
+            $skorStatus = 1;
+        }else if($request->status == 'miskin'){
+            $skorStatus = 2;
+        }else if($request->status == 'sakit parah'){
+            $skorStatus = 3;
+        }else if($request->status == 'sebatang kara'){
+            $skorStatus = 4;
+        }
+        //skor gaji
+        if($request->gaji == '>1.000.000'){
+            $skorGaji = 1;
+        }else if($request->gaji == '600.000-1.000.000'){
+            $skorGaji = 2;
+        }else if($request->gaji == '400.000-600.000'){
+            $skorGaji = 3;
+        }else if($request->gaji == '0-400.000'){
+            $skorGaji = 4;
+        }
+        //skor umur
+        $usia = date_diff(date_create($request->tanggal_lahir), date_create('today'))->y;
+        if($usia < 20){
+            $skorUmur = 1;
+        }else if($usia >= 20 && $usia < 40){
+            $skorUmur = 2;
+        }else if($usia >= 40 && $usia < 60){
+            $skorUmur = 3;
+        }else if($usia >= 60 ){
+            $skorUmur = 4;
+        }
+        //skor luasrumah
+        $rumah = $request->luas_rumah;
+        if($rumah > 120){
+            $skorRumah = 1;
+        }else if($rumah >= 90 && $rumah < 120){
+            $skorRumah = 2;
+        }else if($rumah >= 70 && $rumah < 90){
+            $skorRumah = 3;
+        }else if($rumah < 70 ){
+            $skorRumah = 4;
+        }
+        //skor Bansos
+        $skorBansos = (($skorRumah * 15)+($skorUmur*25)+($skorGaji*30)+($skorStatus*20)+($skorPendidikan*10));
+        
         $citizen = CitizenModel::where('nik', $request->nik)->firstOrFail();
+
+
 
         // Update the citizen's data
         $citizen->update([
-            'no_kk' => $request->no_kk,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'pekerjaan' => $request->pekerjaan,
+            'nik' => $request->nik,
             'nama' => $request->nama,
-            'agama' => $request->agama,
+            'no_kk' => $request->no_kk,
+            'alamat' => $request->alamat,
             'status_kependudukan' => $request->status_kependudukan,
-            'golongan_darah' => $request->golongan_darah,
-            'status' => $request->status,
-            'rt' => $request->rt,
             'domisili' => $request->domisili,
-            'alamat' => $request->alamat_asli,
+            'rt' => $request->rt,
+            'agama' => $request->agama,
+            'golongan_darah' => $request->golongan_darah,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'pekerjaan' => $request->pekerjaan,
+            'status' => $request->status,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'pendidikan' => $request->pendidikan,
+            'luas_rumah' => $request->luas_rumah,
+            'gaji' => $request->gaji,
+            'skorbansos' => $skorBansos,
         ]);
 
         // Redirect back with a success message
@@ -156,29 +302,9 @@ class RwController extends Controller
                 $query->where('jenis_iuran', $request->keterangan);
             };
         }
-        $data_keuangan = $query->orderby('tanggal','desc')->get();
+        $data_keuangan = $query->orderby('tanggal','desc')->paginate(10);
 
-        //Total iuran PHB
-        $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
-        $total_pengeluaranPHB = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran PHB')->sum('jumlah');
-        $iuranPHB = number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
-
-        //Total iuran kematian
-        $total_pemasukanKematian = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran kematian')->sum('jumlah');
-        $total_pengeluaranKematian = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran kematian')->sum('jumlah');
-        $iuranKematian = number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
-
-        //Total iuran Listrik
-        $total_pemasukanListrik = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
-        $total_pengeluaranListrik = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
-        $iuranListrik = number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
-
-        //Total iuran Sampah
-        $total_pemasukanSampah = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
-        $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
-        $iuranSampah =number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
-
-        return view('rw.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian'));
+        return view('rw.datakeuangan',compact('data_keuangan'));
     }
 
     public function TambahDataKeuangan(Request $request)
@@ -377,7 +503,7 @@ class RwController extends Controller
          return redirect('data_umkm')->with('success', 'Data berhasil diperbarui');
         
     }
-
+    
     public function HapusUmkm(Request $request){
         $umkm = umkmModel::where('id', $request->id)->firstOrFail();
 
@@ -386,6 +512,16 @@ class RwController extends Controller
         }
 
         $umkm ->delete();
+
+        return redirect()->back()->with('success', 'Kegiatan berhasil dihapus.');
+    }
+    
+    public function SimpanUmkm(Request $request){
+        $umkm = umkmModel::where('id',$request->id)->firstorfail();
+
+        $umkm->update([
+            'persetujuan' => 'disetujui'
+        ]);
 
         return redirect()->back()->with('success', 'Kegiatan berhasil dihapus.');
     }
@@ -455,5 +591,16 @@ class RwController extends Controller
     
         // Return the file as a response for download
         return response()->download($filePath, $surat->nama_surat . '.' . pathinfo($filePath, PATHINFO_EXTENSION));
+    }
+
+    public function Databansos (){
+        
+        $bansos = citizenModel::where(function ($query) {
+            // Tambahkan kriteria untuk menentukan siapa yang layak menerima bantuan sosial
+            $query->where('skorBansos', '>', 300); // Misalnya, hanya yang memiliki skorBansos di atas 300 yang dianggap layak
+        })
+        ->orderBy('skorBansos', 'desc') // Urutkan dari yang teratas (skorBansos tertinggi) ke yang terbawah
+        ->get();
+        return view('rw.bansos',compact('bansos')); 
     }
 }
