@@ -21,7 +21,7 @@
     <div class="body">
         <div class="card">
             <div class="card-body bg-custom text-white text-center font-weight-bold">
-                <p class="card-text big-text">Selamat Datang!</p>
+                <p class="card-text big-text"></p>
                 <form class="mx-auto" style="width: 600px;">
                 </form>    
             </div>
