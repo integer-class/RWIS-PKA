@@ -18,7 +18,8 @@ class keuangan extends Seeder
             'jenis_iuran' => 'iuran kematian',
             'jenis_data' => 'pemasukan',
             'jumlah' => '500000',
-            'nama' => 'antonio'
+            'nama' => 'antonio',
+            'rt' => '3'
         ]);
         
         \App\Models\keuanganModel::factory()->create([
@@ -26,7 +27,8 @@ class keuangan extends Seeder
             'jenis_iuran' => 'iuran PHB',
             'jenis_data' => 'pemasukan',
             'jumlah' => '500000',
-            'nama' => 'antonio'
+            'nama' => 'antonio',
+            'rt' => '3'
         ]);
 
         \App\Models\keuanganModel::factory()->create([
@@ -34,8 +36,10 @@ class keuangan extends Seeder
             'jenis_iuran' => 'iuran kematian',
             'jenis_data' => 'pemasukan',
             'jumlah' => '500000',
-            'nama' => 'antonio'
+            'nama' => 'salsa',
+            'rt' => '1'
         ]);
+        
         
     }
 }
