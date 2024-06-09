@@ -416,7 +416,7 @@ class RtController extends Controller
         ]);
         return redirect('templatesurat');
     }
-
+        
     public function HapusSurat(Request $request){
         $templatesurat = templatesuratModel::where('id', $request->id)->firstOrFail();
 
@@ -449,5 +449,16 @@ class RtController extends Controller
     
         // Return the file as a response for download
         return response()->download($filePath, $surat->nama_surat . '.' . pathinfo($filePath, PATHINFO_EXTENSION));
+    }
+
+    public function Databansos (){
+        
+        $bansos = citizenModel::where(function ($query) {
+            // Tambahkan kriteria untuk menentukan siapa yang layak menerima bantuan sosial
+            $query->where('skorBansos', '>', 300); // Misalnya, hanya yang memiliki skorBansos di atas 300 yang dianggap layak
+        })
+        ->orderBy('skorBansos', 'desc') // Urutkan dari yang teratas (skorBansos tertinggi) ke yang terbawah
+        ->get();
+        return view('rt.bansos',compact('bansos')); 
     }
 }

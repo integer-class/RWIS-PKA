@@ -73,24 +73,31 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/rt_data_warga', [RtController::class, 'DataWarga'])->name('rt_data_warga');
         Route::post('/rt_prosesTambahWarga', [RtController::class, 'TambahDataWarga'])->name('rt_prosesTambahWarga');
         Route::post('/rt_prosesEditWarga', [RtController::class, 'EditDataWarga'])->name('rt_prosesEditWarga');
+        
         Route::get('/rt_data_keluarga', [RtController::class, 'Datakeluarga'])->name('rt_data_keluarga');
         Route::post('/rt_prosesTambahKk', [RtController::class, 'TambahDataKK'])->name('rt_prosesTambahKK');
         Route::post('/rt_prosesEditKk', [RtController::class, 'EditDataKK'])->name('rt_prosesEditKK');
+
         Route::get('/rt_data_keuangan',[RtController::class,'DataKeuangan'])->name('rt_data_keuangan');
         Route::post('/rt_prosesTambahKeuangan',[RtController::class,'TambahDataKeuangan'])->name('rt_prosesTambahKeuangan');
         Route::post('/rt_prosesEditKeuangan', [RtController::class, 'EditDataKeuangan'])->name('rt_prosesEditKeuangan');
+
         Route::get('/rt_data_kegiatan',[RtController::class,'DataKegiatan'])->name('rt_data_kegiatan');
         Route::post('/rt_prosesTambahKegiatan', [RtController::class, 'TambahKegiatan'])->name('rt_prosesTambahKegiatan');
         Route::post('/rt_prosesEditKegiatan', [RtController::class, 'EditDatakegiatan'])->name('rt_prosesEditkegiatan');
         Route::post('/rt_prosesHapuskegiatan', [RtController::class, 'HapusKegiatan'])->name('rt_prosesHapuskegiatan');
+
         Route::get('/rt_data_umkm',[RtController::class,'DataUmkm'])->name('rt_data_umkm');
         Route::post('/rt_prosesTambahUmkm', [RtController::class, 'TambahUmkm'])->name('rt_prosesTambahumkm');
         Route::post('/rt_prosesEditUmkm', [RtController::class, 'EditDataUmkm'])->name('rt_prosesEditumkm');
         Route::post('/rt_prosesHapusUmkm', [RtController::class, 'HapusUmkm'])->name('rt_prosesHapusumkm');
+
         Route::get('/rt_templatesurat',[RtController::class,'templatesurat'])->name('rt_templatesurat');
         Route::post('/rt_prosesTambahSurat', [RtController::class, 'TambahSurat'])->name('rt_prosesTambahsurat');
         Route::post('/rt_prosesHapusSurat', [RtController::class, 'HapusSurat'])->name('rt_prosesHapussurat');
         Route::get('/rt_downloadsurat/{id}', [RtController::class, 'DownloadSurat'])->name('rt_downloadsurat');
+
+        Route::get('/rt_data_bansos',[RtController::class, 'DataBansos'])->name('rt_data_bansos');   
     });
 
     Route::group(['middleware' => ['cek_login:3']], function () {
