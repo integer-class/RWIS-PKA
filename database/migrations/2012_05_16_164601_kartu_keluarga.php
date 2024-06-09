@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('provinsi');
             $table->string('rt');
             $table->string('rw');
+            $table->string('alamat');
             $table->string('kepala_keluarga');
 
         });

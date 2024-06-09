@@ -17,12 +17,16 @@
                 <div class="card">
                     <div class="header">
                         {{-- search bar --}}
-                        <form>
+                        <form method="GET" action="{{route('data_keluarga')}}">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Mail" aria-label="Search Mail" aria-describedby="search-mail">
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="search-mail"><i class="icon-magnifier"></i></span>
-                                </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="no_kk" class="form-control" placeholder="Cari Nomor Kk" aria-label="" aria-describedby="basic-addon1">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-outline-secondary" ><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                         </form>                            
                     </div>
@@ -33,6 +37,7 @@
                                     <tr>
                                         <th>Nomor KK</th>
                                         <th>Kepala Keluarga</th>
+                                        <th>Jumlah Anggota</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -42,32 +47,31 @@
                                     <tr>
                                         <td >{{$keluarga->no_kk}}</td>
                                         <td> {{$keluarga->kepala_keluarga}} </td>
+                                        <td>{{$keluarga->citizens_count}}</td>
                                         <td> 
 
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalCenter{{$keluarga->nik}}">Detail</button>
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalCenter{{$keluarga->no_kk}}">Detail</button>
                                             <button type="button" class="btn btn-danger"data-toggle="modal" data-target="#edit{{$keluarga->nik}}" >Edit</button>
                                             
                                         </td>                                        
                                     </tr>  
                                     {{-- Detail --}}
-                                    <div class="modal fade" id="exampleModalCenter{{$keluarga->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModalCenter{{$keluarga->no_kk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle"> data detail dari {{$keluarga->nama}} </h5>
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle"> Anggota Keluarga {{$keluarga->nama}} </h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    
-                                                    
-                                                    <p>
-                                                        ini diisi nanti (detail)
-                                                    </p>
-                                                    
+                                                    <ul>
+                                                        @foreach($warga->where('no_kk', $keluarga->no_kk) as $anggota)
+                                                            <li>{{ $anggota->nama }} - {{ \Carbon\Carbon::parse($anggota->tanggal_lahir)->age }} tahun - {{$anggota->jenis_kelamin}}</li>
+                                                        @endforeach
+                                                    </ul>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary theme-bg gradient">Save changes</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
                                                 </div>
                                             </div>
                                         </div>

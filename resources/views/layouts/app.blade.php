@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<title>Mooli | Home</title>
+<title>RT/RW Web Connect</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -25,6 +25,7 @@
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{ asset('assets/css/mooli.min.css')}}">
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
     
@@ -69,6 +70,9 @@
 <!-- Javascript -->
 <script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>    
 <script src="{{asset('assets/bundles/vendorscripts.bundle.js')}}"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <!-- Vedor js file and create bundle with grunt  --> 
 

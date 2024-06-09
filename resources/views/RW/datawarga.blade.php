@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section ('content')
- {{-- <link rel="stylesheet" href="{{ asset('public/assets/css/mooli.min.css')}}"> --}}
-
+ 
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <div class="body">
     <ul class="nav nav-tabs3 white">
         <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Home-new2">Data Warga</a></li>
@@ -17,12 +17,16 @@
                 <div class="card">
                     <div class="header">
                         {{-- search bar --}}
-                        <form>
+                        <form method="GET" action="{{route('data_warga')}}">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Mail" aria-label="Search Mail" aria-describedby="search-mail">
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="search-mail"><i class="icon-magnifier"></i></span>
-                                </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="nama" class="form-control" placeholder="Cari nama/nik" aria-label="" aria-describedby="basic-addon1">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-outline-secondary" ><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                         </form>                            
                     </div>
@@ -84,8 +88,8 @@
                                                             <p>:{{$penduduk->nik}}</p>
                                                             <p>:{{$penduduk->nama}}</p>
                                                             <p>:{{$penduduk->jenis_kelamin}}</p>
-                                                            <p>:{{$penduduk->pekerjaan}}</p>
                                                             <p>:{{$penduduk->tanggal_lahir}}</p>
+                                                            <p>:{{$penduduk->pekerjaan}}</p>
                                                             <p>:{{$penduduk->status_kependudukan}}</p>
                                                             <p>:{{$penduduk->luas_rumah}}</p>
                                                             <p>:{{$penduduk->agama}}</p>
@@ -305,6 +309,7 @@
                             <div class="form-group">
                                 <label for="">KK :</label>
                                 <input name="no_kk" type="text" class="form-control" placeholder="Nomor KK" required>
+    
                             </div>
                             <div class="form-group">
                                 <label for="">Jenis Kelamin :</label>
