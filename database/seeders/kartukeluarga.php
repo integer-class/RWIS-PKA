@@ -21,6 +21,7 @@ class kartukeluarga extends Seeder
             'rw' => '1',
             'kelurahan' => 'mbokor',
             'kecamatan' => 'mbokor',
+            'alamat' => 'perumahan Witwicky 3',
             'kabupaten' => 'malang',
             'provinsi' => 'jawa timur',
         ]);
@@ -31,6 +32,7 @@ class kartukeluarga extends Seeder
             'rw' => '3',
             'kelurahan' => 'mbokor',
             'kecamatan' => 'mbokor',
+            'alamat' => 'perumahan Witwicky 4',
             'kabupaten' => 'malang',
             'provinsi' => 'jawa timur',
         ]);
@@ -42,6 +44,7 @@ class kartukeluarga extends Seeder
             'rw' => '1',
             'kelurahan' => 'mbokor',
             'kecamatan' => 'mbokor',
+            'alamat' => 'perumahan Witwicky 5',
             'kabupaten' => 'malang',
             'provinsi' => 'jawa timur',
         ]);

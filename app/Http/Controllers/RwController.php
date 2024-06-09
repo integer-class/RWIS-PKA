@@ -40,11 +40,23 @@ class RwController extends Controller
          $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
          $iuranSampah =number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
 
-        return view('rw.index',compact('iuranSampah','iuranListrik','iuranKematian','iuranPHB'));
+        $warga=citizenModel::all();
+        $templatesurat=templatesuratModel::all();
+        $umkm=umkmModel::all();
+        $kegiatan=kegiatanModel::all();
+        
+        return view('rw.index',compact('iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
     }
 
-    public function DataWarga(){
-        $warga = citizenModel::all();
+    public function DataWarga(Request $request){
+        $query = citizenModel::query();
+        if ($request->filled('nama')) {
+            // Apply the search filter to the query
+            $query->where('nama', 'like', '%' . $request->input('nama') . '%')
+                  ->orWhere('nik', 'like', '%' . $request->input('nama') . '%');
+        }
+        $warga = $query->get();
+
         return view('rw.datawarga',compact('warga'));
     }
     
@@ -259,9 +271,20 @@ class RwController extends Controller
         
     }
 
-    public function DataKeluarga(){
-        $kartukeluarga = kartukeluargaModel::all();
-        return view('rw.datakeluarga',compact('kartukeluarga'));
+    public function DataKeluarga(request $request){
+
+        $query = kartukeluargaModel::withCount('citizens');
+
+    // Check if the 'no_kk' field is filled in the request
+    if ($request->filled('no_kk')) {
+        // Apply the search filter to the query
+        $query->where('no_kk', 'like', '%' . $request->input('no_kk') . '%');
+    }
+
+    // Execute the query and get the results
+    $kartukeluarga = $query->get();
+    $warga = citizenModel::all();
+    return view('rw.datakeluarga',compact('kartukeluarga','warga'));
     }
 
     public function TambahDataKK(Request $request)
@@ -493,7 +516,7 @@ class RwController extends Controller
         $umkm->update([
             'nama_umkm' => $request->nama_umkm,
             'nama_pemilik' => $request->nama_pemilik,
-            'no_telpon' => $request->no_telp,
+            'no_telpon' => $request->no_telpon,
             'deskripsi' => $request->deskripsi,
         ]);
     }
@@ -601,6 +624,8 @@ class RwController extends Controller
         })
         ->orderBy('skorBansos', 'desc') // Urutkan dari yang teratas (skorBansos tertinggi) ke yang terbawah
         ->get();
+
+        
         return view('rw.bansos',compact('bansos')); 
     }
 }

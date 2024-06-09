@@ -54,7 +54,7 @@
                                                                     <input type="file" class="dropify" data-default-file="{{asset('images/umkm/'.$data_umkm->gambar)}}" disabled="disabled">    
                                                                     <h5 class="card-title"><a href="#">{{$data_umkm->nama_umkm}}</a></h5>
                                                                     <p class="card-text">{{$data_umkm->deskripsi}}</p>
-                                                                    <p class="card-text"><small class="text-muted">Nomor telepon :{{$data_umkm->nomor_telp}}</small></p>
+                                                                    <p class="card-text"><small class="text-muted">Nomor telepon :{{$data_umkm->no_telpon}}</small></p>
                                                                     <p class="card-text"><small class="text-muted">Lokasi :{{$data_umkm->alamat}}</small></p>
                                                                 </div>
                                                             </div>   
@@ -91,7 +91,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="">nomor Telfon :</label>
-                                                                    <input name="no_telp" value="{{$data_umkm->no_telp}}" type="text"  class="form-control" placeholder="" required>
+                                                                    <input name="no_telpon" value="{{$data_umkm->no_telpon}}" type="text"  class="form-control" placeholder="" required>
                                                                 </div>
                                                                 <label>Deskripsi :</label>
                                                                 <div class="form-group c_form_group">
