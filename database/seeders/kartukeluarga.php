@@ -46,5 +46,49 @@ class kartukeluarga extends Seeder
             'provinsi' => 'jawa timur',
         ]);
 
+        \App\Models\kartukeluargaModel::factory()->create([
+            'no_kk' => '472751894',
+            'kepala_keluarga' => 'Rudi',
+            'rt' => '1',
+            'rw' => '1',
+            'kelurahan' => 'mbokor',
+            'kecamatan' => 'mbokor',
+            'kabupaten' => 'malang',
+            'provinsi' => 'jawa timur',
+        ]);
+
+        \App\Models\kartukeluargaModel::factory()->create([
+            'no_kk' => '472751901',
+            'kepala_keluarga' => 'Lia',
+            'rt' => '2',
+            'rw' => '1',
+            'kelurahan' => 'mbokor',
+            'kecamatan' => 'mbokor',
+            'kabupaten' => 'malang',
+            'provinsi' => 'jawa timur',
+        ]);
+
+        \App\Models\kartukeluargaModel::factory()->create([
+            'no_kk' => '472751906',
+            'kepala_keluarga' => 'Ahmad',
+            'rt' => '3',
+            'rw' => '1',
+            'kelurahan' => 'mbokor',
+            'kecamatan' => 'mbokor',
+            'kabupaten' => 'malang',
+            'provinsi' => 'jawa timur',
+        ]);
+
+        \App\Models\kartukeluargaModel::factory()->create([
+            'no_kk' => '472751911',
+            'kepala_keluarga' => 'Ali',
+            'rt' => '1',
+            'rw' => '1',
+            'kelurahan' => 'mbokor',
+            'kecamatan' => 'mbokor',
+            'kabupaten' => 'malang',
+            'provinsi' => 'jawa timur',
+        ]);
+
     }
 }

@@ -87,11 +87,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/rt_prosesTambahUmkm', [RtController::class, 'TambahUmkm'])->name('rt_prosesTambahumkm');
         Route::post('/rt_prosesEditUmkm', [RtController::class, 'EditDataUmkm'])->name('rt_prosesEditumkm');
         Route::post('/rt_prosesHapusUmkm', [RtController::class, 'HapusUmkm'])->name('rt_prosesHapusumkm');
-        Route::get('/rt_templatesurat',[RwController::class,'templatesurat'])->name('rt_templatesurat');
-        Route::post('/rt_prosesTambahSurat', [RwController::class, 'TambahSurat'])->name('rt_prosesTambahsurat');
-        Route::post('/rt_prosesHapusSurat', [RwController::class, 'HapusSurat'])->name('rt_prosesHapussurat');
-        Route::get('/rt_downloadsurat/{id}', [RwController::class, 'DownloadSurat'])->name('rt_downloadsurat');
-        
+        Route::get('/rt_templatesurat',[RtController::class,'templatesurat'])->name('rt_templatesurat');
+        Route::post('/rt_prosesTambahSurat', [RtController::class, 'TambahSurat'])->name('rt_prosesTambahsurat');
+        Route::post('/rt_prosesHapusSurat', [RtController::class, 'HapusSurat'])->name('rt_prosesHapussurat');
+        Route::get('/rt_downloadsurat/{id}', [RtController::class, 'DownloadSurat'])->name('rt_downloadsurat');
     });
 
     Route::group(['middleware' => ['cek_login:3']], function () {

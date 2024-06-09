@@ -7,9 +7,11 @@ use App\Models\citizenModel;
 use App\Models\kartukeluargaModel;
 use App\Models\kegiatanModel;
 use App\Models\keuanganModel;
+use App\Models\templatesuratModel;
 use App\Models\umkkmModel;
 use App\Models\umkmModel;
 use App\Models\UserModel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\facades\Hash;
 
 class RtController extends Controller
@@ -23,8 +25,15 @@ class RtController extends Controller
     }
 
     public function DataWarga(){
-        $warga = citizenModel::all();
-        return view('rt.datawarga',compact('warga'));
+        $user = Auth::user();
+        $userData = CitizenModel::where('nik', $user->nik)->firstOrFail();
+
+        $query = CitizenModel::query();
+        $query->where('rt', $userData->rt);
+
+        $warga = $query->paginate(10);
+        return view('rt.datawarga', compact('warga'));
+
     }
     
 
@@ -93,8 +102,14 @@ class RtController extends Controller
     }
 
     public function DataKeluarga(){
-        $kartukeluarga = kartukeluargaModel::all();
-        return view('rt.datakeluarga',compact('kartukeluarga'));
+  
+    $user = Auth::user();
+    $userData = CitizenModel::where('nik', $user->nik)->firstOrFail();
+
+    // Mengambil kartu keluarga yang terkait dengan RT pengguna yang terautentikasi
+    $kartukeluarga = kartukeluargaModel::where('rt', $userData->rt)->get();
+    
+    return view('rt.datakeluarga', compact('kartukeluarga', 'userData'));
     }
 
     public function TambahDataKK(Request $request)
@@ -120,7 +135,14 @@ class RtController extends Controller
 
     public function DataKeuangan(Request $request){
         //FIltering with query condition
+        $user = Auth::user();
+        $userData = CitizenModel::where('nik', $user->nik)->firstOrFail();
+
+        $rt= $userData->rt;
+
         $query = keuanganModel::query();
+        $query->where('rt', $userData->rt);
+        
 
         if ($request->filled('start_date') || $request->filled('end_date') || $request->filled('keterangan')){
             if ($request->filled('start_date')) {
@@ -157,7 +179,7 @@ class RtController extends Controller
         $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
         $iuranSampah = number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
 
-        return view('rt.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian'));
+        return view('rt.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian', 'rt'));
     }
 
     public function TambahDataKeuangan(Request $request)
