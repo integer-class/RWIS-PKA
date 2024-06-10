@@ -139,9 +139,9 @@ class WargaController extends Controller
         ->get();
         return view('warga.bansos',compact('bansos')); 
     }
-    public function Profile(){
+    public function Profilewarga(){
         $citizen = citizenModel::all();
-        return view('warga.profilewarga',compact('datawarga'));
+        return view('warga.profilewarga',compact('citizen'));
     }
 
 }   

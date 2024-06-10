@@ -111,6 +111,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/warga_templatesurat',[WargaController::class,'templatesurat'])->name('warga_templatesurat');
         Route::get('/warga_dashboard',[WargaController::class,'index'])->name('warga_dashboard');
         Route::get('/warga_data_bansos',[WargaController::class, 'DataBansos'])->name('warga_data_bansos');
+        Route::get('/warga_profile_warga', [WargaController::class, 'profilewarga'])->name('profile_warga');
+
     });
 });
 
