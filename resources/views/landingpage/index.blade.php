@@ -84,7 +84,7 @@
 	
 		<section class="our-services" id="mini-dashboard" style="background-color: #ffffff;">
 			<div class="container">
-				<div class="row">
+				<div class="row mb-5">
 					<div class="col-sm-12">
 						<h3 class="font-weight-bold mb-5" style="color: #D1EDF4; font-size: 56px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Mini Dashboard</h3>
 					</div>
@@ -132,6 +132,25 @@
 							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div class="mb-5">
+				<div class="owl-carousel-projects owl-carousel owl-theme">
+					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
 				</div>
 			</div>
 		</section>
@@ -192,7 +211,7 @@
 				</div>
 			</div>
 		</section>
-		
+
 	
 	<!-- main footer section --> 
 	<footer class="footer">

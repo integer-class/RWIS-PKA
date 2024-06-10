@@ -3,7 +3,33 @@
 {{-- <link rel="stylesheet" href="{{ asset('public/assets/css/mooli.min.css')}}"> --}}
 
 <div class="body">
-
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Keluarga Page</title>
+        <style>
+            .card-body {
+                background-image: url('https://i.pinimg.com/564x/01/50/7e/01507e8d734cb58f9aa07b22fa1df160.jpg');
+                background-size: cover;
+                background-position: center;
+                padding: 50px; /* Menambahkan padding untuk memperbesar tampilan gambar */
+                min-height: 200px; /* Menambahkan tinggi minimum */
+            }
+    
+            .card-text {
+                font-size: 1.9rem; /* Ukuran teks yang lebih besar */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="body">
+            <div class="card">
+                <div class="card-body text-white text-center font-weight-bold">
+                    <p class="card-text big-text">Selamat Datang di halaman Keluarga!</p>   
+                </div>
+            </div>
+        </div>
+    </body>
     <div class="tab-content">
         {{-- TAB tabel data warga --}}
         <div class="tab-pane show active" id="Home-new2">
@@ -23,39 +49,7 @@
                                     <tr>
                                         <td>{{$keluarga->no_kk}}</td>
                                         <td>{{$keluarga->kepala_keluarga}}</td>                                       
-                                    </tr>  
-                                    {{-- Detail
-                                    <div class="modal fade" id="exampleModalCenter{{$keluarga->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Data detail dari {{$keluarga->kepala_keluarga}}</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <p>Nama</p>
-                                                                    <p>Alamat</p>
-                                                                    <p>RT</p>
-                                                                    <p>Agama</p>
-                                                                    <p>Golongan Darah</p>
-                                                                    <p>Jenis Kelamin</p>
-                                                                    <p>Pekerjaan</p>
-                                                                    <p>Tanggal Lahir</p>
-                                                                    <p>Status</p>
-                                                                    <p>Kependudukan</p>
-                                                                </div>
-                                                    </p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                </div> --}}
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </tr>   
                                     @endforeach                                                                       
                                 </tbody>
                             </table>

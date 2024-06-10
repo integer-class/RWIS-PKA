@@ -29,6 +29,16 @@ class UserModel extends Model implements AuthenticatableContract
     }
     
       // Implement methods from AuthenticatableContract
- 
+      public function UserName()
+      {
+          // Assuming you're fetching the currently authenticated user
+          $user = auth()->user();
+          
+          // Retrieve the user's name
+          $userName = $user->nama; // Assuming the user's name field in UserModel is 'nama'
+          
+          // Pass the user's name to the Blade view
+          return view('sidebar.blade.php', ['userName' => $userName]);
+      }
  
 }

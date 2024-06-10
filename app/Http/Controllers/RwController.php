@@ -40,12 +40,42 @@ class RwController extends Controller
          $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
          $iuranSampah =number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
 
-        return view('rw.index',compact('iuranSampah','iuranListrik','iuranKematian','iuranPHB'));
+        $warga=citizenModel::all();
+        $templatesurat=templatesuratModel::all();
+        $umkm=umkmModel::all();
+        $kegiatan=kegiatanModel::all();
+    
+        $ketuaRtNik = UserModel::where('Role', '2')->pluck('nik');
+        $nama_ketua = CitizenModel::whereIn('nik', $ketuaRtNik)->get(['nik', 'rt', 'nama']);
+
+        
+        $ketuaRt1 = $nama_ketua->where('rt', '1')->first();
+        $ketuaRt2 = $nama_ketua->where('rt', '2')->first();
+        $ketuaRt3 = $nama_ketua->where('rt', '3')->first();
+
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rw.index',compact('nama_pengguna','ketuaRt3','ketuaRt2','ketuaRt1','iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
     }
 
-    public function DataWarga(){
-        $warga = citizenModel::all();
-        return view('rw.datawarga',compact('warga'));
+    public function DataWarga(Request $request){
+        $query = citizenModel::query();
+        if ($request->filled('nama')) {
+            // Apply the search filter to the query
+            $query->where('nama', 'like', '%' . $request->input('nama') . '%')
+                  ->orWhere('nik', 'like', '%' . $request->input('nama') . '%');
+        }
+        $warga = $query->paginate(10);
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        
+        return view('rw.datawarga',compact('nama_pengguna','warga'));
     }
     
     
@@ -259,9 +289,27 @@ class RwController extends Controller
         
     }
 
-    public function DataKeluarga(){
-        $kartukeluarga = kartukeluargaModel::all();
-        return view('rw.datakeluarga',compact('kartukeluarga'));
+    public function DataKeluarga(request $request){
+
+        $query = kartukeluargaModel::withCount('citizens');
+
+    // Check if the 'no_kk' field is filled in the request
+    if ($request->filled('no_kk')) {
+        // Apply the search filter to the query
+        $query->where('no_kk', 'like', '%' . $request->input('no_kk') . '%');
+    }
+
+    // Execute the query and get the results
+    $kartukeluarga = $query->get();
+    $warga = citizenModel::all();
+
+    $user = auth()->user();
+          
+     // Retrieve the user's name
+    $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+    $nama_pengguna = $pengguna->first();
+    
+    return view('rw.datakeluarga',compact('kartukeluarga','warga','nama_pengguna'));
     }
 
     public function TambahDataKK(Request $request)
@@ -304,7 +352,12 @@ class RwController extends Controller
         }
         $data_keuangan = $query->orderby('tanggal','desc')->paginate(10);
 
-        return view('rw.datakeuangan',compact('data_keuangan'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rw.datakeuangan',compact('data_keuangan','nama_pengguna'));
     }
 
     public function TambahDataKeuangan(Request $request)
@@ -340,7 +393,12 @@ class RwController extends Controller
 
     public function DataKegiatan(){
         $kegiatan = kegiatanModel::all();
-        return view('rw.datakegiatan',compact('kegiatan'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rw.datakegiatan',compact('kegiatan','nama_pengguna'));
     }
 
 
@@ -424,7 +482,12 @@ class RwController extends Controller
     public function DataUmkm(){
         $umkm = umkmModel::where('persetujuan','disetujui')->paginate(10);
         $umkmBaru = umkmModel::where('persetujuan','belum disetujui')->paginate(10);
-        return view('rw.dataumkm',compact('umkm','umkmBaru'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rw.dataumkm',compact('umkm','umkmBaru','nama_pengguna'));
     }
     
     public function TambahUmkm(Request $request)
@@ -493,7 +556,7 @@ class RwController extends Controller
         $umkm->update([
             'nama_umkm' => $request->nama_umkm,
             'nama_pemilik' => $request->nama_pemilik,
-            'no_telpon' => $request->no_telp,
+            'no_telpon' => $request->no_telpon,
             'deskripsi' => $request->deskripsi,
         ]);
     }
@@ -528,7 +591,12 @@ class RwController extends Controller
 
     public function templatesurat(){
         $templatesurat = templatesuratModel::all();
-        return view('rw.templatesurat',compact('templatesurat'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rw.templatesurat',compact('templatesurat','nama_pengguna'));
     }
 
     public function TambahSurat(Request $request)
@@ -597,10 +665,34 @@ class RwController extends Controller
         
         $bansos = citizenModel::where(function ($query) {
             // Tambahkan kriteria untuk menentukan siapa yang layak menerima bantuan sosial
-            $query->where('skorBansos', '>', 300); // Misalnya, hanya yang memiliki skorBansos di atas 300 yang dianggap layak
+            $query->where('skorBansos', '>', 299); // Misalnya, hanya yang memiliki skorBansos di atas 300 yang dianggap layak
         })
         ->orderBy('skorBansos', 'desc') // Urutkan dari yang teratas (skorBansos tertinggi) ke yang terbawah
         ->get();
-        return view('rw.bansos',compact('bansos')); 
+
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        
+        return view('rw.bansos',compact('bansos','nama_pengguna')); 
+    }
+
+    public function GantiRt(Request $request){
+        $nik_lama = $request->nik;
+        $nik_baru = $request->nik_baru;
+
+        $rt_lama = userModel::where('nik',$nik_lama);
+        $rt_baru = userModel::where('nik',$nik_baru);
+
+        $rt_lama -> update([
+            'role' => '3'
+        ]);
+        $rt_baru -> update([
+            'role' => '2'
+        ]);
+       
+        return redirect()->back()->with('success','Ketua Rt berhasil diganti');
     }
 }

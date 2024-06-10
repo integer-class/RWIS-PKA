@@ -30,6 +30,17 @@ class user extends Seeder
             'role' => '2',
             'password' =>  Hash::make('123'),
         ]);
+        \App\Models\UserModel::factory()->create([
+            'nik' => '12341234',
+            'role' => '2',
+            'password' =>  Hash::make('123'),
+        ]);
+        \App\Models\UserModel::factory()->create([
+            'nik' => '472751896',
+            'role' => '2',
+            'password' =>  Hash::make('123'),
+        ]);
+        
 
     }
 }

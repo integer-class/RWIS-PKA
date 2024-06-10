@@ -37,7 +37,9 @@ class citizenModel extends Model
         
     ];
 
-
+    public function family() {
+        return $this->belongsTo(kartukeluargaModel::class, 'no_kk', 'no_kk');
+    }
       // Implement methods from AuthenticatableContract
  
  

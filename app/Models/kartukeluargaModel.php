@@ -25,4 +25,7 @@ class kartukeluargaModel extends Model
         'kepala_keluarga',
         
     ];
+    public function citizens() {
+        return $this->hasMany(citizenModel::class, 'no_kk', 'no_kk');
+    }
 }
