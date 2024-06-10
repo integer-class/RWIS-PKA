@@ -12,9 +12,9 @@ class templatesuratModel extends Model
     public $timestamps = false;
     protected $primaryKey = 'id';
     protected $fillable = [
-        'tanggal',
         'nama_surat',
-        'surat',
+        'deskripsi_surat',
+        'nama_file_surat',
         
     ];
     

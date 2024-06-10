@@ -11,10 +11,9 @@
             </div>
             <div class="dropdown">
                 <span>RW </span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Virza Schumacher</strong></a>
+                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{$nama_pengguna->nama}}</strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                    <li><a href="page-profile.html"><i class="fa fa-user"></i>Profil Saya</a></li>
-                    <li><a href="page-login.html"><i class="fa fa-power-off"></i>Logout</a></li>
+                    <li><a href="page-profile.html" class="btn btn-link">Ganti Password</a></li>
                 </ul>
             </div>
         </div>  

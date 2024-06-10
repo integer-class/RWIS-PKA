@@ -4,8 +4,8 @@
 	<!-- Required meta tags --> 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Mooli - Landing</title>
-	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<title>RTWebConnect</title>
+	<link rel="icon" href="assets/images/RTRWLOGO.png" type="image/x-icon">
 	
 	<!-- Vendor css --> 
 	<link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
 	<!-- top header menu --> 
 	<nav class="navbar navbar-expand-lg fixed-top">
 		<div class="container">
-			<a class="navbar-brand" href="#"><img src="assets/images/logo.svg" alt="Mooli"></a>
+			<a class="navbar-brand" href="#"><img src="assets/images/logokecil.png" alt="Mooli"  ></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"><i class="mdi mdi-menu"> </i></span>
 			</button>
@@ -34,13 +34,14 @@
 					<a href="javascript:;" class="close-menu"><i class="mdi mdi-close"></i></a>
 				</div>
 				<ul class="navbar-nav ml-auto align-items-center">
-					<li class="nav-item active"><a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="#services">Kegiatan</a></li>
-					<li class="nav-item"><a class="nav-link" href="#about">UMKM</a></li>
-					<li class="nav-item"><a class="nav-link" href="#projects">KEUANGAN</a></li>
-					<li class="nav-item"><a class="nav-link" href="#testimonial">Template Surat</a></li>
-					<li class="nav-item"><a class="nav-link" href="#plans">Bansos</a></li>
-					<li class="nav-item"><a class="nav-link btn btn-primary" href="{{ url('/login') }}">Login</a></li>
+					<li class="nav-item active"><a class="nav-link" href="#home">HOME <span class="sr-only">(current)</span></a></li>
+					<li class="nav-item"><a class="nav-link" href="#data-warga">DATA WARGA</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">KEGIATAN</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">UMKM</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">KEUANGAN</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">TEMPLATE SURAT</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">BANSOS</a></li>
+					<li class="nav-item"><a class="nav-link btn btn-primary" href="{{ url('/login') }}">LOGIN</a></li>
 				</ul>
 			</div>
 		</div>
@@ -48,34 +49,87 @@
 	
 	<!-- main sass landing page html --> 
 	<div class="page-body-wrapper">
-		<section id="home" class="home">
+		<section id="home" class="home" style="background-image: url('assets/images/sd01.png'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; width: 100vw;">
+			<div class="container">
+			</div>
+		</section>
+		
+
+		{{-- <section class="" id="geografis" style="background-size: cover; background-position: center; background-repeat: no-repeat; height: 70vh; width: 100vw;">
 			<div class="container">
 				<div class="row">
+					<div class="judul-geo" style="flex: 1; text-align: center;">
+						<h1 style="font-weight: 1000; font-size: 80px; color: #C7A4C9;">GEOGRAFIS</h1>
+					</div>
 					<div class="col-sm-12">
-						<div class="main-banner">
-							<div class="bnr-text">
-								<div class="banner-title">
-									<h5>Business</h5>
-									<h1 class="font-weight-medium">STARTUP</h1>
-								</div>
-								<p class="mt-3">It is a long established fact that a reader will be distracted by the<br> readable content of a page when looking at its layout. </p>
-								<a href="#" class="btn btn-secondary mt-3">Learn more</a>
+						<div class="main-banner" style="display: flex; align-items: center;">
+							<div class="bnr-text" style="flex: 1; padding: 0 20px;">
+								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15803.838566623332!2d112.7334772525049!3d-8.00309917354418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6258c343c1a43%3A0xb61abf69f45dbfc!2sBokor%2C%20Kec.%20Tumpang%2C%20Kabupaten%20Malang%2C%20Jawa%20Timur!5e0!3m2!1sid!2sid!4v1718003434244!5m2!1sid!2sid" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 							</div>
-							<div class="bnr-img">
-								<img src="assets/images/banner-img.svg" class="img-fluid">
+							<div class="bnr-img" style="flex: 1; text-align: right;">
+								<img src="assets/images/maprwis.png" width="100%" style="max-width: 600px;">
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-		<section class="our-projects" id="projects">
+		</section> --}}
+		
+		
+
+		{{-- <section class="" id="datawarga">
+			
+		</section> --}}
+		
+	
+		<section class="our-services" id="mini-dashboard" style="background-color: #ffffff;">
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-sm-12">
-						<div class="d-sm-flex justify-content-between align-items-center mb-2">
-							<h3 class="font-weight-medium text-dark ">Let's See Our Latest Project</h3>
-							<div><a href="#" class="btn btn-outline-primary">View more</a></div>
+						<h3 class="font-weight-bold mb-5" style="color: #D1EDF4; font-size: 56px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Mini Dashboard</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box">
+							<img src="assets/images/data-warga.png" alt="integrated-marketing" style="width: auto; height: 80px; ">
+							<h6 class="mb-3 mt-4 font-weight-medium" style="color: #508390; font-size: 24px; font-weight: 600;">DATA WARGA</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box">
+							<img src="assets/images/kegiatan.png" alt="design-development"style="width: auto; height: 80px;" >
+							<h6 class="mb-3 mt-4 font-weight-medium" style="color: #508390; font-size: 24px; font-weight: 600;">KEGIATAN</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box">
+							<img src="assets/images/umkm.png" alt="digital-strategy" style="width: auto; height: 80px;">
+							<h6 class="mb-3 mt-4 font-weight-medium" style="color: #508390; font-size: 24px; font-weight: 600;">UMKM</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box pb-lg-0" >
+							<img src="assets/images/keuangan.png" alt="digital-marketing" style="width: auto; height: 80px;">
+							<h6 class="mb-3 mt-4 font-weight-medium" style="color: #508390; font-size: 24px; font-weight: 600;">KEUANGAN</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box pb-lg-0" >
+							<img src="assets/images/surat.png" alt="growth-strategy" style="width: auto; height: 80px;">
+							<h6 class="mb-3 mt-4 font-weight-medium" style="color: #508390; font-size: 24px; font-weight: 600;">SURAT</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box pb-0" >
+							<img src="assets/images/bansos.png" alt="saving-strategy" style="width: auto; height: 80px;">
+							<h6 class="mb-3 mt-4 font-weight-medium" style="color: #508390; font-size: 24px; font-weight: 600;">BANSOS</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
 						</div>
 					</div>
 				</div>
@@ -100,33 +154,16 @@
 				</div>
 			</div>
 		</section>
-		<section class="our-process" id="about">
+
+		<section class="our-process" id="data-warga" style="background-color:  #D1EDF4; background-size: cover; background-position: center; background-repeat: no-repeat; height: 50vh; width: 100vw;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-7 col-sm-12">
-						<h5 class="text-dark">Our work process</h5>
-						<h3 class="font-weight-medium text-dark">Discover New Idea With Us!</h3>
-						<h5 class="text-dark mb-5">Imagination will take us everywhere</h5>
-						<div class="d-flex justify-content-start mb-3">
-							<img src="assets/images/tick.svg" alt="tick" class="mr-3 tick-icon">
-							<p class="mb-0">It is a long established fact that a reader will be distracted</p>
-						</div>
-						<div class="d-flex justify-content-start mb-3">
-							<img src="assets/images/tick.svg" alt="tick" class="mr-3 tick-icon">
-							<p class="mb-0">There are many variations of passages of Lorem Ipsum</p>
-						</div>
-						<div class="d-flex justify-content-start mb-3">
-							<img src="assets/images/tick.svg" alt="tick" class="mr-3 tick-icon">
-							<p class="mb-0">Contrary to popular belief, Lorem Ipsum</p>
-						</div>
-						<div class="d-flex justify-content-start">
-							<img src="assets/images/tick.svg" alt="tick" class="mr-3 tick-icon">
-							<p class="mb-0">Various versions have evolved over the years, sometimes</p>
-						</div>
-					</div>
-					<div class="col-md-5 col-sm-12 text-right">
-						<img src="assets/images/idea.svg" alt="idea" class="img-fluid">
-					</div>
+						
+						<h3 class="font-weight-medium text-dark" style=" font-weight: 900;">DATA WARGA RW 01 DESA BOKOR</h3>
+						<h5 class="text-dark">Total penduduk per RT</h5>
+						
+						
 				</div>
 			</div>
 			<div class="container stat-icon">
@@ -137,8 +174,8 @@
 								<div class="d-flex py-3 my-3 my-lg-0 justify-content-center" >
 									<img src="assets/images/stat-icon-1.svg" alt="" class="mr-3">
 									<div>
-										<h4 class="font-weight-bold mb-0"><span class="scVal">0</span>%</h4>
-										<h6 class="mb-0">Satisfied clients</h6>
+										<h4 class="font-weight-bold mb-0"><span class="">{{$warga->where('rt','1')->count()}}</span></h4>
+										<h6 class="mb-0">RT 01</h6>
 									</div>
 								</div>
 							</div>
@@ -148,10 +185,10 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="d-flex py-3 my-3 my-lg-0 justify-content-center">
-									<img src="assets/images/stat-icon-2.svg" alt="" class="mr-3">
+									<img src="assets/images/stat-icon-1.svg" alt="" class="mr-3">
 									<div>
-										<h4 class="font-weight-bold mb-0"><span class="fpVal">0</span></h4>
-										<h6 class="mb-0">Finished Project</h6>
+										<h4 class="font-weight-bold mb-0"><span class="">{{$warga->where('rt','2')->count()}}</span></h4>
+										<h6 class="mb-0">RT 02</h6>
 									</div>
 								</div>
 							</div>
@@ -161,175 +198,20 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="d-flex py-3 my-3 my-lg-0 justify-content-center" >
-									<img src="assets/images/stat-icon-3.svg" alt="" class="mr-3">
+									<img src="assets/images/stat-icon-1.svg" alt="" class="mr-3">
 									<div>
-										<h4 class="font-weight-bold mb-0"><span class="tMVal">0</span></h4>
-										<h6 class="mb-0">Team Members</h6>
+										<h4 class="font-weight-bold mb-0"><span class="">{{$warga->where('rt','3')->count()}}</span></h4>
+										<h6 class="mb-0">RW 03</h6>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-6 col-sm-12">
-						<div class="card">
-							<div class="card-body">
-								<div class="d-flex py-3 my-3 my-lg-0 justify-content-center">
-									<img src="assets/images/stat-icon-4.svg" alt="" class="mr-3">
-									<div>
-										<h4 class="font-weight-bold mb-0"><span class="bPVal">0</span></h4>
-										<h6 class="mb-0">Our Blog Posts</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</section>
-		<section class="our-services" id="services">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<h5>We’re offering</h5>
-						<h3 class="font-weight-medium mb-5">Creative Digital Agency</h3>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box">
-							<img src="assets/images/service-icon/integrated-marketing.svg" alt="integrated-marketing" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Integrated Marketing</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box">
-							<img src="assets/images/service-icon/design-development.svg" alt="design-development" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Design & Development</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box">
-							<img src="assets/images/service-icon/digital-strategy.svg" alt="digital-strategy" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Digital Strategy</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box pb-lg-0" >
-							<img src="assets/images/service-icon/digital-marketing.svg" alt="digital-marketing" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Digital Marketing</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box pb-lg-0" >
-							<img src="assets/images/service-icon/growth-strategy.svg" alt="growth-strategy" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Growth Strategy</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box pb-0" >
-							<img src="assets/images/service-icon/saving-strategy.svg" alt="saving-strategy" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Saving Strategy</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="testimonial" id="testimonial">
-			<div class="container">
-				<div class="row  mt-md-0 mt-lg-4">
-					<div class="col-sm-6 text-white">
-						<p class="font-weight-bold mb-3">Testimonials</p>
-						<h3 class="font-weight-medium">Our customers are our <br>biggest fans</h3>
-						<ul class="flipster-custom-nav">
-							<li class="flipster-custom-nav-item"><a href="javascript:;" class="flipster-custom-nav-link" title="0"></a></li>
-							<li class="flipster-custom-nav-item"><a href="javascript:;" class="flipster-custom-nav-link"  title="1"></a></li>
-							<li class="flipster-custom-nav-item"><a href="javascript:;" class="flipster-custom-nav-link active" title="2"></a></li>
-							<li class="flipster-custom-nav-item"><a href="javascript:;" class="flipster-custom-nav-link"  title="3"></a></li>
-						</ul>
-					</div>
-					<div class="col-sm-6">
-						<div id="testimonial-flipster">
-							<ul>
-								<li>
-									<div class="testimonial-item">
-										<img src="assets/images/testimonial/testimonial1.jpg" alt="icon" class="testimonial-icons">
-										<p>Lorem ipsum dolor sit amet, consectetur pretium pretium tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium</p>
-										<h6 class="testimonial-author">Mark Spenser</h6>
-										<p class="testimonial-destination">Accounts</p>
-									</div>
-								</li>
-								<li>
-									<div class="testimonial-item">
-										<img src="assets/images/testimonial/testimonial2.jpg" alt="icon" class="testimonial-icons">
-										<p>Lorem ipsum dolor sit amet, consecteturpretium pretium tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium</p>
-										<h6 class="testimonial-author">Tua Manuera</h6>
-										<p class="testimonial-destination">Director,Dj market</p>
-									</div>
-								</li>
-								<li>
-									<div class="testimonial-item">
-										<img src="assets/images/testimonial/testimonial3.jpg" alt="icon" class="testimonial-icons">
-										<p>Lorem ipsum dolor sit amet, consecteturpretium pretium tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium</p>
-										<h6 class="testimonial-author">Sarah Philip</h6>
-										<p class="testimonial-destination">Chief Accountant</p>
-									</div>
-								</li>
-								<li>
-									<div class="testimonial-item">
-										<img src="assets/images/testimonial/testimonial4.jpg" alt="icon" class="testimonial-icons">
-										<p>Lorem ipsum dolor sit amet, consecteturpretium pretium tempor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium</p>
-										<h6 class="testimonial-author">Mark Spenser</h6>
-										<p class="testimonial-destination">Director,Dj market</p>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="contactus" id="contact">
-			<div class="container">
-				<div class="row mb-5 pb-5">
-					<div class="col-sm-5" >
-						<img src="assets/images/contact.svg" alt="contact" class="img-fluid">
-					</div>
-					<div class="col-sm-7" >
-						<h3 class="font-weight-medium mt-5 mt-lg-0">Got A Problem</h3>
-						<h6 class="mb-5">Various versions have evolved over the years, sometimes</h6>
-						<form>
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="form-group">
-										<input type="text" class="form-control" id="name" placeholder="Name*">
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<input type="email" class="form-control" id="mail" placeholder="Email*">
-									</div>
-								</div>
-								<div class="col-sm-12">
-									<div class="form-group">
-										<textarea name="message" id="message" class="form-control" placeholder="Message*" rows="5"></textarea>
-									</div>
-								</div>
-								<div class="col-sm-12">
-									<a href="#" class="btn btn-secondary">SEND</a>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
+
 	
 	<!-- main footer section --> 
 	<footer class="footer">
@@ -364,10 +246,8 @@
 							<div class="col-sm-4">
 								<h6 class="footer-title">Social Share</h6>
 								<ul class="list-footer">
-									<li><a href="#" class="footer-link">Home</a></li>
-									<li><a href="#" class="footer-link">About</a></li>
-									<li><a href="#" class="footer-link">Services</a></li>
-									<li><a href="#" class="footer-link">Portfolio</a></li>
+									<li><a href="#home" class="footer-link">Home</a></li>
+									<li><a href="#mini-dashboard" class="footer-link">About</a></li>
 									<li><a href="#" class="footer-link">Contact</a></li>
 								</ul>
 							</div>
@@ -400,7 +280,7 @@
 			<div class="container">
 				<div class="d-flex justify-content-between align-items-center">
 					<div class="d-flex align-items-center">
-						<p class="mb-0 text-small pt-1">© 2019-2020 <a href="https://www.puffintheme.com" class="text-white" target="_blank">puffintheme</a>. All rights reserved.</p>
+						<p class="mb-0 text-small pt-1">RTWebConnect</p>
 					</div>
 					<div>
 						<div class="d-flex">
@@ -433,3 +313,4 @@
 	<script src="assets/js/template.js"></script>
 </body>
 </html>
+

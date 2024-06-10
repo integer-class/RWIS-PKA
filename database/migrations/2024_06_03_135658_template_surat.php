@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('templatesurat', function (Blueprint $table) {
             $table->id('id');
             $table->String('nama_surat');
-            $table->string('surat');
-            $table->date('tanggal');
+            $table->string('nama_file_surat');
+            $table->text('deskripsi_surat');
             $table->timestamps();
         });
     }
