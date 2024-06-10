@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\RtController;
 use App\Http\Controllers\RwController;
 use App\Http\Controllers\WargaController;
@@ -17,9 +18,13 @@ use App\Http\Controllers\WargaController;
 |
 */
 
-Route::get('/', function () {
-    return view('landingpage.index');
-});
+// Route::get('/', function () {
+//     return view('landingpage.index');
+// });
+
+Route::get('/', [Controller::class, 'data']);
+
+// Route::get('/',[Controller::class, 'data']);
 
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
