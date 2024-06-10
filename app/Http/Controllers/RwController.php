@@ -300,7 +300,7 @@ class RwController extends Controller
     }
 
     // Execute the query and get the results
-    $kartukeluarga = $query->get();
+    $kartukeluarga = $query->paginate(10);
     $warga = citizenModel::all();
 
     $user = auth()->user();
@@ -603,9 +603,9 @@ class RwController extends Controller
     {
         // Validate the incoming request
     $request->validate([
-        'nama_file' => 'required|string|max:255',
-        'tanggal' => 'required|date',
-        'surat' => 'required|file|mimes:docx,pdf|max:2048'
+        'nama_surat' => 'required|string|max:255',
+        'deskripsi' => 'required',
+        'surat' => 'required|file|mimes:docx,pdf,doc|max:2048'
         
     ]);
 
@@ -613,15 +613,15 @@ class RwController extends Controller
     if ($request->hasFile('surat')) {
         $surat = $request->file('surat');
         $namaSurat = time() . '_' . uniqid() . '.' . $surat->getClientOriginalExtension();
-        $surat->move(public_path('images/surat'), $namaSurat);
+        $surat->move(public_path('Surat/'), $namaSurat);
     } else {
         $namaSurat = 'default.docx'; // Or handle the case when no image is uploaded
     }
 
         templatesuratModel::create([
             'nama_surat' => $request->nama_surat,
-            'tanggal'=> $request->tanggal,
-            'surat' => $namaSurat,
+            'deskripsi'=> $request->deskripsi_surat,
+            'nama_file_surat' => $namaSurat,
             
         ]);
         return redirect('templatesurat');
@@ -630,8 +630,8 @@ class RwController extends Controller
     public function HapusSurat(Request $request){
         $templatesurat = templatesuratModel::where('id', $request->id)->firstOrFail();
 
-        if ($templatesurat->surat && file_exists(public_path('images/surat/' . $templatesurat->surat))) {
-            unlink(public_path('images/surat/' . $templatesurat->surat));
+        if ($templatesurat->surat && file_exists(public_path('Surat/' . $templatesurat->nama_file_surat))) {
+            unlink(public_path('Surat/' . $templatesurat->nama_file_surat));
         }
 
         $templatesurat ->delete();
@@ -650,7 +650,7 @@ class RwController extends Controller
         }
     
         // Assuming the file path is stored in a 'surat' attribute
-        $filePath = public_path('images/surat/' . $surat->surat);
+        $filePath = public_path('Surat/' . $surat->nama_file_surat);
     
         if (!file_exists($filePath)) {
             // Handle the case where the file does not exist

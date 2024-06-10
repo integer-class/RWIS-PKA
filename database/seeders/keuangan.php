@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\keuanganModel;
 class keuangan extends Seeder
 {
     /**
@@ -12,34 +12,22 @@ class keuangan extends Seeder
      */
     public function run(): void
     {
+        // \App\Models\keuanganModel::factory(50)->create();// i want the amount of data using pengeluaran is less than pemasukan
 
-        \App\Models\keuanganModel::factory()->create([
-            'tanggal' => '2024-12-12',
-            'jenis_iuran' => 'iuran kematian',
-            'jenis_data' => 'pemasukan',
-            'jumlah' => '500000',
-            'nama' => 'antonio',
-            'rt' => '3'
-        ]);
         
-        \App\Models\keuanganModel::factory()->create([
-            'tanggal' => '2024-12-12',
-            'jenis_iuran' => 'iuran PHB',
-            'jenis_data' => 'pemasukan',
-            'jumlah' => '500000',
-            'nama' => 'antonio',
-            'rt' => '3'
+        $totalEntries = 10;
+        $pemasukanEntries = (int) ($totalEntries * 0.7); // 70% pemasukan
+        $pengeluaranEntries = $totalEntries - $pemasukanEntries; // 30% pengeluaran
+
+        // Create pemasukan entries
+        KeuanganModel::factory($pemasukanEntries)->create([
+            'jenis_data' => 'pemasukan'
         ]);
 
-        \App\Models\keuanganModel::factory()->create([
-            'tanggal' => '2024-12-12',
-            'jenis_iuran' => 'iuran kematian',
-            'jenis_data' => 'pemasukan',
-            'jumlah' => '500000',
-            'nama' => 'salsa',
-            'rt' => '1'
+        // Create pengeluaran entries
+        KeuanganModel::factory($pengeluaranEntries)->create([
+            'jenis_data' => 'pengeluaran'
         ]);
-        
         
     }
 }

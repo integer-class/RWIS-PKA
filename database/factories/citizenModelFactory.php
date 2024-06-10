@@ -33,7 +33,7 @@ class citizenModelFactory extends Factory
             // 'pendidikan' => $this->faker->randomElement(['SD','SMP','SMA','Tidak Sekolah']),
             // 'luas_rumah' => $this->faker->randomNumber(3),
             // 'gaji' => $this->faker->randomElement(['0-200.000','200.000-400.000','400.000-600.000','600.000-1.000.000']),
-        ];
+        ]; 
     }
 }
         // 'nik',
