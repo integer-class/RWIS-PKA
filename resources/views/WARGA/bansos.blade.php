@@ -35,6 +35,11 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {{-- Button Pagination --}}
+                    <div class="text-center mt-3">
+                        <a href="{{ $bansos->previousPageUrl() }}" class="btn btn-primary {{ $bansos->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                        <a href="{{ $bansos->nextPageUrl() }}" class="btn btn-primary {{ $bansos->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                    </div>
                 </div>
             </div>
         </div>

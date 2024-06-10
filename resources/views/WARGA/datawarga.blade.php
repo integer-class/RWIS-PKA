@@ -51,6 +51,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{-- Button Pagination --}}
+                        <div class="text-center mt-3">
+                            <a href="{{ $datawarga->previousPageUrl() }}" class="btn btn-primary {{ $datawarga->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                            <a href="{{ $datawarga->nextPageUrl() }}" class="btn btn-primary {{ $datawarga->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                        </div>
                     </div>
                 </div>
             </div>
