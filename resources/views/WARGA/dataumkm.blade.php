@@ -63,6 +63,11 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    {{-- Button Pagination --}}
+                                    <div class="text-center mt-3">
+                                        <a href="{{ $umkm->previousPageUrl() }}" class="btn btn-primary {{ $umkm->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                                        <a href="{{ $umkm->nextPageUrl() }}" class="btn btn-primary {{ $umkm->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -70,7 +70,7 @@
     <div class="header">
         <h2>Laporan keuangan RW 01</h2>
         {{-- <h2>Filter Laporan Keuangan RW 01</h2> --}} 
-        <form method="GET" action="{{ route('data_keuangan') }}">
+        <form method="GET" action="{{ route('warga_data_keuangan') }}">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -128,6 +128,11 @@
                     @endforeach
                 </tbody>
             </table>
+            {{-- Button Pagination --}}
+            <div class="text-center mt-3">
+                <a href="{{ $warga->previousPageUrl() }}" class="btn btn-primary {{ $warga->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                <a href="{{ $warga->nextPageUrl() }}" class="btn btn-primary {{ $warga->hasMorePages() ? '' : 'disabled' }}">Next</a>
+            </div>
         </div>
     </div>
 </div>

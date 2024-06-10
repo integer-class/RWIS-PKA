@@ -40,15 +40,19 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nomor KK</th>
-                                        <th>Kepala Keluarga</th>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($kartukeluarga as $keluarga)
+                                    @foreach ($keluarga as $data_keluarga)
                                     <tr>
-                                        <td>{{$keluarga->no_kk}}</td>
-                                        <td>{{$keluarga->kepala_keluarga}}</td>                                       
+                                        <th>{{$loop->iteration}}</th>
+                                        <td>{{$data_keluarga->no_kk}}</td>
+                                        <td>{{$data_keluarga->nik}}</td>
+                                        <td>{{$data_keluarga->nama}}</td>                                       
                                     </tr>   
                                     @endforeach                                                                       
                                 </tbody>
