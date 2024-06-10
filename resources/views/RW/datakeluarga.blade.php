@@ -153,6 +153,11 @@
                                    
                                 </tbody>
                             </table>
+                            {{-- Button Paginate --}}
+                            <div class="text-center mt-3">
+                                <a href="{{ $kartukeluarga->previousPageUrl() }}" class="btn btn-primary {{ $kartukeluarga->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                                <a href="{{ $kartukeluarga->nextPageUrl() }}" class="btn btn-primary {{ $kartukeluarga->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                            </div>
                         </div>
                     </div>
                 </div>

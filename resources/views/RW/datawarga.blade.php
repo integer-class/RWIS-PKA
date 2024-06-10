@@ -229,7 +229,7 @@
                                                                     <select name="gaji" class="custom-select" id="inputGroupSelect01" required>
                                                                         <option >Pilih rentang gaji </option>
                                                                         <option value="0-400.000" {{$penduduk->gaji == '0-400.000' ? 'selected' : ''}}>0-400.000</option>
-                                                                        <option value="200.000-600.000" {{$penduduk->gaji == '200.000-600.000' ? 'selected' : ''}}>200.000-600.000</option>
+                                                                        <option value="400.000-600.000" {{$penduduk->gaji == '400.000-600.000' ? 'selected' : ''}}>400.000-600.000</option>
                                                                         <option value="600.000-1.000.000" {{$penduduk->gaji == '600.000-1.000.000' ? 'selected' : ''}}>600.000-1.000.000</option>
                                                                         <option value=">1.000.000" {{$penduduk->gaji == '>1.000.000' ? 'selected' : ''}}>>1.000.000</option>
                                                                     </select>
@@ -265,6 +265,11 @@
                                    
                                 </tbody>
                             </table>
+                            {{-- Button Pagination --}}
+                            <div class="text-center mt-3">
+                                <a href="{{ $warga->previousPageUrl() }}" class="btn btn-primary {{ $warga->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                                <a href="{{ $warga->nextPageUrl() }}" class="btn btn-primary {{ $warga->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -404,7 +409,7 @@
                                 <select name="gaji" class="custom-select" id="inputGroupSelect01" required>
                                     <option >Pilih rentang gaji </option>
                                     <option value="0-400.000">0-400.000</option>
-                                    <option value="200.000-600.000">200.000-600.000</option>
+                                    <option value="400.000-600.000">400.000-600.000</option>
                                     <option value="600.000-1.000.000">600.000-1.000.000</option>
                                     <option value=">1.000.000">>1.000.000</option>
                                 </select>

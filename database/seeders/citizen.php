@@ -30,7 +30,7 @@ class citizen extends Seeder
             'status' => "janda/duda",
             'pendidikan' => "SMA",
             'luas_rumah' => "90",
-            'gaji' => "200.000-400.000",
+            'gaji' => "400.000-600.000",
             'skorbansos' => 290,
         ]);
         \App\Models\citizenModel::factory()->create([
@@ -68,7 +68,7 @@ class citizen extends Seeder
             'status' => "janda/duda", 
             'pendidikan' => "SD",
             'luas_rumah' => "65",
-            'gaji' => "0-200.000",
+            'gaji' => "0-400.000",
             'skorbansos' =>290,
         ]);
         
@@ -89,7 +89,7 @@ class citizen extends Seeder
             'status' => 'miskin',
             'pendidikan' => 'SMP',
             'luas_rumah' => 75,
-            'gaji' => '200.000-400.000',
+            'gaji' => '400.000-600.000',
             'skorbansos' => 250,
         ]);
         \App\Models\citizenModel::factory()->create([
@@ -146,7 +146,7 @@ class citizen extends Seeder
             'status' => 'miskin',
             'pendidikan' => 'SMP',
             'luas_rumah' => 65,
-            'gaji' => '200.000-400.000',
+            'gaji' => '400.000-600.000',
             'skorbansos' => 260,
         ]);
         \App\Models\citizenModel::factory()->create([
@@ -165,7 +165,7 @@ class citizen extends Seeder
             'status' => 'janda/duda',
             'pendidikan' => 'SD',
             'luas_rumah' => 90,
-            'gaji' => '0-200.000',
+            'gaji' => '0-400.000',
             'skorbansos' => 240,
         ]);
 
@@ -186,7 +186,7 @@ class citizen extends Seeder
             'status' => 'miskin',
             'pendidikan' => 'SMP',
             'luas_rumah' => 85,
-            'gaji' => '200.000-400.000',
+            'gaji' => '400.000-600.000',
             'skorbansos' => 250,
         ]);
         \App\Models\citizenModel::factory()->create([
@@ -243,7 +243,7 @@ class citizen extends Seeder
             'status' => 'miskin',
             'pendidikan' => 'SMP',
             'luas_rumah' => 65,
-            'gaji' => '200.000-400.000',
+            'gaji' => '400.000-600.000',
             'skorbansos' => 260,
         ]);
         \App\Models\citizenModel::factory()->create([
@@ -262,7 +262,7 @@ class citizen extends Seeder
             'status' => 'janda/duda',
             'pendidikan' => 'SD',
             'luas_rumah' => 90,
-            'gaji' => '0-200.000',
+            'gaji' => '0-400.000',
             'skorbansos' => 240,
         ]);
 
@@ -284,7 +284,7 @@ class citizen extends Seeder
             'status' => 'miskin',
             'pendidikan' => 'SMP',
             'luas_rumah' => 85,
-            'gaji' => '200.000-400.000',
+            'gaji' => '400.000-600.000',
             'skorbansos' => 250,
         ]);
         \App\Models\citizenModel::factory()->create([
@@ -341,7 +341,7 @@ class citizen extends Seeder
             'status' => 'miskin',
             'pendidikan' => 'SMP',
             'luas_rumah' => 65,
-            'gaji' => '200.000-400.000',
+            'gaji' => '400.000-600.000',
             'skorbansos' => 260,
         ]);
         \App\Models\citizenModel::factory()->create([
@@ -360,7 +360,7 @@ class citizen extends Seeder
             'status' => 'miskin',
             'pendidikan' => 'SMP',
             'luas_rumah' => 75,
-            'gaji' => '200.000-400.000',
+            'gaji' => '400.000-600.000',
             'skorbansos' => 250,
         ]);
 
