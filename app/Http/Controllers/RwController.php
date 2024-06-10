@@ -44,8 +44,13 @@ class RwController extends Controller
         $templatesurat=templatesuratModel::all();
         $umkm=umkmModel::all();
         $kegiatan=kegiatanModel::all();
-        
-        return view('rw.index',compact('iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
+    
+        $ketuaRtNik = UserModel::where('Role', '2')->pluck('nik');
+        $nama_ketua = citizenModel::where('nik', $ketuaRtNik);
+        $ketuaRt1 = $nama_ketua->firstwhere('rt','1');
+        $ketuaRt2 = $nama_ketua->firstwhere('rt','2');
+        $ketuaRt3 = $nama_ketua->firstwhere('rt','3');
+        return view('rw.index',compact('ketuaRt3','ketuaRt2','ketuaRt1','iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
     }
 
     public function DataWarga(Request $request){

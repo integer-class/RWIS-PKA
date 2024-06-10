@@ -40,7 +40,7 @@ class citizen extends Seeder
             'alamat' => 'Mbokor',
             'status_kependudukan' => 'Warga Tetap',
             'domisili' => 'Mbokor Tengah',
-            'rt' => '2',
+            'rt' => '3',
             'agama' => 'Hindu',
             'golongan_darah' => 'A',
             'jenis_kelamin' => 'laki-laki',

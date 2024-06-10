@@ -30,6 +30,7 @@ class user extends Seeder
             'role' => '2',
             'password' =>  Hash::make('123'),
         ]);
+        
 
     }
 }

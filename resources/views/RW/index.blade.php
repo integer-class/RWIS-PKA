@@ -27,6 +27,68 @@
             </div>
         </div>
     </div>
+
+    <div class="row clearfix">
+        <div class="col-md-4 col-sm-12">
+            <div class="card">
+                <div class="body">
+                    <div class="row clearfix">
+                        <div class="col-7">
+                            <h5 class="mb-0"></h5>
+                            <small class="info">of 1Tb</small>
+                        </div>
+                        <div class="col-5 text-right">
+                            <h2 class="m-b-0">62%</h2>
+                        </div>
+                        <div class="col-12">                                    
+                            <div class="progress progress-xxs progress-transparent custom-color-blue mb-0 mt-3">
+                                <div class="progress-bar" data-transitiongoal="87"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+            <div class="card">
+                <div class="body">
+                    <div class="row clearfix">
+                        <div class="col-7">
+                            <h5 class="mb-0"></h5>
+                            <small class="info">of 31</small>
+                        </div>
+                        <div class="col-5 text-right">
+                            <h2 class="m-b-0">62%</h2>
+                        </div>
+                        <div class="col-6">                                    
+                            <button type="button" class="btn btn-link">ganti</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+        <div class="col-md-4 col-sm-12">
+            <div class="card">
+                <div class="body">
+                    <div class="row clearfix">
+                        <div class="col-7">
+                            <h5 class="mb-0"></h5>
+                            <small class="info">of 10</small>
+                        </div>
+                        <div class="col-5 text-right">
+                            <h2 class="m-b-0">2</h2>
+                        </div>
+                        <div class="col-12">                                    
+                            <div class="progress progress-xxs progress-transparent custom-color-green mb-0 mt-3">
+                                <div class="progress-bar" data-transitiongoal="67"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                
+    </div>
+
     <div class="row clearfix">
         <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light page_menu">
