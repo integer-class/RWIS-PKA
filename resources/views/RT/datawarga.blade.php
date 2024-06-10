@@ -19,7 +19,7 @@
                         {{-- search bar --}}
                         <form>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Mail" aria-label="Search Mail" aria-describedby="search-mail">
+                                <input type="text" class="form-control" placeholder="Cari Data Warga" aria-label="Cari Data Warga" aria-describedby="search-mail">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="search-mail"><i class="icon-magnifier"></i></span>
                                 </div>
@@ -50,6 +50,7 @@
                                             
                                         </td>                                        
                                     </tr>  
+                                    {{-- detail --}}
                                     <div class="modal fade" id="exampleModalCenter{{$penduduk->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -116,7 +117,7 @@
                                                 </div>
                                                 <div class="modal-body">
 
-                                                    <form method="post" action="{{route('prosesEditWarga')}}">
+                                                    <form method="post" action="{{route('rt_prosesEditWarga')}}">
                                                         @csrf
                                                         <div class="row clearfix">
                                                             {{-- kiri atas --}}
@@ -259,7 +260,7 @@
 
         {{-- TAB Tambah warga --}}
         <div class="tab-pane" id="Profile-new2">
-        <form method="post" action="{{route('prosesTambahWarga')}}">
+        <form method="post" action="{{route('rt_prosesTambahWarga')}}">
             @csrf
             <div class="card">
                 <div class="header">
@@ -373,7 +374,12 @@
 
         </div>
         
-        
+        <!-- Pagination Button -->
+        <div class="text-center mt-3">
+            <a href="{{ $warga->previousPageUrl() }}" class="btn btn-primary {{ $warga->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+            <a href="{{ $warga->nextPageUrl() }}" class="btn btn-primary {{ $warga->hasMorePages() ? '' : 'disabled' }}">Next</a>
+        </div>
+
     </div>
 </div>
 

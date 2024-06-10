@@ -69,57 +69,34 @@
 				</div>
 			</div>
 		</section>
-		<section class="our-services" id="services">
+		<section class="our-projects" id="projects">
 			<div class="container">
-				<div class="row">
+				<div class="row mb-5">
 					<div class="col-sm-12">
-						<h5>We’re offering</h5>
-						<h3 class="font-weight-medium mb-5">Creative Digital Agency</h3>
+						<div class="d-sm-flex justify-content-between align-items-center mb-2">
+							<h3 class="font-weight-medium text-dark ">Let's See Our Latest Project</h3>
+							<div><a href="#" class="btn btn-outline-primary">View more</a></div>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box">
-							<img src="assets/images/service-icon/integrated-marketing.svg" alt="integrated-marketing" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Integrated Marketing</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box">
-							<img src="assets/images/service-icon/design-development.svg" alt="design-development" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Design & Development</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box">
-							<img src="assets/images/service-icon/digital-strategy.svg" alt="digital-strategy" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Digital Strategy</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box pb-lg-0" >
-							<img src="assets/images/service-icon/digital-marketing.svg" alt="digital-marketing" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Digital Marketing</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box pb-lg-0" >
-							<img src="assets/images/service-icon/growth-strategy.svg" alt="growth-strategy" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Growth Strategy</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 text-center text-lg-left">
-						<div class="services-box pb-0" >
-							<img src="assets/images/service-icon/saving-strategy.svg" alt="saving-strategy" >
-							<h6 class="mb-3 mt-4 font-weight-medium">Saving Strategy</h6>
-							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
-						</div>
-					</div>
+			</div>
+			<div class="mb-5">
+				<div class="owl-carousel-projects owl-carousel owl-theme">
+					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
+					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
 				</div>
 			</div>
 		</section>
@@ -209,34 +186,57 @@
 				</div>
 			</div>
 		</section>
-		<section class="our-projects" id="projects">
+		<section class="our-services" id="services">
 			<div class="container">
-				<div class="row mb-5">
+				<div class="row">
 					<div class="col-sm-12">
-						<div class="d-sm-flex justify-content-between align-items-center mb-2">
-							<h3 class="font-weight-medium text-dark ">Let's See Our Latest Project</h3>
-							<div><a href="#" class="btn btn-outline-primary">View more</a></div>
-						</div>
+						<h5>We’re offering</h5>
+						<h3 class="font-weight-medium mb-5">Creative Digital Agency</h3>
 					</div>
 				</div>
-			</div>
-			<div class="mb-5">
-				<div class="owl-carousel-projects owl-carousel owl-theme">
-					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
+				<div class="row">
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box">
+							<img src="assets/images/service-icon/integrated-marketing.svg" alt="integrated-marketing" >
+							<h6 class="mb-3 mt-4 font-weight-medium">Integrated Marketing</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box">
+							<img src="assets/images/service-icon/design-development.svg" alt="design-development" >
+							<h6 class="mb-3 mt-4 font-weight-medium">Design & Development</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box">
+							<img src="assets/images/service-icon/digital-strategy.svg" alt="digital-strategy" >
+							<h6 class="mb-3 mt-4 font-weight-medium">Digital Strategy</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box pb-lg-0" >
+							<img src="assets/images/service-icon/digital-marketing.svg" alt="digital-marketing" >
+							<h6 class="mb-3 mt-4 font-weight-medium">Digital Marketing</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box pb-lg-0" >
+							<img src="assets/images/service-icon/growth-strategy.svg" alt="growth-strategy" >
+							<h6 class="mb-3 mt-4 font-weight-medium">Growth Strategy</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 text-center text-lg-left">
+						<div class="services-box pb-0" >
+							<img src="assets/images/service-icon/saving-strategy.svg" alt="saving-strategy" >
+							<h6 class="mb-3 mt-4 font-weight-medium">Saving Strategy</h6>
+							<p>Lorem ipsum dolor sit amet, pretium pretium tempor.Lorem ipsum </p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -289,92 +289,6 @@
 									</div>
 								</li>
 							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="pricing-list" id="plans">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="d-sm-flex justify-content-between align-items-center mb-2">
-							<div>
-								<h3 class="font-weight-medium text-dark ">Checkout Pricing Plan</h3>
-								<h6 class="text-dark ">There are many variations of passages of Lorem Ipsum available, but the majority</h6>
-							</div>
-							<div class="mb-5 mb-lg-0 mt-3 mt-lg-0">
-								<div class="d-flex align-items-center">
-									<p class="mr-2 font-weight-medium monthly text-active check-box-label">Monthly</p>
-									<label class="toggle-switch toggle-switch">
-										<input type="checkbox" checked  id="toggle-switch">
-										<span class="toggle-slider round"></span>
-									</label>
-									<p class="ml-2 font-weight-medium yearly check-box-label">Yearly</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="pricing-box">
-							<img src="assets/images/plan-1.svg" alt="">
-							<h6 class="font-weight-medium title-text">Freelance</h6>
-							<h1 class="text-amount mb-4 mt-2">$99</h1>
-							<ul class="pricing-list">
-								<li>-- Create a free website --</li>
-								<li>-- Connect Domain --</li>
-								<li>-- Business and ecommerce --</li>
-								<li>-- Idea for smaller professional websites --</li>
-								<li>-- Web space --</li>
-							</ul>
-							<a href="#" class="btn btn-outline-primary">Puchase Now</a>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="pricing-box selected">
-							<img src="assets/images/plan-2.svg" alt="">
-							<h6 class="font-weight-medium title-text">Business</h6>
-							<h1 class="text-amount mb-4 mt-2">$199</h1>
-							<ul class="pricing-list">
-								<li>-- Create a free website --</li>
-								<li>-- Connect Domain --</li>
-								<li>-- Business and ecommerce --</li>
-								<li>-- Idea for smaller professional websites --</li>
-								<li>-- Web space --</li>
-							</ul>
-							<a href="#" class="btn btn-primary">Puchase Now</a>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="pricing-box">
-							<img src="assets/images/plan-3.svg" alt="">
-							<h6 class="font-weight-medium title-text">Enterprise</h6>
-							<h1 class="text-amount mb-4 mt-2">$299</h1>
-							<ul class="pricing-list">
-								<li>-- Create a free website --</li>
-								<li>-- Connect Domain --</li>
-								<li>-- Business and ecommerce --</li>
-								<li>-- Idea for smaller professional websites --</li>
-								<li>-- Web space --</li>
-							</ul>
-							<a href="#" class="btn btn-outline-primary">Puchase Now</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="clients">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="d-sm-flex justify-content-between align-items-center">
-							<img src="assets/images/client-logo/deloit.svg" alt="deloit" class="p-2 p-lg-0">
-							<img src="assets/images/client-logo/erricson.svg" alt="erricson" class="p-2 p-lg-0">
-							<img src="assets/images/client-logo/netflix.svg" alt="netflix" class="p-2 p-lg-0">
-							<img src="assets/images/client-logo/instagram.svg" alt="instagram" class="p-2 p-lg-0">
-							<img src="assets/images/client-logo/coinbase.svg" alt="coinbase" class="p-2 p-lg-0">
 						</div>
 					</div>
 				</div>

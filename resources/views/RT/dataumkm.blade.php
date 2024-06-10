@@ -73,7 +73,7 @@
                                                             <h5 class="modal-title" id="exampleModalCenterTitle">Edit umkm</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                         </div>
-                                                        <form method="POST" action="{{route('prosesEditumkm')}}" enctype="multipart/form-data" >
+                                                        <form method="POST" action="{{route('rt_prosesEditumkm')}}" enctype="multipart/form-data" >
                                                          @csrf
                                                          <div class="modal-body">
                                                                 <input type="hidden" name="id" value="{{$data_umkm->id}}">
@@ -122,7 +122,7 @@
                                                             <h5 class="modal-title" id="exampleModalCenterTitle">Hapus umkm</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                         </div>
-                                                        <form method="POST" action="{{route('prosesHapusumkm')}}">
+                                                        <form method="POST" action="{{route('rt_prosesHapusumkm')}}">
                                                             @csrf
                                                             <input type="hidden" name="id" value="{{$data_umkm->id}}" >
                                                             <div class="modal-body">
@@ -159,7 +159,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{route('prosesTambahumkm')}}" enctype="multipart/form-data" >
+                    <form method="POST" action="{{route('rt_prosesTambahumkm')}}" enctype="multipart/form-data" >
                         @csrf
                         <div class="form-group">
                             <label for="">Nama umkm :</label>

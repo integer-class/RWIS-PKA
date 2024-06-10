@@ -17,6 +17,7 @@ class keuanganModel extends Model
         'jenis_data',
         'jumlah',
         'nama',
+        'rt'
     ];
     
 }
