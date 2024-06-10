@@ -93,8 +93,8 @@ class citizen extends Seeder
             'skorbansos' => 250,
         ]);
         \App\Models\citizenModel::factory()->create([
-            'nik' => '472751128',
-            'nama' => 'Kara',
+            'nik' => '2241720071',
+            'nama' => 'Donquixote Ananda',
             'no_kk' => '472751894',
             'alamat' => 'Mbokor',
             'status_kependudukan' => 'Warga Tetap',

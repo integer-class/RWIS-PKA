@@ -38,6 +38,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        {{-- Button Pagination --}}
+                        <div class="text-center mt-3">
+                            <a href="{{ $templatesurat->previousPageUrl() }}" class="btn btn-primary {{ $templatesurat->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                            <a href="{{ $templatesurat->nextPageUrl() }}" class="btn btn-primary {{ $templatesurat->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -134,25 +134,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="mb-5">
-				<div class="owl-carousel-projects owl-carousel owl-theme">
-					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider1.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider2.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider3.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider4.jpg" alt="slider"></div>
-					<div class="item"><img src="assets/images/carousel/slider5.jpg" alt="slider"></div>
-				</div>
-			</div>
+			
 		</section>
 
 		<section class="our-process" id="data-warga" style="background-color:  #D1EDF4; background-size: cover; background-position: center; background-repeat: no-repeat; height: 50vh; width: 100vw;">
