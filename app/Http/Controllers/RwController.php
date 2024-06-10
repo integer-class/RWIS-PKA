@@ -46,11 +46,19 @@ class RwController extends Controller
         $kegiatan=kegiatanModel::all();
     
         $ketuaRtNik = UserModel::where('Role', '2')->pluck('nik');
-        $nama_ketua = citizenModel::where('nik', $ketuaRtNik);
-        $ketuaRt1 = $nama_ketua->firstwhere('rt','1');
-        $ketuaRt2 = $nama_ketua->firstwhere('rt','2');
-        $ketuaRt3 = $nama_ketua->firstwhere('rt','3');
-        return view('rw.index',compact('ketuaRt3','ketuaRt2','ketuaRt1','iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
+        $nama_ketua = CitizenModel::whereIn('nik', $ketuaRtNik)->get(['nik', 'rt', 'nama']);
+
+        
+        $ketuaRt1 = $nama_ketua->where('rt', '1')->first();
+        $ketuaRt2 = $nama_ketua->where('rt', '2')->first();
+        $ketuaRt3 = $nama_ketua->where('rt', '3')->first();
+
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rw.index',compact('nama_pengguna','ketuaRt3','ketuaRt2','ketuaRt1','iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
     }
 
     public function DataWarga(Request $request){
@@ -60,9 +68,14 @@ class RwController extends Controller
             $query->where('nama', 'like', '%' . $request->input('nama') . '%')
                   ->orWhere('nik', 'like', '%' . $request->input('nama') . '%');
         }
-        $warga = $query->get();
-
-        return view('rw.datawarga',compact('warga'));
+        $warga = $query->paginate(10);
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        
+        return view('rw.datawarga',compact('nama_pengguna','warga'));
     }
     
     
@@ -289,7 +302,14 @@ class RwController extends Controller
     // Execute the query and get the results
     $kartukeluarga = $query->get();
     $warga = citizenModel::all();
-    return view('rw.datakeluarga',compact('kartukeluarga','warga'));
+
+    $user = auth()->user();
+          
+     // Retrieve the user's name
+    $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+    $nama_pengguna = $pengguna->first();
+    
+    return view('rw.datakeluarga',compact('kartukeluarga','warga','nama_pengguna'));
     }
 
     public function TambahDataKK(Request $request)
@@ -332,7 +352,12 @@ class RwController extends Controller
         }
         $data_keuangan = $query->orderby('tanggal','desc')->paginate(10);
 
-        return view('rw.datakeuangan',compact('data_keuangan'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rw.datakeuangan',compact('data_keuangan','nama_pengguna'));
     }
 
     public function TambahDataKeuangan(Request $request)
@@ -368,7 +393,12 @@ class RwController extends Controller
 
     public function DataKegiatan(){
         $kegiatan = kegiatanModel::all();
-        return view('rw.datakegiatan',compact('kegiatan'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rw.datakegiatan',compact('kegiatan','nama_pengguna'));
     }
 
 
@@ -452,7 +482,12 @@ class RwController extends Controller
     public function DataUmkm(){
         $umkm = umkmModel::where('persetujuan','disetujui')->paginate(10);
         $umkmBaru = umkmModel::where('persetujuan','belum disetujui')->paginate(10);
-        return view('rw.dataumkm',compact('umkm','umkmBaru'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rw.dataumkm',compact('umkm','umkmBaru','nama_pengguna'));
     }
     
     public function TambahUmkm(Request $request)
@@ -556,7 +591,12 @@ class RwController extends Controller
 
     public function templatesurat(){
         $templatesurat = templatesuratModel::all();
-        return view('rw.templatesurat',compact('templatesurat'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rw.templatesurat',compact('templatesurat','nama_pengguna'));
     }
 
     public function TambahSurat(Request $request)
@@ -625,12 +665,34 @@ class RwController extends Controller
         
         $bansos = citizenModel::where(function ($query) {
             // Tambahkan kriteria untuk menentukan siapa yang layak menerima bantuan sosial
-            $query->where('skorBansos', '>', 300); // Misalnya, hanya yang memiliki skorBansos di atas 300 yang dianggap layak
+            $query->where('skorBansos', '>', 299); // Misalnya, hanya yang memiliki skorBansos di atas 300 yang dianggap layak
         })
         ->orderBy('skorBansos', 'desc') // Urutkan dari yang teratas (skorBansos tertinggi) ke yang terbawah
         ->get();
 
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
         
-        return view('rw.bansos',compact('bansos')); 
+        return view('rw.bansos',compact('bansos','nama_pengguna')); 
+    }
+
+    public function GantiRt(Request $request){
+        $nik_lama = $request->nik;
+        $nik_baru = $request->nik_baru;
+
+        $rt_lama = userModel::where('nik',$nik_lama);
+        $rt_baru = userModel::where('nik',$nik_baru);
+
+        $rt_lama -> update([
+            'role' => '3'
+        ]);
+        $rt_baru -> update([
+            'role' => '2'
+        ]);
+       
+        return redirect()->back()->with('success','Ketua Rt berhasil diganti');
     }
 }
