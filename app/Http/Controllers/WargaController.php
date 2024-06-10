@@ -8,6 +8,7 @@ use App\Models\kegiatanModel;
 use App\Models\keuanganModel;
 use App\Models\templatesuratModel;
 use App\Models\umkmModel;
+use App\Models\UserModel;
 use Database\Seeders\umkm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,25 @@ class WargaController extends Controller
         $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
         $iuranSampah =number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
 
-       return view('warga.index',compact('iuranSampah','iuranListrik','iuranKematian','iuranPHB'));
+        $warga=citizenModel::all();
+        $templatesurat=templatesuratModel::all();
+        $umkm=umkmModel::all();
+        $kegiatan=kegiatanModel::all();
+    
+        $ketuaRtNik = UserModel::where('Role', '2')->pluck('nik');
+        $nama_ketua = CitizenModel::whereIn('nik', $ketuaRtNik)->get(['nik', 'rt', 'nama']);
+
+        
+        $ketuaRt1 = $nama_ketua->where('rt', '1')->first();
+        $ketuaRt2 = $nama_ketua->where('rt', '2')->first();
+        $ketuaRt3 = $nama_ketua->where('rt', '3')->first();
+
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+       return view('warga.index',compact('nama_pengguna','ketuaRt3','ketuaRt2','ketuaRt1','iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
     }
     public function datawarga(){
         $datawarga = citizenModel::all();
