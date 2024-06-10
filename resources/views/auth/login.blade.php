@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="{{ asset('assets/css/mooli.min.css')}}">t
  <style>
         .auth-main {
-            background-image: url('{{asset('images/backgroundlogin.jpg')}}'); /* Ganti dengan path gambar Anda */
+            background-image: url('{{asset('images/backgroundlogin.jpeg')}}'); /* Ganti dengan path gambar Anda */
             background-size: cover;
             background-position: center;
         }

@@ -16,7 +16,7 @@ class citizen extends Seeder
 
         \App\Models\citizenModel::factory()->create([
             'nik' => '472751886',
-            'nama' => 'teo',
+            'nama' => 'Virza Schumacher',
             'no_kk' => '472751886',
             'alamat' => 'mbokor',
             'status_kependudukan' => 'Warga Kontrak',
@@ -35,12 +35,12 @@ class citizen extends Seeder
         ]);
         \App\Models\citizenModel::factory()->create([
             'nik' => '123456789',
-            'nama' => 'Eva',
+            'nama' => 'Evangelion Neon',
             'no_kk' => '472751887',
             'alamat' => 'Mbokor',
             'status_kependudukan' => 'Warga Tetap',
             'domisili' => 'Mbokor Tengah',
-            'rt' => '2',
+            'rt' => '3',
             'agama' => 'Hindu',
             'golongan_darah' => 'A',
             'jenis_kelamin' => 'laki-laki',
@@ -54,7 +54,7 @@ class citizen extends Seeder
         ]);
         \App\Models\citizenModel::factory()->create([
             'nik' => '12341234',
-            'nama' => 'Uzi',
+            'nama' => 'Trafalgar Rizky',
             'no_kk' => '472751887',
             'alamat' => 'Mbokor',
             'status_kependudukan' => 'Warga Tetap',
@@ -75,7 +75,7 @@ class citizen extends Seeder
         //keluarga3
         \App\Models\citizenModel::factory()->create([
             'nik' => '472751896',
-            'nama' => 'Rudi',
+            'nama' => 'Monkey D sunardi',
             'no_kk' => '472751894',
             'alamat' => 'Mbokor',
             'status_kependudukan' => 'Warga Tetap',
