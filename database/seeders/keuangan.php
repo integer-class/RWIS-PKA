@@ -15,7 +15,7 @@ class keuangan extends Seeder
         // \App\Models\keuanganModel::factory(50)->create();// i want the amount of data using pengeluaran is less than pemasukan
 
         
-        $totalEntries = 10;
+        $totalEntries = 1000;
         $pemasukanEntries = (int) ($totalEntries * 0.7); // 70% pemasukan
         $pengeluaranEntries = $totalEntries - $pemasukanEntries; // 30% pengeluaran
 

@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\CitizenModel;
+use App\Models\UserModel;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class KeuanganModelFactory extends Factory
@@ -15,7 +17,8 @@ class KeuanganModelFactory extends Factory
     public function definition(): array
     {
         // Ensure citizens are loaded once and used across calls
-        $citizens = CitizenModel::pluck('nama')->toArray();
+        $user = userModel::where('role' ,'!=','3');
+        $citizens = CitizenModel::where('nik',$user->nik)->pluck('nama')->toArray();
 
         // Generate the amount for pemasukan first
         $pemasukanAmount = $this->faker->numberBetween(10, 99) * 1000;
