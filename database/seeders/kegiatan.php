@@ -36,7 +36,9 @@ class kegiatan extends Seeder
             'deskripsi' => 'Pos pelayanan terpadu mbokor village',
             'gambar' => 'kegiatan warga 3.jpg',
             'persetujuan' => 'disetujui',
+
         ]);
+        
 
         
     }

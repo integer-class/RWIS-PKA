@@ -15,24 +15,26 @@
         </div>
     </div>
 </body>
-<div class="card">
-    <div class="header">
-        <div class="text-info"><h2>List Kegiatan</h2></div>
-    </div>
-    <div class="body">
-        <div class="row">
-            @foreach($kegiatan as $item)
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ asset('assets/images/kegiatan/' . $item->foto) }}" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->nama_kegiatan }}</h5>
-                            <p class="card-text">{{ $item->deskripsi }}</p>
-                            <p class="card-text"><small class="text-muted">{{ $item->tanggal }}</small></p>
-                        </div>
+<div class="container">
+    <div class="card">
+        <div class="header">
+            <div class="text-info"><h2>List Kegiatan</h2></div>
+        </div>
+        <div class="body">
+            <div class="row">
+                @foreach($kegiatan as $data_kegiatan)
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <input type="file" class="dropify" data-default-file="{{ asset('images/kegiatan/'.$data_kegiatan->gambar) }}" disabled="disabled">    
+                                <h5 class="card-title"><a href="#">{{ $data_kegiatan->nama_kegiatan }}</a></h5>
+                                <p class="card-text">{{ $data_kegiatan->deskripsi }}</p>
+                                <p class="card-text"><small class="text-muted">{{ $data_kegiatan->tanggal }}</small></p>
+                            </div>
+                        </div>   
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </div>
 </div>
