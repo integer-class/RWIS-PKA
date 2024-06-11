@@ -10,47 +10,43 @@
                 }
             </style>
             <title>Halaman Warga</title>
-        </head>
+        </head>     
         <body>
             <div class="body">
                 <div class="card">
                     <div class="card-body text-white text-center font-weight-bold" style="background-image: url('https://backpanel.kemlu.go.id/PublishingImages/News_Kopenhagen/12_22062019_Indonesian_Bazaar_Horsens/2.%20Dubes%20RI%20dan%20Masyarakat%20Indonesia.jpg'); background-size: cover; background-position: center;">
-                        <p class="card-text big-text">Selamat Datang di Halaman Warga!</p>
-                        <form class="mx-auto" style="width: 400px;">
-                            <div class="input-group">
-                                <input type="text" class="form-control border-12" placeholder="Search Mail" aria-label="Search Mail" aria-describedby="search-mail">
-                                <div class="input-group-append">
-                                    <button class="btn btn-success" type="button"><i class="fas fa-search"></i></button>
-                                </div>
-                            </div>
-                        </form>    
+                        <p class="card-text big-text">Selamat Datang di Halaman Warga RW01!</p>
+                        <form action="{{ route('warga_data_warga') }}" method="GET">
+                            <input type="text" name="nama" placeholder="Cari nama atau NIK" value="{{ request()->nama }}">
+                            <button type="submit">Cari</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </body>
         
         {{-- tabel data warga  --}}
-    <div class="card">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" style="background-color: #f8f9fa; border: 1px solid #dee2e6;">
-                            <thead style="background-color: #4ac9ec; color: #fff;">
-                                <tr>
-                                    <th style="border: 1px solid #dee2e6;">No</th>
-                                    <th style="border: 1px solid #dee2e6;">NAMA</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($datawarga as $index => $penduduk)
-                                <tr>
-                                    <td style="border: 1px solid #dee2e6;">{{ $index + 1 }}</td>
-                                    <td style="border: 1px solid #dee2e6;">{{ $penduduk->nama }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+        <div class="card">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" style="background-color: #f8f9fa; border: 1px solid #dee2e6;">
+                                <thead style="background-color: #4ac9ec; color: #fff;">
+                                    <tr>
+                                        <th style="border: 1px solid #dee2e6;">No</th>
+                                        <th style="border: 1px solid #dee2e6;">NAMA</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($datawarga as $index => $penduduk)
+                                    <tr>
+                                        <td style="border: 1px solid #dee2e6;">{{ $index + 1 }}</td>
+                                        <td style="border: 1px solid #dee2e6;">{{ $penduduk->nama }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         {{-- Button Pagination --}}
                         <div class="text-center mt-3">
                             <a href="{{ $datawarga->previousPageUrl() }}" class="btn btn-primary {{ $datawarga->onFirstPage() ? 'disabled' : '' }}">Previous</a>

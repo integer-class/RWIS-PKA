@@ -1,17 +1,20 @@
 @extends('layouts_warga.app')
 @section('content')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="card">
-    <div class="header">
-        <div class="text-info">
-            <h2>Daftar Kegiatan</h2>
+    <title>Halaman Warga</title>
+</head>
+<body>
+    <div class="body">
+        <div class="card">
+            <div class="card-body text-white text-center font-weight-bold" style="background-image: url('https://assets.pikiran-rakyat.com/crop/296x0:7614x4266/x/photo/2021/09/28/2711211393.jpg'); background-size: cover; background-position: center ;">
+                <p class="card-text big-text">Selamat Datang di Halaman Kegiatan Warga!</p>
+            </div>
         </div>
     </div>
-    <div class="body">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahkegiatan">Tambah Kegiatan</button>
-    </div>
-</div>
-
+</body>
 <div class="card">
     <div class="header">
         <div class="text-info"><h2>List Kegiatan</h2></div>

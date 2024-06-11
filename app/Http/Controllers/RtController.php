@@ -20,12 +20,50 @@ class RtController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
+
+        //Total iuran PHB
+        $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
+        $total_pengeluaranPHB = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran PHB')->sum('jumlah');
+        $iuranPHB = number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
+
+        //Total iuran kematian
+        $total_pemasukanKematian = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran kematian')->sum('jumlah');
+        $total_pengeluaranKematian = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran kematian')->sum('jumlah');
+        $iuranKematian = number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
+
+        //Total iuran Listrik
+        $total_pemasukanListrik = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
+        $total_pengeluaranListrik = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
+        $iuranListrik = number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
+
+        //Total iuran Sampah
+        $total_pemasukanSampah = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
+        $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
+        $iuranSampah =number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
+
+
+        $warga=citizenModel::all();
+        $templatesurat=templatesuratModel::all();
+        $umkm=umkmModel::all();
+        $kegiatan=kegiatanModel::all();
+    
+        $ketuaRtNik = UserModel::where('Role', '2')->pluck('nik');
+        $nama_ketua = CitizenModel::whereIn('nik', $ketuaRtNik)->get(['nik', 'rt', 'nama']);
+
+        
+        $ketuaRt1 = $nama_ketua->where('rt', '1')->first();
+        $ketuaRt2 = $nama_ketua->where('rt', '2')->first();
+        $ketuaRt3 = $nama_ketua->where('rt', '3')->first();
+
+
         $user = auth()->user();
           
         // Retrieve the user's name
         $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
         $nama_pengguna = $pengguna->first();
-        return view('rt.index',compact('nama_pengguna'));
+
+       return view('rt.index',compact('nama_pengguna','ketuaRt3','ketuaRt2','ketuaRt1','iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
+
     }
 
     public function DataWarga(){
@@ -486,7 +524,7 @@ class RtController extends Controller
         }
     
         // Assuming the file path is stored in a 'surat' attribute
-        $filePath = public_path('images/surat/' . $surat->surat);
+        $filePath = public_path('Surat/' . $surat->nama_file_surat);
     
         if (!file_exists($filePath)) {
             // Handle the case where the file does not exist
@@ -501,7 +539,7 @@ class RtController extends Controller
         
         $bansos = citizenModel::where(function ($query) {
             // Tambahkan kriteria untuk menentukan siapa yang layak menerima bantuan sosial
-            $query->where('skorBansos', '>', 300); // Misalnya, hanya yang memiliki skorBansos di atas 300 yang dianggap layak
+            $query->where('skorBansos', '>', 299); // Misalnya, hanya yang memiliki skorBansos di atas 300 yang dianggap layak
         })
         ->orderBy('skorBansos', 'desc') // Urutkan dari yang teratas (skorBansos tertinggi) ke yang terbawah
         ->get();

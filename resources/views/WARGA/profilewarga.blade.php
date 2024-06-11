@@ -19,7 +19,7 @@
                         <img src="{{ asset('assets/images/user.png') }}" class="rounded" alt="">
                     </div>
                     <div class="details">
-                        <h5 class="mb-0">Ananda Az Haruddin Salima</h5>
+                        <h5 class="mb-0">{{$datauser->nama}}</h5>
                     </div>                                
                 </div>
             </div>
@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div class="row clearfix">
+<div class="row justify-content-center">
     <div class="col-md-6">
         <div class="card">
             <div class="body">
@@ -37,7 +37,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">NIK</h5>
-                                    <p class="card-text">472751886</p>
+                                    <p class="card-text">{{$datauser->nik}}</p>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Nama</h5>
-                                    <p class="card-text">teo</p>
+                                    <p class="card-text">{{$datauser->nama}}</p>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">No. KK</h5>
-                                    <p class="card-text">472751886</p>
+                                    <p class="card-text">{{$datauser->no_kk}}</p>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +67,117 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Alamat</h5>
-                                    <p class="card-text">mbokor</p>
+                                    <p class="card-text">{{$datauser->alamat}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tanggal Lahir</h5>
+                                    <p class="card-text">{{$datauser->tanggal_lahir}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pekerjaan</h5>
+                                    <p class="card-text">{{$datauser->pekerjaan}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Status Kependudukan</h5>
+                                    <p class="card-text">{{$datauser->status_kependudukan}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Luas Rumah</h5>
+                                    <p class="card-text">{{$datauser->luas_rumah}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Agama</h5>
+                                    <p class="card-text">{{$datauser->agama}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Golongan Darah</h5>
+                                    <p class="card-text">{{$datauser->golongan_darah}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">status</h5>
+                                    <p class="card-text">{{$datauser->status}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pendidikan Terakhir</h5>
+                                    <p class="card-text">{{$datauser->pendidikan_terakhir}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">RT</h5>
+                                    <p class="card-text">{{$datauser->rt}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Gaji</h5>
+                                    <p class="card-text">{{$datauser->gaji}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group c_form_group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Domisili</h5>
+                                    <p class="card-text">{{$datauser->domisili}}</p>
                                 </div>
                             </div>
                         </div>
@@ -80,53 +190,34 @@
 </div>
 
 
+<div class="row justify-content-center">
     <div class="col-md-6">
-        <div class="card">
+        <div class="card mx-auto">
             <div class="header">
-                <h2>Account Data</h2>
+                <h2>GANTI PASSWORD</h2>
             </div>
-            <div class="body">
-                <div class="row clearfix">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" value="louispierce" disabled placeholder="Username">
+            <form action="{{ route('gantipassword') }}" method="POST">
+                @csrf
+                <div class="body">
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12">
+                            <hr>
+                            <h6>Ubah Password</h6>
+                            <input type="hidden" value="{{ $datauser->nik }}" name="nik">
+                            <div class="form-group c_form_group">
+                                <label> Password Baru</label>
+                                <input type="password" name="password_baru" class="form-control" placeholder="Enter Password" required>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <input type="email" class="form-control" value="louis.info@yourdomain.com"
-                                placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Phone Number">
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12">
-                        <hr>
-                        <h6>Change Password</h6>
-                        <div class="form-group c_form_group">
-                            <label>Current Password</label>
-                            <input type="password" class="form-control" placeholder="Enter Password">
-                        </div>
-                        <div class="form-group c_form_group">
-                            <label>New Password</label>
-                            <input type="password" class="form-control" placeholder="Enter Password">
-                        </div>
-                        <div class="form-group c_form_group">
-                            <label>Confirm New Password</label>
-                            <input type="password" class="form-control" placeholder="Enter Password">
-                        </div>
-                    </div>
+                    <button type="submit" class="btn btn-primary theme-bg gradient">Submit</button>
+                    <button type="button" class="btn btn-default">Cancel</button>
                 </div>
-                <button type="button" class="btn btn-primary theme-bg gradient">Update</button>
-                <button type="button" class="btn btn-default">Cancel</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
-</div>
+
 @endsection
 
 <!-- Javascript -->

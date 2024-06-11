@@ -25,7 +25,7 @@
         <div class="body">
             <div class="card">
                 <div class="card-body text-white text-center font-weight-bold">
-                    <p class="card-text big-text">Selamat Datang di halaman Keluarga!</p>   
+                    <p class="card-text big-text">Selamat Datang di halaman Keluarga Anda!</p>   
                 </div>
             </div>
         </div>

@@ -130,8 +130,8 @@
             </table>
             {{-- Button Pagination --}}
             <div class="text-center mt-3">
-                <a href="{{ $warga->previousPageUrl() }}" class="btn btn-primary {{ $warga->onFirstPage() ? 'disabled' : '' }}">Previous</a>
-                <a href="{{ $warga->nextPageUrl() }}" class="btn btn-primary {{ $warga->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                <a href="{{ $data_keuangan->previousPageUrl() }}" class="btn btn-primary {{ $data_keuangan->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                <a href="{{ $data_keuangan->nextPageUrl() }}" class="btn btn-primary {{ $data_keuangan->hasMorePages() ? '' : 'disabled' }}">Next</a>
             </div>
         </div>
     </div>

@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\CitizenModel;
 use App\Models\UserModel;
-
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class KeuanganModelFactory extends Factory
@@ -17,9 +16,11 @@ class KeuanganModelFactory extends Factory
     public function definition(): array
     {
         // Ensure citizens are loaded once and used across calls
+
         $user = userModel::where('role' ,'!=','3')->pluck('nik')->toArray();
         $ketua = citizenModel::whereIn('nik',$user)->pluck('nama')->toArray();
         $citizens = CitizenModel::pluck('nama')->toArray();
+
 
         // Generate the amount for pemasukan first
         $pemasukanAmount = $this->faker->numberBetween(10, 99) * 1000;
@@ -32,6 +33,10 @@ class KeuanganModelFactory extends Factory
         
         // Set jumlah based on jenis_data
         $jumlah = $jenisData === 'pemasukan' ? $pemasukanAmount : $pengeluaranAmount;
+        
+        //i want if the jenis_data is pemasukan then nama is $citizen
+        //i want if the jenis_data is pengeluaran then nama is $ketua
+        $nama = $jenisData === 'pemasukan' ? $this->faker->randomElement($citizen) : $this->faker->randomElement($ketua);
 
         $nama = $jenisData === 'pemasukan' ? $this->faker->randomElement($citizens) : $this->faker->randomElement($ketua);
         return [
@@ -44,3 +49,10 @@ class KeuanganModelFactory extends Factory
         ];
     }
 }
+
+            // 'tanggal' 
+            // 'jenis_iuran'
+            // 'jenis_data' 
+            // 'jumlah' 
+            // 'nama' 
+            // 'rt'

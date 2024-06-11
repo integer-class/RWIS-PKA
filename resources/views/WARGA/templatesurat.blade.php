@@ -18,8 +18,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Tanggal</th>
                                     <th>Nama Surat</th>
+                                    <th>deskripsi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -27,8 +27,8 @@
                                 @foreach($templatesurat as $data_surat)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$data_surat->tanggal}}</td>
                                     <td>{{$data_surat->nama_surat}}</td>
+                                    <td>{{$data_surat->deskripsi_surat}}</td>
                                     <td>
                                         <form action="{{ route('downloadsurat', $data_surat->id) }}" method="GET" style="display:inline;">
                                             <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> <span>Download</span></button>

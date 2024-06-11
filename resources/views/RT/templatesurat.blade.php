@@ -1,4 +1,4 @@
-@extends('layouts_rt.app')
+@extends('layouts.app')
 @section('content')
 
       <div class="body">
@@ -19,8 +19,8 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>tanggal</th>
                                                 <th>Nama surat</th>
+                                                <th>deskripsi</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -28,10 +28,10 @@
                                             @foreach($templatesurat as $data_surat)
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
-                                                <td>{{$data_surat->tanggal}}</td>
                                                 <td>{{$data_surat->nama_surat}}</td>
+                                                <td>{{$data_surat->deskripsi_surat}}</td>
                                                 <td>
-                                                    <form action="{{ route('downloadsurat', $data_surat->id) }}" method="GET" style="display:inline;">
+                                                    <form action="{{ route('rt_downloadsurat', $data_surat->id) }}" method="GET" style="display:inline;">
                                                         <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> <span>Download</span></button>
                                                     </form>
                                                     
@@ -91,27 +91,15 @@
                             <label for="">Nama surat :</label>
                             <input name="nama_surat" type="text"  class="form-control" placeholder="" required>
                         </div>
-                        <div class="form-group">
-                            <label for="">nama pemilik :</label>
-                            <input name="nama_pemilik" type="text"  class="form-control" placeholder="" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Lokasi/Alamat :</label>
-                            <input name="alamat"  type="text"  class="form-control" placeholder="" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Nomor telfon :</label>
-                            <input name="no_telp"  type="text"  class="form-control" placeholder="" required>
-                        </div>
                         <label>Deskripsi :</label>
                         <div class="form-group c_form_group">
                             <div class="input-group">
-                                <textarea name="deskripsi" class="form-control" aria-label="With textarea"></textarea>
+                                <textarea name="deskripsi_surat" class="form-control" aria-label="With textarea"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="">Foto surat</label>
-                            <input type="file" name="image" class="dropify">
+                            <label for="">file Surat</label>
+                            <input type="file" name="image" class="form-controll">
                         </div>
                        
                 </div>
