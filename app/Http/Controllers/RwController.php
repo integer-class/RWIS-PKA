@@ -390,6 +390,13 @@ class RwController extends Controller
     return redirect('data_keuangan')->with('success', 'Data berhasil diperbarui');
     }
 
+    public function HapusKeuangan(Request $request){
+        $keuangan = keuanganModel::where('id', $request->id)->firstOrFail();
+
+        $keuangan ->delete();
+
+        return redirect()->back()->with('success', 'data keuangan berhasil dihapus.');
+    }
 
     public function DataKegiatan(){
         $kegiatan = kegiatanModel::all();
