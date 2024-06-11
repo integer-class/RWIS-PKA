@@ -20,8 +20,12 @@ class RtController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
-
-        return view('rt.index');
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rt.index',compact('nama_pengguna'));
     }
 
     public function DataWarga(){
@@ -30,9 +34,15 @@ class RtController extends Controller
 
         $query = CitizenModel::query();
         $query->where('rt', $userData->rt);
-
+        
         $warga = $query->paginate(10);
-        return view('rt.datawarga', compact('warga'));
+
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rt.datawarga', compact('nama_pengguna','warga'));
 
     }
     
@@ -101,15 +111,31 @@ class RtController extends Controller
         
     }
 
-    public function DataKeluarga(){
+    public function DataKeluarga(Request $request){
   
-    $user = Auth::user();
-    $userData = CitizenModel::where('nik', $user->nik)->firstOrFail();
+        $user = auth()->user();
 
-    // Mengambil kartu keluarga yang terkait dengan RT pengguna yang terautentikasi
-    $kartukeluarga = kartukeluargaModel::where('rt', $userData->rt)->get();
+        // Extracting the value from the plucked collection
+        $rtUser = citizenModel::where('nik', $user->nik)->value('rt');
     
-    return view('rt.datakeluarga', compact('kartukeluarga', 'userData'));
+        $query = kartukeluargaModel::where('rt', $rtUser)->withCount('citizens');
+    
+        // Check if the 'no_kk' field is filled in the request
+        if ($request->filled('no_kk')) {
+            // Apply the search filter to the query
+            $query->where('no_kk', 'like', '%' . $request->input('no_kk') . '%');
+        }
+    
+        // Execute the query and get the results
+        $kartukeluarga = $query->paginate(10);
+    
+        // You may not need to retrieve all 'warga' records here, as it seems unused
+        $warga = citizenModel::all();
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik', $user->nik)->firstOrFail(); // Get the user data directly
+        $nama_pengguna = $pengguna->first(); // Access 'nama' attribute directly
+    
+        return view('rt.datakeluarga', compact('nama_pengguna', 'kartukeluarga','warga'));
     }
 
     public function TambahDataKK(Request $request)
@@ -179,7 +205,12 @@ class RtController extends Controller
         $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
         $iuranSampah = number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
 
-        return view('rt.datakeuangan',compact('data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian', 'rt'));
+        
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rt.datakeuangan',compact('nama_pengguna','data_keuangan','iuranSampah','iuranListrik','iuranPHB','iuranKematian', 'rt'));
     }
 
     public function TambahDataKeuangan(Request $request)
@@ -215,7 +246,12 @@ class RtController extends Controller
 
     public function DataKegiatan(){
         $kegiatan = kegiatanModel::all();
-        return view('rt.datakegiatan',compact('kegiatan'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rt.datakegiatan',compact('nama_pengguna','kegiatan'));
     }
 
 
@@ -298,7 +334,12 @@ class RtController extends Controller
 
     public function DataUmkm(){
         $umkm = umkmModel::all();
-        return view('rt.dataumkm',compact('umkm'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rt.dataumkm',compact('nama_pengguna','umkm'));
     }
     
     public function TambahUmkm(Request $request)
@@ -386,7 +427,12 @@ class RtController extends Controller
 
     public function templatesurat(){
         $templatesurat = templatesuratModel::all();
-        return view('rt.templatesurat',compact('templatesurat'));
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rt.templatesurat',compact('nama_pengguna','templatesurat'));
     }
 
     public function TambahSurat(Request $request)
@@ -459,6 +505,11 @@ class RtController extends Controller
         })
         ->orderBy('skorBansos', 'desc') // Urutkan dari yang teratas (skorBansos tertinggi) ke yang terbawah
         ->get();
-        return view('rt.bansos',compact('bansos')); 
+        $user = auth()->user();
+          
+        // Retrieve the user's name
+        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $nama_pengguna = $pengguna->first();
+        return view('rt.bansos',compact('nama_pengguna','bansos')); 
     }
 }

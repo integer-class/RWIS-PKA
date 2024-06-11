@@ -183,16 +183,14 @@ class WargaController extends Controller
     }
     public function Profilewarga(){
         $citizen = citizenModel::all();
-<<<<<<< Updated upstream
-        return view('warga.profilewarga',compact('citizen'));
-=======
+
         $user = auth()->user();
           
         // Retrieve the user's name
         $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
         $nama_pengguna = $pengguna->first();
         return view('warga.profilewarga',compact('nama_pengguna','datawarga'));
->>>>>>> Stashed changes
+
     }
 
 }   
