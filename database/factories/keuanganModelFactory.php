@@ -17,8 +17,9 @@ class KeuanganModelFactory extends Factory
     public function definition(): array
     {
         // Ensure citizens are loaded once and used across calls
-        $user = userModel::where('role' ,'!=','3');
-        $citizens = CitizenModel::where('nik',$user->nik)->pluck('nama')->toArray();
+        $user = userModel::where('role' ,'!=','3')->pluck('nik')->toArray();
+        $ketua = citizenModel::whereIn('nik',$user)->pluck('nama')->toArray();
+        $citizens = CitizenModel::pluck('nama')->toArray();
 
         // Generate the amount for pemasukan first
         $pemasukanAmount = $this->faker->numberBetween(10, 99) * 1000;
@@ -32,12 +33,13 @@ class KeuanganModelFactory extends Factory
         // Set jumlah based on jenis_data
         $jumlah = $jenisData === 'pemasukan' ? $pemasukanAmount : $pengeluaranAmount;
 
+        $nama = $jenisData === 'pemasukan' ? $this->faker->randomElement($citizens) : $this->faker->randomElement($ketua);
         return [
             'tanggal' => $this->faker->dateTimeBetween('2024-01-01', 'now'),
             'jenis_iuran' => $this->faker->randomElement(['iuran PHB', 'iuran kematian', 'iuran sampah', 'iuran listrik']),
             'jenis_data' => $jenisData,
             'jumlah' => $jumlah, // 5 digit numbers but in thousands
-            'nama' => $this->faker->randomElement($citizens), // Randomize from nama column from citizen table
+            'nama' => $nama, // Randomize from nama column from citizen table
             'rt' => $this->faker->randomElement(['1', '2', '3']),
         ];
     }

@@ -12,7 +12,7 @@ use App\Models\umkmModel;
 use App\Models\UserModel;
 use Illuminate\Support\facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RwController extends Controller
 {
@@ -88,7 +88,7 @@ class RwController extends Controller
         $request->validate([
             'nik' => 'required',
             'nama' => 'required',
-            'no_kk' => 'required',
+            'no_kk' => 'required|exists:kartukeluargaModel,no_kk',
             'alamat' => 'required',
             'status_kependudukan' => 'required',
             'domisili' => 'required',
@@ -97,7 +97,6 @@ class RwController extends Controller
             'golongan_darah' => 'required',
             'jenis_kelamin' => 'required',
             'pekerjaan' => 'required',
-            'status' => 'required',
             'tanggal_lahir' => 'required',
             'pendidikan' => 'required',
             'luas_rumah' => 'required',
@@ -191,9 +190,10 @@ class RwController extends Controller
         ]);
 
     
-
+        Alert::success('Success', 'Data berhasil diperbarui');
+        return redirect()->back();
         //Redirect ke halaman sukses atau halaman lain yang Anda inginkan
-         return redirect()->back()->with('succes','Data berhasil diperbarui');
+         return redirect()->back();
 
         
     }

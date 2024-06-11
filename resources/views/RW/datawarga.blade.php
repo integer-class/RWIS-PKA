@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section ('content')
- 
+@include('sweetalert::alert')
  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <div class="body">
     <ul class="nav nav-tabs3 white">
@@ -57,6 +57,7 @@
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit{{$penduduk->nik}}">Edit</button>
                                         </td>                                        
                                     </tr>  
+                                    {{-- Detail --}}
                                     <div class="modal fade" id="exampleModalCenter{{$penduduk->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -295,148 +296,196 @@
             </div>
         </div>
         
-        {{-- TAB Tambah warga --}}
-        <div class="tab-pane" id="Profile-new2">
-        <form method="post" action="{{route('prosesTambahWarga')}}">
-            @csrf
-            <div class="card">
-                <div class="header">
-                    <h2>Data diri</h2>
-                </div>
-                <div class="body">
-                    <div class="row clearfix">
-                        {{-- kiri atas --}}
-                        <div class="col-lg-6 col-md-12">
-                            <div class="form-group">
-                                <label for="">NIK :</label>
-                                <input name="nik" type="text" class="form-control" placeholder="NIK" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">KK :</label>
-                                <input name="no_kk" type="text" class="form-control" placeholder="Nomor KK" required>
-    
-                            </div>
-                            <div class="form-group">
-                                <label for="">Jenis Kelamin :</label>
-                                <select name="jenis_kelamin" class="custom-select" id="inputGroupSelect01" required>
-                                    <option>Pilih Jenis Kelamin :</option>
-                                    <option value="laki-laki">Laki-Laki</option>
-                                    <option value="perempuan">Perempuan</option>
-                                </select>
-                            </div>
-                            <div class="form-group  ">
-                                <label>Tanggal Lahir :</label>
-                                <div class="input-group">
-                                    <input name="tanggal_lahir" type="date"  class="form-control"  placeholder="Pilih tanggal" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Pekerjaan :</label>
-                                <input name="pekerjaan" type="text" class="form-control" placeholder="Pekerjaan" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Status Kependudukan :</label>
-                                <select name="status_kependudukan" class="custom-select" id="inputGroupSelect01" required>
-                                    <option>Pilih Status Kependudukan</option>
-                                    <option value="Warga Tetap">Warga Tetap</option>
-                                    <option value="Warga Kontrak">Warga Kontrak</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Luas Rumah :</label>
-                                <input name="luas_rumah" type="text" class="form-control" placeholder="Luas Rumah (m2)" required>
+        {{-- I want you to add error message when its left empty or if no_kk is not registered on kartukeluargaModel = no_kk  --}}
+        @include('sweetalert::alert')
+
+{{-- TAB Tambah warga --}}
+<div class="tab-pane" id="Profile-new2">
+    <form method="post" action="{{ route('prosesTambahWarga') }}">
+        @csrf
+        <div class="card">
+            <div class="header">
+                <h2>Data diri</h2>
+            </div>
+            <div class="body">
+                <div class="row clearfix">
+                    {{-- kiri atas --}}
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label for="">NIK :</label>
+                            <input name="nik" type="text" class="form-control" placeholder="NIK" required value="{{ old('nik') }}">
+                            @error('nik')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">KK :</label>
+                            <input name="no_kk" type="text" class="form-control" placeholder="Nomor KK" required value="{{ old('no_kk') }}">
+                            @error('no_kk')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Jenis Kelamin :</label>
+                            <select name="jenis_kelamin" class="custom-select" id="inputGroupSelect01" required>
+                                <option value="">Pilih Jenis Kelamin :</option>
+                                <option value="laki-laki" {{ old('jenis_kelamin') == 'laki-laki' ? 'selected' : '' }}>Laki-Laki</option>
+                                <option value="perempuan" {{ old('jenis_kelamin') == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
+                            </select>
+                            @error('jenis_kelamin')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal Lahir :</label>
+                            <div class="input-group">
+                                <input name="tanggal_lahir" type="date" class="form-control" placeholder="Pilih tanggal" required value="{{ old('tanggal_lahir') }}">
+                                @error('tanggal_lahir')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
-                        {{-- Kanan atas --}}
-                        <div class="col-lg-6 col-md-12">
-                            <div class="form-group">
-                                <label for="">Nama :</label>
-                                <input name="nama" type="text" class="form-control" placeholder="Nama" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Agama :</label>
-                                <select name="agama" class="custom-select" id="inputGroupSelect01" required>
-                                    <option>Pilih agama</option>
-                                    <option value="islam">islam</option>
-                                    <option value="katolik">katolik</option>
-                                    <option value="kristen">kristen</option>
-                                    <option value="budha">budha</option>
-                                    <option value="hindu">hindu</option>
-                                    <option value="konghucu">konghucu</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Golongan Darah :</label>
-                                <select name="golongan_darah" class="custom-select" id="inputGroupSelect01" required>
-                                    <option>Pilih golongan darah</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="AB">AB</option>
-                                    <option value="O">O</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Status :</label>
-                                <select name="status" class="custom-select" id="inputGroupSelect01" required>
-                                    <option >Pilih Status</option>
-                                    <option value="janda/duda">Janda/Duda</option>
-                                    <option value="miskin">Miskin</option>    
-                                    <option value="sakit parah">Sakit Parah</option>    
-                                    <option value="sebatang kara">Sebatang Kara</option>    
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Pendidikan Terakhir :</label>
-                                <select name="pendidikan" class="custom-select" id="inputGroupSelect01" required>
-                                    <option >Pendidikan terakhir </option>
-                                    <option value="SD">SD</option>
-                                    <option value="SMP">SMP</option>
-                                    <option value="SMA">SMA</option>
-                                    <option value="Tidak Sekolah">Tidak Sekolah</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">RT :</label>
-                                <select name="rt" class="custom-select" id="inputGroupSelect01" required>
-                                    <option >Pilih rt (domisili) </option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Gaji :</label>
-                                <select name="gaji" class="custom-select" id="inputGroupSelect01" required>
-                                    <option >Pilih rentang gaji </option>
-                                    <option value="0-400.000">0-400.000</option>
-                                    <option value="400.000-600.000">400.000-600.000</option>
-                                    <option value="600.000-1.000.000">600.000-1.000.000</option>
-                                    <option value=">1.000.000">>1.000.000</option>
-                                </select>
-                            </div>
-                        </div>       
-                              
-                        {{-- Bawah --}}
-                        <div class="col-lg-12 col-md-12">
-                            <hr>
-                            <h6>*Pastikan alamat  sesuai</h6>
-                            <div class="form-group c_form_group">
-                                <label>Domisili :</label>
-                                <input name="domisili" type="text" class="form-control" placeholder="alamat tempat tinggal sekarang" required>
-                            </div>
-                            <div class="form-group c_form_group">
-                                <label>Alamat :</label>
-                                <input name="alamat" type="text" class="form-control" placeholder="alamat asli sesuai dengan (KTP)" required>
-                            </div>
+                        <div class="form-group">
+                            <label for="">Pekerjaan :</label>
+                            <input name="pekerjaan" type="text" class="form-control" placeholder="Pekerjaan" required value="{{ old('pekerjaan') }}">
+                            @error('pekerjaan')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Status Kependudukan :</label>
+                            <select name="status_kependudukan" class="custom-select" id="inputGroupSelect01" required>
+                                <option value="">Pilih Status Kependudukan</option>
+                                <option value="Warga Tetap" {{ old('status_kependudukan') == 'Warga Tetap' ? 'selected' : '' }}>Warga Tetap</option>
+                                <option value="Warga Kontrak" {{ old('status_kependudukan') == 'Warga Kontrak' ? 'selected' : '' }}>Warga Kontrak</option>
+                            </select>
+                            @error('status_kependudukan')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Luas Rumah :</label>
+                            <input name="luas_rumah" type="text" class="form-control" placeholder="Luas Rumah (m2)" required value="{{ old('luas_rumah') }}">
+                            @error('luas_rumah')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary theme-bg gradient">Simpan</button>
+                    {{-- Kanan atas --}}
+                    <div class="col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label for="">Nama :</label>
+                            <input name="nama" type="text" class="form-control" placeholder="Nama" required value="{{ old('nama') }}">
+                            @error('nama')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Agama :</label>
+                            <select name="agama" class="custom-select" id="inputGroupSelect01" required>
+                                <option value="">Pilih agama</option>
+                                <option value="islam" {{ old('agama') == 'islam' ? 'selected' : '' }}>Islam</option>
+                                <option value="katolik" {{ old('agama') == 'katolik' ? 'selected' : '' }}>Katolik</option>
+                                <option value="kristen" {{ old('agama') == 'kristen' ? 'selected' : '' }}>Kristen</option>
+                                <option value="budha" {{ old('agama') == 'budha' ? 'selected' : '' }}>Budha</option>
+                                <option value="hindu" {{ old('agama') == 'hindu' ? 'selected' : '' }}>Hindu</option>
+                                <option value="konghucu" {{ old('agama') == 'konghucu' ? 'selected' : '' }}>Konghucu</option>
+                            </select>
+                            @error('agama')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Golongan Darah :</label>
+                            <select name="golongan_darah" class="custom-select" id="inputGroupSelect01" required>
+                                <option value="">Pilih golongan darah</option>
+                                <option value="A" {{ old('golongan_darah') == 'A' ? 'selected' : '' }}>A</option>
+                                <option value="B" {{ old('golongan_darah') == 'B' ? 'selected' : '' }}>B</option>
+                                <option value="AB" {{ old('golongan_darah') == 'AB' ? 'selected' : '' }}>AB</option>
+                                <option value="O" {{ old('golongan_darah') == 'O' ? 'selected' : '' }}>O</option>
+                            </select>
+                            @error('golongan_darah')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Status :</label>
+                            <select name="status" class="custom-select" id="inputGroupSelect01" >
+                                <option value="">Pilih Status</option>
+                                <option value="janda/duda" {{ old('status') == 'janda/duda' ? 'selected' : '' }}>Janda/Duda</option>
+                                <option value="miskin" {{ old('status') == 'miskin' ? 'selected' : '' }}>Miskin</option>    
+                                <option value="sakit parah" {{ old('status') == 'sakit parah' ? 'selected' : '' }}>Sakit Parah</option>    
+                                <option value="sebatang kara" {{ old('status') == 'sebatang kara' ? 'selected' : '' }}>Sebatang Kara</option>    
+                            </select>
+                            @error('status')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Pendidikan Terakhir :</label>
+                            <select name="pendidikan" class="custom-select" id="inputGroupSelect01" required>
+                                <option value="">Pendidikan terakhir</option>
+                                <option value="SD" {{ old('pendidikan') == 'SD' ? 'selected' : '' }}>SD</option>
+                                <option value="SMP" {{ old('pendidikan') == 'SMP' ? 'selected' : '' }}>SMP</option>
+                                <option value="SMA" {{ old('pendidikan') == 'SMA' ? 'selected' : '' }}>SMA</option>
+                                <option value="Tidak Sekolah" {{ old('pendidikan') == 'Tidak Sekolah' ? 'selected' : '' }}>Tidak Sekolah</option>
+                            </select>
+                            @error('pendidikan')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">RT :</label>
+                            <select name="rt" class="custom-select" id="inputGroupSelect01" required>
+                                <option value="">Pilih rt (domisili)</option>
+                                <option value="1" {{ old('rt') == '1' ? 'selected' : '' }}>1</option>
+                                <option value="2" {{ old('rt') == '2' ? 'selected' : '' }}>2</option>
+                                <option value="3" {{ old('rt') == '3' ? 'selected' : '' }}>3</option>
+                            </select>
+                            @error('rt')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="">Gaji :</label>
+                            <select name="gaji" class="custom-select" id="inputGroupSelect01" required>
+                                <option value="">Pilih rentang gaji</option>
+                                <option value="0-400.000" {{ old('gaji') == '0-400.000' ? 'selected' : '' }}>0-400.000</option>
+                                <option value="400.000-600.000" {{ old('gaji') == '400.000-600.000' ? 'selected' : '' }}>400.000-600.000</option>
+                                <option value="600.000-1.000.000" {{ old('gaji') == '600.000-1.000.000' ? 'selected' : '' }}>600.000-1.000.000</option>
+                                <option value=">1.000.000" {{ old('gaji') == '>1.000.000' ? 'selected' : '' }}>>1.000.000</option>
+                            </select>
+                            @error('gaji')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
                     
+                    {{-- Bawah --}}
+                    <div class="col-lg-12 col-md-12">
+                        <hr>
+                        <h6>*Pastikan alamat sesuai</h6>
+                        <div class="form-group c_form_group">
+                            <label>Domisili :</label>
+                            <input name="domisili" type="text" class="form-control" placeholder="alamat tempat tinggal sekarang" required value="{{ old('domisili') }}">
+                            @error('domisili')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group c_form_group">
+                            <label>Alamat :</label>
+                            <input name="alamat" type="text" class="form-control" placeholder="alamat asli sesuai dengan (KTP)" required value="{{ old('alamat') }}">
+                            @error('alamat')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
-            </div>   
-        </form>
-
-        </div>
+                <button type="submit" class="btn btn-primary theme-bg gradient">Simpan</button>
+            </div>
+        </div>   
+    </form>
+</div>
         
         
     </div>
