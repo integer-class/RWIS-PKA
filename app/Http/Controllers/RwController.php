@@ -291,7 +291,7 @@ class RwController extends Controller
 
     public function DataKeluarga(request $request){
 
-        $query = kartukeluargaModel::withCount('citizens');
+    $query = kartukeluargaModel::withCount('citizens');
 
     // Check if the 'no_kk' field is filled in the request
     if ($request->filled('no_kk')) {

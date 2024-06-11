@@ -1,7 +1,7 @@
 @extends('layouts_rt.app')
 @section ('content')
- {{-- <link rel="stylesheet" href="{{ asset('public/assets/css/mooli.min.css')}}"> --}}
-
+ 
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <div class="body">
     <ul class="nav nav-tabs3 white">
         <li class="nav-item"><a class="nav-link active show" data-toggle="tab" href="#Home-new2">Data Warga</a></li>
@@ -17,12 +17,16 @@
                 <div class="card">
                     <div class="header">
                         {{-- search bar --}}
-                        <form>
+                        <form method="GET" action="{{route('rt_data_warga')}}">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Cari Data Warga" aria-label="Cari Data Warga" aria-describedby="search-mail">
-                                <div class="input-group-append">
-                                    <span class="input-group-text" id="search-mail"><i class="icon-magnifier"></i></span>
-                                </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="nama" class="form-control" placeholder="Cari nama/nik" aria-label="" aria-describedby="basic-addon1">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-outline-secondary" ><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
                         </form>                            
                     </div>
@@ -31,8 +35,11 @@
                             <table class="table">
                                 <thead>
                                     <tr>
+                                        <th>NO</th>
                                         <th>NIK</th>
                                         <th>NAMA</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>RT</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -40,17 +47,16 @@
 
                                     @foreach ($warga as $penduduk)
                                     <tr>
-                                        <td >{{$penduduk->nik}}</td>
-                                        <td> {{$penduduk->nama}} </td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$penduduk->nik}}</td>
+                                        <td>{{$penduduk->nama}}</td>
+                                        <td>{{$penduduk->jenis_kelamin}}</td>
+                                        <td>{{$penduduk->rt}}</td>
                                         <td> 
-
                                             <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModalCenter{{$penduduk->nik}}">Detail</button>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#edit{{$penduduk->nik}}">Edit</button>
-
-                                            
                                         </td>                                        
                                     </tr>  
-                                    {{-- detail --}}
                                     <div class="modal fade" id="exampleModalCenter{{$penduduk->nik}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -60,40 +66,40 @@
                                                 </div>
                                                 <div class="modal-body">
 
-                                                    <div class="Row">
-                                                        <div class="col-md-6">
-                                                            <p>NIK</p>
-                                                            <p>No.KK</p>
-                                                            <p>Nama</p>
-                                                            <p>Alamat</p>
-                                                            <p>RT</p>
-                                                            <p>Agama</p>
-                                                            <p>Golongan Darah</p>
-                                                            <p>Jenis Kelamin</p>
-                                                            <p>Pekerjaan</p>
-                                                            <p>Tanggal Lahir</p>
-                                                            <p>status</p>
-                                                            <p>Kependudukan</p>
-
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <p><strong>NIK</strong></p>
+                                                            <p><strong>Nama</strong></p>
+                                                            <p><strong>Jenis Kelamin</strong></p>
+                                                            <p><strong>Tanggal Lahir</strong></p>
+                                                            <p><strong>Pekerjaan</strong></p>
+                                                            <p><strong>Status Kependudukan</strong></p>
+                                                            <p><strong>Luas Rumah</strong></p>
+                                                            <p><strong>Agama</strong></p>
+                                                            <p><strong>Golongan Darah</strong></p>
+                                                            <p><strong>Status</strong></p>
+                                                            <p><strong>Pendidikan Terakhir</strong></p>
+                                                            <p><strong>RT</strong></p>
+                                                            <p><strong>Gaji</strong></p>
+                                                            <p><strong>Domisili</strong></p>
+                                                            <p><strong>Alamat</strong></p>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-7">
                                                             <p>:{{$penduduk->nik}}</p>
-                                                            <p>:{{$penduduk->no_kk}}</p>
                                                             <p>:{{$penduduk->nama}}</p>
-                                                            <p>:{{$penduduk->alamat}}</p>
-                                                            <p>:{{$penduduk->rt}}</p>
+                                                            <p>:{{$penduduk->jenis_kelamin}}</p>
+                                                            <p>:{{$penduduk->tanggal_lahir}}</p>
+                                                            <p>:{{$penduduk->pekerjaan}}</p>
+                                                            <p>:{{$penduduk->status_kependudukan}}</p>
+                                                            <p>:{{$penduduk->luas_rumah}}</p>
                                                             <p>:{{$penduduk->agama}}</p>
                                                             <p>:{{$penduduk->golongan_darah}}</p>
-                                                            <p>:{{$penduduk->jenis_kelamin}}</p>
-                                                            <p>:{{$penduduk->pekerjaan}}</p>
-                                                            <p>:{{$penduduk->tanggal_lahir}}</p>
                                                             <p>:{{$penduduk->status}}</p>
-                                                            <p>:{{$penduduk->status_kependudukan}}</p>
-
-
-
-                                                            
-
+                                                            <p>:{{$penduduk->pendidikan}}</p>
+                                                            <p>:{{$penduduk->rt}}</p>
+                                                            <p>:{{$penduduk->gaji}}</p>
+                                                            <p>:{{$penduduk->domisili}}</p>
+                                                            <p>:{{$penduduk->alamat}}</p>
                                                         </div>
                                                     </div>
                                                     
@@ -123,30 +129,30 @@
                                                             {{-- kiri atas --}}
                                                             <div class="col-lg-6 col-md-12">
                                                                 <div class="form-group">
-                                                                    <label for="">NIK:</label>
+                                                                    <label for="">NIK :</label>
                                                                     <input name="nik" type="text" value="{{$penduduk->nik}}" class="form-control" placeholder="NIK" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="">KK:</label>
-                                                                    <input name="no_kk" type="text"  value="{{$penduduk->no_kk}}" class="form-control" placeholder="Nomor KK" required>
+                                                                    <label for="">KK :</label>
+                                                                    <input name="no_kk" type="text" value="{{$penduduk->no_kk}}" class="form-control" placeholder="Nomor KK" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="">Jenis Kelamin</label>
-                                                                    <select  name="jenis_kelamin" class="custom-select" id="inputGroupSelect01" required>
-                                                                    <option>Pilih Jenis Kelamin</option>
-                                                                    <option value="L" {{$penduduk->jenis_kelamin == 'L' ? 'selected' : ''}}>Laki-Laki</option>
-                                                                    <option value="P" {{$penduduk->jenis_kelamin == 'P' ? 'selected' : ''}}>Perempuan</option>
+                                                                    <label for="">Jenis Kelamin :</label>
+                                                                    <select name="jenis_kelamin" class="custom-select" id="inputGroupSelect01" required>
+                                                                        <option>Pilih Jenis Kelamin :</option>
+                                                                        <option value="laki-laki" {{$penduduk->jenis_kelamin == 'laki-laki' ? 'selected' : ''}}>Laki-Laki</option>
+                                                                        <option value="perempuan" {{$penduduk->jenis_kelamin == 'perempuan' ? 'selected' : ''}}>Perempuan</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group  ">
-                                                                    <label>Tanggal Lahir</label>
+                                                                    <label>Tanggal Lahir :</label>
                                                                     <div class="input-group">
-                                                                        <input value="{{$penduduk->tanggal_lahir}}" name="tanggal_lahir" type="date"  class="form-control"  placeholder="Pilih tanggal" required>
+                                                                        <input name="tanggal_lahir" value="{{$penduduk->tanggal_lahir}}" type="date"  class="form-control"  placeholder="Pilih tanggal" required>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="">Pekerjaan :</label>
-                                                                    <input value="{{$penduduk->pekerjaan}}"  name="pekerjaan" type="text" class="form-control" placeholder="Pekerjaan" required>
+                                                                    <input name="pekerjaan" value="{{$penduduk->pekerjaan}}" type="text" class="form-control" placeholder="Pekerjaan" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="">Status Kependudukan :</label>
@@ -156,6 +162,10 @@
                                                                         <option value="Warga Kontrak" {{$penduduk->status_kependudukan == 'Warga Kontrak' ? 'selected' : ''}}>Warga Kontrak</option>
                                                                     </select>
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Luas Rumah :</label>
+                                                                    <input name="luas_rumah" value="{{$penduduk->luas_rumah}}" type="text" class="form-control" placeholder="Luas Rumah (m2)" required>
+                                                                </div>
                                                             </div>
                                                             {{-- Kanan atas --}}
                                                             <div class="col-lg-6 col-md-12">
@@ -164,21 +174,21 @@
                                                                     <input name="nama" value="{{$penduduk->nama}}" type="text" class="form-control" placeholder="Nama" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="">agama</label>
+                                                                    <label for="">Agama :</label>
                                                                     <select name="agama" class="custom-select" id="inputGroupSelect01" required>
                                                                         <option>Pilih agama</option>
-                                                                        <option value="islam" {{$penduduk->agama == 'islam' ? 'selected' : ''}}>Islam</option>
-                                                                        <option value="katolik" {{$penduduk->agama == 'katolik' ? 'selected' : ''}}>Katolik</option>
-                                                                        <option value="kristen" {{$penduduk->agama == 'kristen' ? 'selected' : ''}}>Kristen</option>
-                                                                        <option value="budha" {{$penduduk->agama == 'budha' ? 'selected' : ''}}>Budha</option>
-                                                                        <option value="hindu" {{$penduduk->agama == 'hindu' ? 'selected' : ''}}>Hindu</option>
-                                                                        <option value="konghucu" {{$penduduk->agama == 'konghucu' ? 'selected' : ''}}>Konghucu</option>
+                                                                        <option value="islam" {{$penduduk->agama == 'islam' ? 'selected' : ''}}>islam</option>
+                                                                        <option value="katolik" {{$penduduk->agama == 'katolik' ? 'selected' : ''}}>katolik</option>
+                                                                        <option value="kristen" {{$penduduk->agama == 'kristen' ? 'selected' : ''}}>kristen</option>
+                                                                        <option value="budha" {{$penduduk->agama == 'budha' ? 'selected' : ''}}>budha</option>
+                                                                        <option value="hindu" {{$penduduk->agama == 'hindu' ? 'selected' : ''}}>hindu</option>
+                                                                        <option value="konghucu" {{$penduduk->agama == 'konghucu' ? 'selected' : ''}}>konghucu</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="">Golongan Darah</label>
+                                                                    <label for="">Golongan Darah :</label>
                                                                     <select name="golongan_darah" class="custom-select" id="inputGroupSelect01" required>
-                                                                        <option>Pilih Golongan Darah</option>
+                                                                        <option>Pilih golongan darah</option>
                                                                         <option value="A" {{$penduduk->golongan_darah == 'A' ? 'selected' : ''}}>A</option>
                                                                         <option value="B" {{$penduduk->golongan_darah == 'B' ? 'selected' : ''}}>B</option>
                                                                         <option value="AB" {{$penduduk->golongan_darah == 'AB' ? 'selected' : ''}}>AB</option>
@@ -186,20 +196,42 @@
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="">status</label>
+                                                                    <label for="">Status :</label>
                                                                     <select name="status" class="custom-select" id="inputGroupSelect01" required>
-                                                                        <option >Pilih Status Perkawinan</option>
-                                                                        <option value="Belum Kawin" {{$penduduk->status == 'Belum Kawin' ? 'selected' : ''}}>Belum Kawin</option>
-                                                                        <option value="Kawin" {{$penduduk->status == 'Kawin' ? 'selected' : ''}}>Kawin</option>
+                                                                        <option >Pilih Status</option>
+                                                                        <option value="janda/duda" {{$penduduk->status == 'janda/duda' ? 'selected' : ''}}>Janda/Duda</option>
+                                                                        <option value="miskin" {{$penduduk->status == 'miskin' ? 'selected' : ''}}>Miskin</option>    
+                                                                        <option value="sakit parah" {{$penduduk->status == 'sakit parah' ? 'selected' : ''}}>Sakit Parah</option>    
+                                                                        <option value="sebatang kara" {{$penduduk->status == 'sebatang kara' ? 'selected' : ''}}>Sebatang Kara</option>    
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="">RT</label>
+                                                                    <label for="">Pendidikan Terakhir :</label>
+                                                                    <select name="pendidikan" class="custom-select" id="inputGroupSelect01" required>
+                                                                        <option >Pendidikan terakhir </option>
+                                                                        <option value="SD" {{$penduduk->pendidikan == 'SD' ? 'selected' : ''}}>SD</option>
+                                                                        <option value="SMP" {{$penduduk->pendidikan == 'SMP' ? 'selected' : ''}}>SMP</option>
+                                                                        <option value="SMA" {{$penduduk->pendidikan == 'SMA' ? 'selected' : ''}}>SMA</option>
+                                                                        <option value="Tidak Sekolah" {{$penduduk->pendidikan == 'Tidak Sekolah' ? 'selected' : ''}}>Tidak Sekolah</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">RT :</label>
                                                                     <select name="rt" class="custom-select" id="inputGroupSelect01" required>
                                                                         <option >Pilih rt (domisili) </option>
                                                                         <option value="1" {{$penduduk->rt == '1' ? 'selected' : ''}}>1</option>
                                                                         <option value="2" {{$penduduk->rt == '2' ? 'selected' : ''}}>2</option>
                                                                         <option value="3" {{$penduduk->rt == '3' ? 'selected' : ''}}>3</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Gaji :</label>
+                                                                    <select name="gaji" class="custom-select" id="inputGroupSelect01" required>
+                                                                        <option >Pilih rentang gaji </option>
+                                                                        <option value="0-400.000" {{$penduduk->gaji == '0-400.000' ? 'selected' : ''}}>0-400.000</option>
+                                                                        <option value="400.000-600.000" {{$penduduk->gaji == '400.000-600.000' ? 'selected' : ''}}>400.000-600.000</option>
+                                                                        <option value="600.000-1.000.000" {{$penduduk->gaji == '600.000-1.000.000' ? 'selected' : ''}}>600.000-1.000.000</option>
+                                                                        <option value=">1.000.000" {{$penduduk->gaji == '>1.000.000' ? 'selected' : ''}}>>1.000.000</option>
                                                                     </select>
                                                                 </div>
                                                             </div>       
@@ -209,15 +241,15 @@
                                                                 <hr>
                                                                 <h6>*Pastikan alamat  sesuai</h6>
                                                                 <div class="form-group c_form_group">
-                                                                    <label>Domisili</label> 
-                                                                    <input name="domisili" type="text" value="{{ $penduduk->domisili }}" class="form-control" placeholder="alamat tempat tinggal sekarang" required>
+                                                                    <label>Domisili :</label>
+                                                                    <input name="domisili" value="{{$penduduk->domisili}}" type="text" class="form-control" placeholder="alamat tempat tinggal sekarang" required>
                                                                 </div>
                                                                 <div class="form-group c_form_group">
-                                                                    <label>Alamat asli</label>
-                                                                    <input name="alamat_asli" type="text"  value="{{ $penduduk->alamat }}" class="form-control" placeholder="alamat asli sesuai dengan (KTP)" required>
+                                                                    <label>Alamat :</label>
+                                                                    <input name="alamat" value="{{$penduduk->alamat}}" type="text" class="form-control" placeholder="alamat asli sesuai dengan (KTP)" required>
                                                                 </div>
                                                             </div>
-                                                        </div>                                                    
+                                                        </div>                                                  
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -233,6 +265,11 @@
                                    
                                 </tbody>
                             </table>
+                            {{-- Button Pagination --}}
+                            <div class="text-center mt-3">
+                                <a href="{{ $warga->previousPageUrl() }}" class="btn btn-primary {{ $warga->onFirstPage() ? 'disabled' : '' }}">Previous</a>
+                                <a href="{{ $warga->nextPageUrl() }}" class="btn btn-primary {{ $warga->hasMorePages() ? '' : 'disabled' }}">Next</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -257,7 +294,7 @@
                 </div>
             </div>
         </div>
-
+        
         {{-- TAB Tambah warga --}}
         <div class="tab-pane" id="Profile-new2">
         <form method="post" action="{{route('rt_prosesTambahWarga')}}">
@@ -271,23 +308,24 @@
                         {{-- kiri atas --}}
                         <div class="col-lg-6 col-md-12">
                             <div class="form-group">
-                                <label for="">NIK:</label>
+                                <label for="">NIK :</label>
                                 <input name="nik" type="text" class="form-control" placeholder="NIK" required>
                             </div>
                             <div class="form-group">
-                                <label for="">KK:</label>
+                                <label for="">KK :</label>
                                 <input name="no_kk" type="text" class="form-control" placeholder="Nomor KK" required>
+    
                             </div>
                             <div class="form-group">
-                                <label for="">Jenis Kelamin</label>
+                                <label for="">Jenis Kelamin :</label>
                                 <select name="jenis_kelamin" class="custom-select" id="inputGroupSelect01" required>
-                                    <option>Pilih Jenis Kelamin</option>
-                                    <option value="L">Laki-Laki</option>
-                                    <option value="P">Perempuan</option>
+                                    <option>Pilih Jenis Kelamin :</option>
+                                    <option value="laki-laki">Laki-Laki</option>
+                                    <option value="perempuan">Perempuan</option>
                                 </select>
                             </div>
                             <div class="form-group  ">
-                                <label>Tanggal Lahir</label>
+                                <label>Tanggal Lahir :</label>
                                 <div class="input-group">
                                     <input name="tanggal_lahir" type="date"  class="form-control"  placeholder="Pilih tanggal" required>
                                 </div>
@@ -304,6 +342,10 @@
                                     <option value="Warga Kontrak">Warga Kontrak</option>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="">Luas Rumah :</label>
+                                <input name="luas_rumah" type="text" class="form-control" placeholder="Luas Rumah (m2)" required>
+                            </div>
                         </div>
                         {{-- Kanan atas --}}
                         <div class="col-lg-6 col-md-12">
@@ -312,7 +354,7 @@
                                 <input name="nama" type="text" class="form-control" placeholder="Nama" required>
                             </div>
                             <div class="form-group">
-                                <label for="">agama</label>
+                                <label for="">Agama :</label>
                                 <select name="agama" class="custom-select" id="inputGroupSelect01" required>
                                     <option>Pilih agama</option>
                                     <option value="islam">islam</option>
@@ -324,30 +366,52 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">Golongan Darah</label>
+                                <label for="">Golongan Darah :</label>
                                 <select name="golongan_darah" class="custom-select" id="inputGroupSelect01" required>
                                     <option>Pilih golongan darah</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
-                                    <option value="Ab">AB</option>
+                                    <option value="AB">AB</option>
                                     <option value="O">O</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">status</label>
+                                <label for="">Status :</label>
                                 <select name="status" class="custom-select" id="inputGroupSelect01" required>
-                                    <option >Pilih Status Perkawinan</option>
-                                    <option value="Belum Kawin">Belum Kawin</option>
-                                    <option value="Kawin">Kawin</option>    
+                                    <option >Pilih Status</option>
+                                    <option value="janda/duda">Janda/Duda</option>
+                                    <option value="miskin">Miskin</option>    
+                                    <option value="sakit parah">Sakit Parah</option>    
+                                    <option value="sebatang kara">Sebatang Kara</option>    
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="">RT</label>
+                                <label for="">Pendidikan Terakhir :</label>
+                                <select name="pendidikan" class="custom-select" id="inputGroupSelect01" required>
+                                    <option >Pendidikan terakhir </option>
+                                    <option value="SD">SD</option>
+                                    <option value="SMP">SMP</option>
+                                    <option value="SMA">SMA</option>
+                                    <option value="Tidak Sekolah">Tidak Sekolah</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">RT :</label>
                                 <select name="rt" class="custom-select" id="inputGroupSelect01" required>
                                     <option >Pilih rt (domisili) </option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Gaji :</label>
+                                <select name="gaji" class="custom-select" id="inputGroupSelect01" required>
+                                    <option >Pilih rentang gaji </option>
+                                    <option value="0-400.000">0-400.000</option>
+                                    <option value="400.000-600.000">400.000-600.000</option>
+                                    <option value="600.000-1.000.000">600.000-1.000.000</option>
+                                    <option value=">1.000.000">>1.000.000</option>
                                 </select>
                             </div>
                         </div>       
@@ -357,12 +421,12 @@
                             <hr>
                             <h6>*Pastikan alamat  sesuai</h6>
                             <div class="form-group c_form_group">
-                                <label>Domisili</label>
+                                <label>Domisili :</label>
                                 <input name="domisili" type="text" class="form-control" placeholder="alamat tempat tinggal sekarang" required>
                             </div>
                             <div class="form-group c_form_group">
-                                <label>Alamat asli</label>
-                                <input name="alamat_asli" type="text" class="form-control" placeholder="alamat asli sesuai dengan (KTP)" required>
+                                <label>Alamat :</label>
+                                <input name="alamat" type="text" class="form-control" placeholder="alamat asli sesuai dengan (KTP)" required>
                             </div>
                         </div>
                     </div>
@@ -374,18 +438,13 @@
 
         </div>
         
-        <!-- Pagination Button -->
-        <div class="text-center mt-3">
-            <a href="{{ $warga->previousPageUrl() }}" class="btn btn-primary {{ $warga->onFirstPage() ? 'disabled' : '' }}">Previous</a>
-            <a href="{{ $warga->nextPageUrl() }}" class="btn btn-primary {{ $warga->hasMorePages() ? '' : 'disabled' }}">Next</a>
-        </div>
-
+        
     </div>
 </div>
+
+
 
 <!-- Javascript -->
 <script src="assets/bundles/libscripts.bundle.js"></script>    
 <script src="assets/bundles/vendorscripts.bundle.js"></script>
-
 @endsection
-
