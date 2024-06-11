@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:2']], function () {
         Route::resource('rt', RtController::class);
         Route::get('/rt_dashboard',[RtController::class,'index'])->name('rt_dashboard');
+        
         Route::get('/rt_data_warga', [RtController::class, 'DataWarga'])->name('rt_data_warga');
         Route::post('/rt_prosesTambahWarga', [RtController::class, 'TambahDataWarga'])->name('rt_prosesTambahWarga');
         Route::post('/rt_prosesEditWarga', [RtController::class, 'EditDataWarga'])->name('rt_prosesEditWarga');
@@ -117,6 +118,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/warga_dashboard',[WargaController::class,'index'])->name('warga_dashboard');
         Route::get('/warga_data_bansos',[WargaController::class, 'DataBansos'])->name('warga_data_bansos');
         Route::get('/warga_profile_warga', [WargaController::class, 'profilewarga'])->name('profile_warga');
+        Route::post('/gantipassword', [WargaController::class, 'gantipassword'])->name('gantipassword');
 
     });
 });

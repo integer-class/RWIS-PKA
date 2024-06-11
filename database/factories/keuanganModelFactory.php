@@ -17,8 +17,8 @@ class KeuanganModelFactory extends Factory
     public function definition(): array
     {
         // Ensure citizens are loaded once and used across calls
-        $user = userModel::where('role' ,'!=','3');
-        $citizens = CitizenModel::where('nik',$user->nik)->pluck('nama')->toArray();
+        $user = userModel::where('role' ,'!=','3')->pluck('nik')->toArray();
+        $citizens = CitizenModel::where('nik',$user)->pluck('nama')->toArray();
 
         // Generate the amount for pemasukan first
         $pemasukanAmount = $this->faker->numberBetween(10, 99) * 1000;

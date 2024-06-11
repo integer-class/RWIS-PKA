@@ -14,7 +14,7 @@
                 <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{$nama_pengguna->nama}}</strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
                     <li><a href="{{route('profile_warga')}}"><i class="fa fa-user"></i>Profil Saya</a></li>
-                    <li><a href="page-login.html"><i class="fa fa-power-off"></i>Logout</a></li>
+                    <li><a href="{{url('logout')}}"><i class="fa fa-power-off"></i>Logout</a></li>
                 </ul>
             </div>
         </div>  

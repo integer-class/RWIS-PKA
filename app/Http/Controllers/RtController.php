@@ -20,12 +20,57 @@ class RtController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
+<<<<<<< Updated upstream
+=======
+
+        //Total iuran PHB
+        $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
+        $total_pengeluaranPHB = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran PHB')->sum('jumlah');
+        $iuranPHB = number_format(($total_pemasukanPHB - $total_pengeluaranPHB), 0, ',', '.');
+
+        //Total iuran kematian
+        $total_pemasukanKematian = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran kematian')->sum('jumlah');
+        $total_pengeluaranKematian = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran kematian')->sum('jumlah');
+        $iuranKematian = number_format(($total_pemasukanKematian - $total_pengeluaranKematian), 0, ',', '.');
+
+        //Total iuran Listrik
+        $total_pemasukanListrik = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
+        $total_pengeluaranListrik = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Listrik')->sum('jumlah');
+        $iuranListrik = number_format(($total_pemasukanListrik - $total_pengeluaranListrik), 0, ',', '.');
+
+        //Total iuran Sampah
+        $total_pemasukanSampah = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
+        $total_pengeluaranSampah = keuanganModel::where('jenis_data', 'pengeluaran')->where('jenis_iuran','iuran Sampah')->sum('jumlah');
+        $iuranSampah =number_format(($total_pemasukanSampah - $total_pengeluaranSampah), 0, ',', '.');
+
+
+        $warga=citizenModel::all();
+        $templatesurat=templatesuratModel::all();
+        $umkm=umkmModel::all();
+        $kegiatan=kegiatanModel::all();
+    
+        $ketuaRtNik = UserModel::where('Role', '2')->pluck('nik');
+        $nama_ketua = CitizenModel::whereIn('nik', $ketuaRtNik)->get(['nik', 'rt', 'nama']);
+
+        
+        $ketuaRt1 = $nama_ketua->where('rt', '1')->first();
+        $ketuaRt2 = $nama_ketua->where('rt', '2')->first();
+        $ketuaRt3 = $nama_ketua->where('rt', '3')->first();
+
+
+>>>>>>> Stashed changes
         $user = auth()->user();
           
         // Retrieve the user's name
         $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
         $nama_pengguna = $pengguna->first();
+<<<<<<< Updated upstream
         return view('rt.index',compact('nama_pengguna'));
+=======
+
+       return view('rt.index',compact('nama_pengguna','ketuaRt3','ketuaRt2','ketuaRt1','iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
+
+>>>>>>> Stashed changes
     }
 
     public function DataWarga(){

@@ -12,6 +12,7 @@ use App\Models\UserModel;
 use Database\Seeders\umkm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class WargaController extends Controller
 {
@@ -199,16 +200,33 @@ class WargaController extends Controller
         $nama_pengguna = $pengguna->first();
         return view('warga.bansos',compact('nama_pengguna','bansos')); 
     }
-    public function Profilewarga(){
-        $citizen = citizenModel::all();
-
-        $user = auth()->user();
-          
-        // Retrieve the user's name
-        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+    public function Profilewarga()
+    {
+        // Mendapatkan data user (contoh penggunaan)
+        $user = Auth::user();
+        $datauser = citizenModel::where('nik', $user->nik)->first();
+        // Mendapatkan data pengguna
+        $pengguna = citizenModel::where('nik', $user->nik)->get('nama', 'nik');
         $nama_pengguna = $pengguna->first();
-        return view('warga.profilewarga',compact('nama_pengguna','datawarga'));
-
+    
+        // Mendapatkan data warga (contoh penggunaan)
+        $datawarga = citizenModel::all();
+    
+        // Mengirim data ke view
+        return view('warga.profilewarga', compact('nama_pengguna', 'datawarga', 'datauser'));
     }
-
+    
+    public function gantipassword(Request $request)
+    {
+        $user = UserModel::where('nik', $request->nik)->first();
+        
+        if ($user) {
+            $user->update([
+                'password' => Hash::make($request->password_baru),
+            ]);
+            return redirect()->back()->with('success', 'Password berhasil diganti');
+        } else {
+            return redirect()->back()->with('error', 'User tidak ditemukan');
+        }
+    }
 }   
