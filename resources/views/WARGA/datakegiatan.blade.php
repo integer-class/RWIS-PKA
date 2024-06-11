@@ -1,6 +1,5 @@
 @extends('layouts_warga.app')
 @section('content')
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +9,8 @@
 <body>
     <div class="body">
         <div class="card">
-            <div class="card-body text-white text-center font-weight-bold" style="background-image: url('https://backpanel.kemlu.go.id/PublishingImages/News_Kopenhagen/12_22062019_Indonesian_Bazaar_Horsens/2.%20Dubes%20RI%20dan%20Masyarakat%20Indonesia.jpg'); background-size: cover; background-position: center;">
-                <p class="card-text big-text">Selamat Datang di Halaman Warga!</p>
+            <div class="card-body text-white text-center font-weight-bold" style="background-image: url('https://assets.pikiran-rakyat.com/crop/296x0:7614x4266/x/photo/2021/09/28/2711211393.jpg'); background-size: cover; background-position: center ;">
+                <p class="card-text big-text">Selamat Datang di Halaman Kegiatan Warga!</p>
             </div>
         </div>
     </div>

@@ -64,14 +64,23 @@ class WargaController extends Controller
        return view('warga.index',compact('nama_pengguna','ketuaRt3','ketuaRt2','ketuaRt1','iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
 
     }
-    public function datawarga(){
-        $datawarga = citizenModel::paginate(10);
+
+    public function DataWarga(Request $request)
+    {
+        $query = citizenModel::query();
+        if ($request->filled('nama')) {
+            // Apply the search filter to the query
+            $query->where('nama', 'like', '%' . $request->input('nama') . '%')
+                  ->orWhere('nik', 'like', '%' . $request->input('nama') . '%');
+        }
+        $datawarga = $query->paginate(10);
         $user = auth()->user();
           
         // Retrieve the user's name
-        $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
+        $pengguna = citizenModel::where('nik',$user->nik)->get(['nama', 'nik']);
         $nama_pengguna = $pengguna->first();
-        return view('warga.datawarga',compact('nama_pengguna','datawarga'));
+        
+        return view('warga.datawarga', compact('nama_pengguna', 'datawarga'));
     }
     public function data_keluarga()
     {

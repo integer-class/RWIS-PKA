@@ -20,8 +20,6 @@ class RtController extends Controller
      * Display a listing of the resource.
      */
     public function index(){
-<<<<<<< Updated upstream
-=======
 
         //Total iuran PHB
         $total_pemasukanPHB = keuanganModel::where('jenis_data', 'pemasukan')->where('jenis_iuran','iuran PHB')->sum('jumlah');
@@ -58,19 +56,14 @@ class RtController extends Controller
         $ketuaRt3 = $nama_ketua->where('rt', '3')->first();
 
 
->>>>>>> Stashed changes
         $user = auth()->user();
           
         // Retrieve the user's name
         $pengguna = citizenModel::where('nik',$user->nik)->get('nama','nik');
         $nama_pengguna = $pengguna->first();
-<<<<<<< Updated upstream
-        return view('rt.index',compact('nama_pengguna'));
-=======
 
        return view('rt.index',compact('nama_pengguna','ketuaRt3','ketuaRt2','ketuaRt1','iuranSampah','iuranListrik','iuranKematian','iuranPHB','warga','umkm','kegiatan','templatesurat'));
 
->>>>>>> Stashed changes
     }
 
     public function DataWarga(){
@@ -531,7 +524,7 @@ class RtController extends Controller
         }
     
         // Assuming the file path is stored in a 'surat' attribute
-        $filePath = public_path('images/surat/' . $surat->surat);
+        $filePath = public_path('Surat/' . $surat->nama_file_surat);
     
         if (!file_exists($filePath)) {
             // Handle the case where the file does not exist
@@ -546,7 +539,7 @@ class RtController extends Controller
         
         $bansos = citizenModel::where(function ($query) {
             // Tambahkan kriteria untuk menentukan siapa yang layak menerima bantuan sosial
-            $query->where('skorBansos', '>', 300); // Misalnya, hanya yang memiliki skorBansos di atas 300 yang dianggap layak
+            $query->where('skorBansos', '>', 299); // Misalnya, hanya yang memiliki skorBansos di atas 300 yang dianggap layak
         })
         ->orderBy('skorBansos', 'desc') // Urutkan dari yang teratas (skorBansos tertinggi) ke yang terbawah
         ->get();
