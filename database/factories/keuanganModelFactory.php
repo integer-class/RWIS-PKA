@@ -17,11 +17,9 @@ class KeuanganModelFactory extends Factory
     {
         // Ensure citizens are loaded once and used across calls
 
-        // Modify this to join the user and citizen tables correctly
-        $users = UserModel::where('role', '!=', '3')->pluck('nik')->toArray();
-        $ketua = CitizenModel::whereIn('nik', $users)->pluck('nama')->toArray();
-        $citizen = CitizenModel::pluck('nama')->toArray();
-
+        $user = userModel::where('role' ,'!=','3')->pluck('nik')->toArray();
+        $ketua = citizenModel::whereIn('nik',$user)->pluck('nama')->toArray();
+        $citizens = CitizenModel::pluck('nama')->toArray();
 
 
         // Generate the amount for pemasukan first
@@ -40,6 +38,7 @@ class KeuanganModelFactory extends Factory
         //i want if the jenis_data is pengeluaran then nama is $ketua
         $nama = $jenisData === 'pemasukan' ? $this->faker->randomElement($citizen) : $this->faker->randomElement($ketua);
 
+        $nama = $jenisData === 'pemasukan' ? $this->faker->randomElement($citizens) : $this->faker->randomElement($ketua);
         return [
             'tanggal' => $this->faker->dateTimeBetween('2024-01-01', 'now'),
             'jenis_iuran' => $this->faker->randomElement(['iuran PHB', 'iuran kematian', 'iuran sampah', 'iuran listrik']),

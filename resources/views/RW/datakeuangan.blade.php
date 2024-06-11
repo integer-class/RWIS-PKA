@@ -71,7 +71,7 @@
                             <td>{{$keuangan->jenis_iuran}}</td>
                             <td> 
                                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#EditKeuangan{{$keuangan->id}}">Edit</button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="">Hapus</button>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#HapusKeuangan{{$keuangan->id}}">Hapus</button>
                             </td>                                        
                         </tr>  
                         {{-- EDIT --}}
@@ -136,7 +136,30 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        {{-- Hapus --}}
+                        <div class="modal fade" id="Hapuskeuangan{{$keuangan->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Hapus Data</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <form method="POST" action="{{route('prosesHapuskeuangan')}}">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$keuangan->id}}" >
+                                        <div class="modal-body">  
+                                            <div class="alert alert-warning" >
+                                                Apa anda yakin? Data yang dihapus tidak bisa dikembalikan. 
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </tbody>
                 </table>
