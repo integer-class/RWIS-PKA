@@ -4,11 +4,15 @@
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
         'reference' => 'e047dd221fdc7123cba0f0f5acaa9266a213c4cc',
 
 =======
         'reference' => '5259085686b592b9c38fe4a89612438ebfd0857f',
+>>>>>>> Stashed changes
+=======
+        'reference' => '8e7d6bc7189d08bca93638c16c8cf640c223662d',
 >>>>>>> Stashed changes
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
@@ -389,11 +393,15 @@
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
             'reference' => 'e047dd221fdc7123cba0f0f5acaa9266a213c4cc',
 
 =======
             'reference' => '5259085686b592b9c38fe4a89612438ebfd0857f',
+>>>>>>> Stashed changes
+=======
+            'reference' => '8e7d6bc7189d08bca93638c16c8cf640c223662d',
 >>>>>>> Stashed changes
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
@@ -821,6 +829,15 @@
             'reference' => '91039bc1faa45ba123c4328958e620d382ec7088',
             'type' => 'library',
             'install_path' => __DIR__ . '/../ramsey/uuid',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'realrashid/sweet-alert' => array(
+            'pretty_version' => 'v7.1.1',
+            'version' => '7.1.1.0',
+            'reference' => '2d38720644fb30ff6db4e2a5ee013c09057b1f3b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../realrashid/sweet-alert',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
